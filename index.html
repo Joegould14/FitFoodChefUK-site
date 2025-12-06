@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fit Food Chef UK</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+  <!-- Preload hero images -->
+  <link rel="preload" as="image" href="fit-food-logo.jpg">
+  <link rel="preload" as="image" href="chef-portrait.jpg">
+  <link rel="preload" as="image" href="gym-rack.jpg">
+
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <style>
+    :root {
+      --bg: #05060a;
+      --bg-elevated: #0b0e16;
+      --bg-soft: #101320;
+      --card: #111521;
+      --card-softer: #151a28;
+      --accent: #f5c561;
+      --accent-soft: rgba(245, 197, 97, 0.2);
+      --accent-strong: #ffda7a;
+      --text: #f9fafb;
+      --muted: #a7b0c2;
+      --border-subtle: rgba(255, 255, 255, 0.06);
+      --danger: #ff4b6a;
+      --radius-lg: 26px;
+      --radius-md: 18px;
+      --radius-sm: 999px;
+      --shadow-soft: 0 22px 60px rgba(0, 0, 0, 0.75);
+      --shadow-chip: 0 10px 25px rgba(0, 0, 0, 0.6);
+      --transition-fast: 0.18s ease-out;
+      --transition-med: 0.25s ease-out;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    * { margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    html, body { height: 100%; }
+    body {
+      min-height: 100vh;
+      min-height: -webkit-fill-available;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", sans-serif;
+      background: radial-gradient(circle at top, #1b2236 0, #05060a 52%, #000 100%);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; height: auto; display: block; }
+
+    .page-shell {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 18px 16px 100px;
+    }
+
+    /* Top Navigation */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(20px);
+      background: linear-gradient(to bottom, rgba(5,6,10,0.96), rgba(5,6,10,0.92), rgba(5,6,10,0.86));
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.80);
+      padding: 12px 18px;
+      padding-top: max(12px, env(safe-area-inset-top));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+    .nav-left { display: flex; align-items: center; gap: 12px; }
+    .nav-logo-mark {
+      width: 32px; height: 32px; border-radius: 12px;
+      background: radial-gradient(circle at 30% 0%, #f5c561, #8f5a13);
+      display: flex; align-items: center; justify-content: center;
+      color: #111; font-weight: 800; font-size: 18px; letter-spacing: .03em;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.7);
+    }
+    .nav-title-main { font-size: 14px; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; }
+    .nav-title-sub { font-size: 11px; color: var(--muted); letter-spacing: .14em; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-link {
+      font-size: 12px; padding: 7px 14px; border-radius: 999px;
+      background: rgba(255,255,255,0.01); color: var(--muted);
+      border: 1px solid transparent; cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    .nav-link:hover {
+      color: var(--text);
+      border-color: rgba(245,197,97,0.6);
+      background: rgba(245,197,97,0.08);
+      transform: translateY(-1px);
+    }
+    .nav-link.active {
+      color: #111;
+      background: var(--accent);
+      box-shadow: 0 10px 26px rgba(245,197,97,0.45);
+    }
+    @media (max-width: 720px) {
+      .top-nav { flex-wrap: wrap; row-gap: 10px; padding-inline: 14px; }
+      .nav-links { justify-content: center; width: 100%; }
+    }
+
+    section { margin-bottom: 60px; }
+    .section-label { font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+    .section-title { font-size: 26px; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; margin-bottom: 18px; }
+
+    /* HERO */
+    .hero-grid { display: grid; grid-template-columns: minmax(0,1.05fr) minmax(0,0.95fr); gap: 26px; align-items: stretch; }
+    .hero-main-card {
+      position: relative; border-radius: var(--radius-lg); overflow: hidden;
+      background: radial-gradient(circle at top, #1d2439 0, #080b13 50%, #05070d 100%);
+      border: 1px solid rgba(255,255,255,0.14); box-shadow: var(--shadow-soft);
+      padding: 24px; display: flex; flex-direction: column; gap: 18px;
+    }
+    .hero-main-card::before {
+      content:""; position:absolute; inset:-40%;
+      background:
+        radial-gradient(circle at 0 0, rgba(245,197,97,0.09), transparent 55%),
+        radial-gradient(circle at 100% 0, rgba(93,127,255,0.12), transparent 50%),
+        radial-gradient(circle at 50% 100%, rgba(0,0,0,0.8), transparent 55%);
+      opacity:.85; pointer-events:none;
+    }
+    .hero-main-inner { position:relative; z-index:1; display:flex; flex-direction:column; gap:16px; }
+    .hero-logo { width:180px; max-width:60%; border-radius:18px; overflow:hidden; border:1px solid rgba(245,197,97,0.4); box-shadow:0 18px 40px rgba(0,0,0,0.9); margin-bottom:6px; }
+    .hero-chips-row { display:flex; gap:8px; flex-wrap:wrap; }
+    .chip-pill {
+      font-size:11px; letter-spacing:.16em; text-transform:uppercase; padding:7px 14px; border-radius:999px;
+      border:1px solid rgba(255,255,255,0.1); background:rgba(5,6,10,0.86); color:var(--muted);
+      box-shadow:var(--shadow-chip); display:inline-flex; align-items:center; gap:8px;
+    }
+    .chip-pill .dot { width:7px; height:7px; border-radius:50%; background:#3bff9f; box-shadow:0 0 0 3px rgba(59,255,159,0.32); }
+    .chip-outline { border-color:rgba(245,197,97,0.5); background:radial-gradient(circle at 0 0, rgba(245,197,97,0.14), rgba(5,6,10,0.9)); color:var(--accent-strong); }
+    .hero-heading { font-size:38px; letter-spacing:.12em; text-transform:uppercase; font-weight:700; margin:6px 0 4px; }
+    .hero-subtitle { font-size:14px; color:var(--muted); max-width:560px; }
+    .hero-divider { height:1px; background:linear-gradient(to right, rgba(245,197,97,0.15), rgba(255,255,255,0.04), transparent); margin:14px 0 2px; }
+    .hero-copy { font-size:13px; color:var(--muted); max-width:650px; }
+
+    .hero-ctas { display:flex; flex-direction:column; gap:10px; margin-top:10px; }
+    .hero-cta {
+      position:relative; border-radius:999px; padding:10px 14px; display:flex; align-items:center; justify-content:space-between; gap:14px;
+      background:radial-gradient(circle at 0 0, rgba(255,255,255,0.06), #05070e); border:1px solid rgba(255,255,255,0.12);
+      cursor:pointer; overflow:hidden; transition:all var(--transition-fast);
+    }
+    .hero-cta:hover {
+      border-color:rgba(245,197,97,0.7);
+      box-shadow:0 18px 40px rgba(0,0,0,0.85);
+      background:radial-gradient(circle at 0 0, rgba(245,197,97,0.16), #070916);
+      transform:translateY(-1px);
+    }
+    .hero-cta-icon {
+      width:26px; height:26px; border-radius:999px;
+      background:radial-gradient(circle at 30% 0, #f5c561, #9e6111); color:#111;
+      display:flex; align-items:center; justify-content:center; box-shadow:0 8px 22px rgba(0,0,0,0.7); flex-shrink:0;
+      font-size:11px; font-weight:600;
+    }
+    .hero-cta-left { display:flex; align-items:center; gap:10px; }
+    .hero-cta-text-main { font-size:13px; font-weight:500; }
+    .hero-cta-text-sub { font-size:11px; color:var(--muted); }
+    .hero-cta-right-label { font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); padding-inline:10px; }
+
+    .hero-side { display:flex; flex-direction:column; gap:16px; }
+    .hero-image-card { position:relative; flex:1; border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-soft); border:1px solid rgba(255,255,255,0.10); }
+    .hero-image-card img { width:100%; height:100%; object-fit:cover; filter:brightness(0.85); transform:scale(1.02); }
+    .hero-image-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(5,6,10,0.75), rgba(5,6,10,0.35), transparent); mix-blend-mode:multiply; }
+    .hero-image-label {
+      position:absolute; left:16px; bottom:16px; padding:6px 12px; border-radius:999px;
+      font-size:10px; letter-spacing:.22em; text-transform:uppercase;
+      background:rgba(5,6,10,0.78); border:1px solid rgba(245,197,97,0.5); color:var(--accent-strong);
+      display:inline-flex; align-items:center; gap:8px;
+    }
+    .hero-image-label-dot { width:6px; height:6px; border-radius:50%; background:var(--accent-strong); }
+
+    @media (max-width:900px) {
+      .hero-grid { grid-template-columns:1fr; }
+      .hero-main-card { order:1; }
+      .hero-side { order:2; }
+    }
+
+    /* Generic cards */
+    .content-card {
+      border-radius:var(--radius-lg);
+      background:var(--card);
+      border:1px solid var(--border-subtle);
+      box-shadow:var(--shadow-soft);
+      padding:22px 20px;
+    }
+    .content-card p { font-size:13px; color:var(--muted); line-height:1.7; margin-bottom:10px; }
+    .content-grid-2 { display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,0.9fr); gap:20px; }
+    @media (max-width:880px) { .content-grid-2 { grid-template-columns:1fr; } }
+
+    .btn-primary, .btn-ghost {
+      font-size:13px; padding:9px 15px; border-radius:var(--radius-sm); cursor:pointer;
+      border:1px solid transparent; display:inline-flex; align-items:center; gap:8px;
+      transition:all var(--transition-fast); white-space:nowrap;
+    }
+    .btn-primary { background:var(--accent); color:#111; font-weight:600; box-shadow:0 12px 30px rgba(245,197,97,0.55); }
+    .btn-primary:hover { transform:translateY(-1px); box-shadow:0 18px 40px rgba(245,197,97,0.7); }
+    .btn-ghost { background:rgba(5,6,10,0.9); color:var(--accent-strong); border-color:rgba(245,197,97,0.7); }
+    .btn-ghost:hover { background:rgba(245,197,97,0.12); transform:translateY(-1px); }
+
+    /* Social */
+    .social-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
+    @media (max-width:900px) { .social-grid { grid-template-columns:1fr; } }
+    .social-card {
+      background:var(--card-softer); border-radius:var(--radius-md); padding:16px;
+      border:1px solid var(--accent); box-shadow:0 16px 40px rgba(0,0,0,0.8);
+      position:relative; overflow:hidden; cursor:pointer;
+      transition:all var(--transition-med);
+    }
+    .social-card::before {
+      content:""; position:absolute; inset:0;
+      background:radial-gradient(circle at 0 0, rgba(245,197,97,0.18), transparent 55%);
+      opacity:0; transition:opacity var(--transition-med);
+    }
+    .social-card:hover::before { opacity:1; }
+    .social-card:hover { transform:translateY(-3px); box-shadow:0 22px 60px rgba(0,0,0,0.95); border-color:var(--accent-strong); }
+    .social-label { font-size:11px; letter-spacing:.26em; text-transform:uppercase; color:rgba(245,197,97,0.95); margin-bottom:6px; }
+    .social-name { font-size:15px; font-weight:600; margin-bottom:2px; }
+    .social-handle { font-size:13px; color:var(--muted); }
+    .social-footer { margin-top:10px; font-size:11px; color:rgba(245,197,97,0.9); letter-spacing:.18em; text-transform:uppercase; }
+
+    /* Affiliates */
+    .affiliate-layout { display:grid; grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr); gap:20px; }
+    @media (max-width:880px) { .affiliate-layout { grid-template-columns:1fr; } }
+    .affiliate-item {
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      padding:9px 10px; border-radius:999px; font-size:13px; color:var(--muted);
+      background:rgba(5,6,10,0.9); border:1px solid transparent; margin-bottom:6px;
+      cursor:pointer; transition:all var(--transition-fast);
+    }
+    .affiliate-item span { font-weight:500; color:var(--text); }
+    .affiliate-item:hover { background:rgba(245,197,97,0.12); border-color:rgba(245,197,97,0.7); transform:translateY(-1px); }
+    .affiliate-item.active { background:radial-gradient(circle at 0 0, rgba(245,197,97,0.22), rgba(5,6,10,0.95)); border-color:var(--accent); }
+
+    /* Chatbot */
+    .chat-launcher {
+      position:fixed; right:22px; bottom:22px; width:70px; height:70px;
+      border-radius:50%; background:radial-gradient(circle at 30% 0, #f5c561, #9e6111);
+      box-shadow:0 20px 45px rgba(0,0,0,0.85); display:flex; align-items:center; justify-content:center;
+      cursor:pointer; z-index:60; border:2px solid rgba(255,255,255,0.24);
+    }
+    .chat-launcher-inner {
+      width:46px; height:46px; border-radius:50%; background:#11141b;
+      display:flex; align-items:center; justify-content:center; color:var(--accent-strong);
+      font-size:11px; letter-spacing:.16em; text-transform:uppercase; text-align:center;
+      box-shadow:inset 0 0 0 1px rgba(245,197,97,0.6);
+    }
+    .chat-window {
+      position:fixed; right:22px; bottom:104px; width:320px; max-width:calc(100vw - 32px);
+      border-radius:22px; background:radial-gradient(circle at top, #161b28, #05060b);
+      border:1px solid rgba(255,255,255,0.16); box-shadow:0 28px 70px rgba(0,0,0,0.95);
+      padding:14px; z-index:60; display:none; flex-direction:column; gap:10px;
+    }
+    .chat-header-title-top {
+      font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--muted);
+    }
+    .chat-header-title-main { font-size:14px; font-weight:600; }
+    .chat-header-sub { font-size:12px; color:var(--muted); margin-top:2px; }
+    .chat-close {
+      width:24px; height:24px; border-radius:999px;
+      background:rgba(255,255,255,0.06);
+      display:flex; align-items:center; justify-content:center;
+      cursor:pointer; font-size:13px;
+    }
+    .chat-options-list { display:flex; flex-direction:column; gap:8px; margin-top:10px; }
+    .chat-option {
+      border-radius:999px; padding:8px 11px; display:flex; align-items:center; gap:8px;
+      background:rgba(5,6,10,0.9); border:1px solid rgba(255,255,255,0.1); cursor:pointer;
+      font-size:12px; color:var(--text); transition:all var(--transition-fast);
+    }
+    .chat-option:hover {
+      background:rgba(245,197,97,0.16);
+      border-color:rgba(245,197,97,0.9);
+      box-shadow:0 10px 28px rgba(0,0,0,0.7);
+      transform:translateY(-1px);
+    }
+    .chat-option-icon {
+      width:22px; height:22px; border-radius:999px;
+      background:radial-gradient(circle at 30% 0, #f5c561, #8f5a13); color:#111;
+      display:flex; align-items:center; justify-content:center; flex-shrink:0;
+      font-size:12px; font-weight:600;
+    }
+    .chat-option-text-main { font-weight:500; }
+    .chat-option-text-sub { font-size:11px; color:var(--muted); }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+      <div class="nav-left">
+        <div class="nav-logo-mark">FF</div>
+        <div class="nav-title">
+          <div class="nav-title-main">Fit Food Chef UK</div>
+          <div class="nav-title-sub">Macros · Muscle · Flavour</div>
+        </div>
+      </div>
+      <div class="nav-links">
+        <button class="nav-link active" data-target="home">Home</button>
+        <button class="nav-link" data-target="bio">Bio</button>
+        <button class="nav-link" data-target="masterclass">Masterclass</button>
+        <button class="nav-link" data-target="social">Social Media</button>
+        <button class="nav-link" data-target="affiliates">Affiliate Links</button>
+      </div>
+    </nav>
+
+    <!-- HOME / HERO -->
+    <section id="home">
+      <div class="hero-grid">
+        <div class="hero-main-card">
+          <div class="hero-main-inner">
+            <div class="hero-logo">
+              <img src="fit-food-logo.jpg" alt="Fit Food Chef UK Logo">
+            </div>
+            <div class="hero-chips-row">
+              <div class="chip-pill"><span class="dot"></span>Fit Food UK · Links</div>
+              <div class="chip-pill chip-outline">Lift Weights &amp; Pans</div>
+            </div>
+            <h1 class="hero-heading">Fit Food UK</h1>
+            <p class="hero-subtitle">Restaurant-level cooking for people who care about macros, muscle, and flavour — with a bit of British nonsense on top.</p>
+            <div class="hero-divider"></div>
+            <div class="section-label" style="margin-bottom:6px;">Start here</div>
+            <p class="hero-copy">
+              Every dish starts with a set of macros inspired by something silly in real life — a darts finish,
+              a goal minute, how many sit-ups I managed. Then I build a restaurant-quality plate around it and show you how.
+            </p>
+
+            <div class="hero-ctas">
+              <button class="hero-cta" id="cta-youtube">
+                <div class="hero-cta-left">
+                  <div class="hero-cta-icon">▶︎</div>
+                  <div>
+                    <div class="hero-cta-text-main">Watch masterclasses on YouTube</div>
+                    <div class="hero-cta-text-sub">Full episodes · long-form teaching · macro breakdowns</div>
+                  </div>
+                </div>
+                <div class="hero-cta-right-label">Full lessons</div>
+              </button>
+
+              <button class="hero-cta" id="cta-instagram">
+                <div class="hero-cta-left">
+                  <div class="hero-cta-icon">@</div>
+                  <div>
+                    <div class="hero-cta-text-main">Follow daily chaos on Instagram</div>
+                    <div class="hero-cta-text-sub">Short-form recipes · behind the scenes · Brain Board clips</div>
+                  </div>
+                </div>
+                <div class="hero-cta-right-label">Daily hits</div>
+              </button>
+
+              <button class="hero-cta" id="cta-tiktok">
+                <div class="hero-cta-left">
+                  <div class="hero-cta-icon">TT</div>
+                  <div>
+                    <div class="hero-cta-text-main">Fast cuts &amp; chaos on TikTok</div>
+                    <div class="hero-cta-text-sub">Quick recipes · sound-on energy · pure vibes</div>
+                  </div>
+                </div>
+                <div class="hero-cta-right-label">Quick hits</div>
+              </button>
+            </div>
+
+            <div class="hero-coming-soon" style="margin-top:14px;">
+              <div class="section-label" style="margin-bottom:4px;">Coming soon</div>
+              <p class="hero-copy">
+                The Fit Food Academy — member-only masterclasses, recipe PDFs, deep dives and Q&amp;A.
+                Launch announcements on Instagram and YouTube.
+              </p>
+              <p class="hero-copy" style="font-size:12px; margin-top:4px;">
+                Best enjoyed with pumped forearms, rested pans, and questionable macro decisions.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-side">
+          <div class="hero-image-card">
+            <img src="chef-portrait.jpg" alt="Fit Food Chef portrait">
+            <div class="hero-image-overlay"></div>
+            <div class="hero-image-label">
+              <span class="hero-image-label-dot"></span>Chef · Coach
+            </div>
+          </div>
+          <div class="hero-image-card">
+            <img src="gym-rack.jpg" alt="Gym power rack">
+            <div class="hero-image-overlay"></div>
+            <div class="hero-image-label">
+              <span class="hero-image-label-dot"></span>Rack &amp; Pan Sessions
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BIO -->
+    <section id="bio">
+      <div class="section-label">About</div>
+      <div class="section-title">Bio</div>
+      <div class="content-grid-2">
+        <div class="content-card">
+          <p>
+            I’m Joe, a restaurant chef who lifts weights and pans in equal measure.
+            I care about the numbers on your bar, the macros on your plate, and making
+            both feel a lot less miserable.
+          </p>
+          <p>
+            Fit Food UK is where serious training goals meet actual restaurant-level food:
+            crispy skin, glossy sauces, and plating that doesn’t look like Tuesday night meal prep.
+          </p>
+          <p>
+            The plan: give you the tools to cook like a pro, eat like an adult, and
+            still hit the macros that move the needle.
+          </p>
+        </div>
+        <div class="content-card">
+          <p><strong>What you’ll get from me:</strong></p>
+          <ul style="margin-left:18px; font-size:13px; color:var(--muted); line-height:1.7;">
+            <li>Step-by-step masterclasses where I explain the “why”, not just the “how”.</li>
+            <li>Macro-friendly spins on restaurant dishes that still feel like a treat.</li>
+            <li>Behind-the-scenes chaos from the kitchen and the gym.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- MASTERCLASS -->
+    <section id="masterclass">
+      <div class="section-label">Teach</div>
+      <div class="section-title">Masterclass</div>
+      <div class="content-grid-2">
+        <div class="content-card">
+          <p>
+            Long-form cooking sessions where I cook in real time, explain decisions,
+            and show you how to build plates that actually scale with your macros.
+          </p>
+          <p>
+            Think “chef’s table”, but with food scales, MyFitnessPal, and a camera angle that actually
+            shows you what’s going on in the pan.
+          </p>
+        </div>
+        <div class="content-card" style="display:flex; flex-direction:column; gap:10px;">
+          <button class="btn-primary" id="mc-youtube">
+            <span>Watch masterclasses on YouTube</span>
+          </button>
+          <button class="btn-ghost" id="mc-coaching">
+            <span>Enquire about 1:1 coaching (online or in person)</span>
+          </button>
+          <p style="font-size:12px; color:var(--muted); margin-top:4px;">
+            1:1 sessions can be tailored to cooking skills, kitchen setup, or a specific training goal.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOCIAL MEDIA -->
+    <section id="social">
+      <div class="section-label">Connect</div>
+      <div class="section-title">Social Media</div>
+      <div class="content-card" style="margin-bottom:16px;">
+        <p>Different platforms, different energy. Same chef, same macros.</p>
+      </div>
+      <div class="social-grid">
+        <a href="https://www.instagram.com/fitfoodchefuk" target="_blank" rel="noopener" class="social-card">
+          <div class="social-label">Instagram</div>
+          <div class="social-name">fitfoodchefuk</div>
+          <div class="social-handle">@fitfoodchefuk</div>
+          <div class="social-footer">Daily plates · Stories · Brain Board</div>
+        </a>
+        <a href="https://www.tiktok.com/@fitfoodchefuk" target="_blank" rel="noopener" class="social-card">
+          <div class="social-label">TikTok</div>
+          <div class="social-name">fitfoodchefuk</div>
+          <div class="social-handle">@fitfoodchefuk</div>
+          <div class="social-footer">Fast cuts · Chaos · Sound-on clips</div>
+        </a>
+        <a href="https://www.youtube.com/@FitFoodChefUK" target="_blank" rel="noopener" class="social-card">
+          <div class="social-label">YouTube</div>
+          <div class="social-name">FitFoodChefUK</div>
+          <div class="social-handle">@FitFoodChefUK</div>
+          <div class="social-footer">Long form · Deep dives · Masterclasses</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- AFFILIATE LINKS -->
+    <section id="affiliates">
+      <div class="section-label">Tools</div>
+      <div class="section-title">Affiliate Links</div>
+      <div class="affiliate-layout">
+        <div>
+          <div class="affiliate-item active" data-aff="airfryer"><span>Air fryer</span><span style="font-size:11px;">crispy, low-effort wins</span></div>
+          <div class="affiliate-item" data-aff="sousvide"><span>Sous vide</span><span style="font-size:11px;">steak game changer</span></div>
+          <div class="affiliate-item" data-aff="knives"><span>Knives</span><span style="font-size:11px;">the ones I actually use</span></div>
+          <div class="affiliate-item" data-aff="utensils"><span>Utensils</span><span style="font-size:11px;">spatulas, whisks, tongs</span></div>
+          <div class="affiliate-item" data-aff="cookware"><span>Cookware</span><span style="font-size:11px;">pans &amp; trays that survive</span></div>
+          <div class="affiliate-item" data-aff="gadgets"><span>Gadgets</span><span style="font-size:11px;">useful, not gimmicky</span></div>
+          <div class="affiliate-item" data-aff="crockery"><span>Crockery</span><span style="font-size:11px;">plates &amp; bowls for plating</span></div>
+        </div>
+        <div class="content-card" id="affiliate-detail">
+          <p><strong>Air fryer – crispy, low-effort wins</strong></p>
+          <p>
+            This section will house deep dives for each category: what it is, how to use it,
+            why I like it, and where to buy it with an affiliate link.
+          </p>
+          <p>
+            For now it’s a placeholder. Once you send through the products and links, we’ll drop them in with
+            proper copy and buttons for each recommended item.
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- CHATBOT -->
+  <div class="chat-launcher" id="chat-launcher">
+    <div class="chat-launcher-inner">Ask<br>Joe</div>
+  </div>
+
+  <div class="chat-window" id="chat-window">
+    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px;">
+      <div>
+        <div class="chat-header-title-top">Fit Food Assistant</div>
+        <div class="chat-header-title-main">Hey, I’m your Fit Food assistant 👋</div>
+        <div class="chat-header-sub">What are you here for today?</div>
+      </div>
+      <div class="chat-close" id="chat-close">✕</div>
+    </div>
+
+    <div class="chat-options-list">
+      <button class="chat-option" id="chat-youtube">
+        <div class="chat-option-icon">▶︎</div>
+        <div>
+          <div class="chat-option-text-main">Learn from full cooking classes on YouTube</div>
+          <div class="chat-option-text-sub">Long-form masterclasses with full breakdowns.</div>
+        </div>
+      </button>
+
+      <button class="chat-option" id="chat-coaching">
+        <div class="chat-option-icon">1:1</div>
+        <div>
+          <div class="chat-option-text-main">1:1 coaching / private lessons</div>
+          <div class="chat-option-text-sub">Online or in person, tailored to your goals.</div>
+        </div>
+      </button>
+
+      <button class="chat-option" id="chat-collab">
+        <div class="chat-option-icon">PR</div>
+        <div>
+          <div class="chat-option-text-main">Brand / collab / media enquiry</div>
+          <div class="chat-option-text-sub">Partnerships, events, and media opportunities.</div>
+        </div>
+      </button>
+
+      <button class="chat-option" id="chat-affiliates">
+        <div class="chat-option-icon">★</div>
+        <div>
+          <div class="chat-option-text-main">Use Fit Food Chef’s affiliate links</div>
+          <div class="chat-option-text-sub">See the kit I actually use in the kitchen &amp; gym.</div>
+        </div>
+      </button>
+
+      <button class="chat-option" id="chat-other">
+        <div class="chat-option-icon">?</div>
+        <div>
+          <div class="chat-option-text-main">Something else</div>
+          <div class="chat-option-text-sub">Ask me anything that doesn’t fit a box.</div>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // Smooth scroll for nav
+    document.querySelectorAll(".nav-link").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const target = document.getElementById(btn.dataset.target);
+        if (!target) return;
+        const navHeight = document.querySelector(".top-nav").offsetHeight + 20;
+        window.scrollTo({
+          top: target.offsetTop - navHeight,
+          behavior: "smooth"
+        });
+        document.querySelectorAll(".nav-link").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+      });
+    });
+
+    // Hero CTAs
+    document.getElementById("cta-youtube").addEventListener("click", () => {
+      window.open("https://www.youtube.com/@FitFoodChefUK", "_blank");
+    });
+    document.getElementById("cta-instagram").addEventListener("click", () => {
+      window.open("https://www.instagram.com/fitfoodchefuk", "_blank");
+    });
+    document.getElementById("cta-tiktok").addEventListener("click", () => {
+      window.open("https://www.tiktok.com/@fitfoodchefuk", "_blank");
+    });
+
+    // Masterclass buttons
+    document.getElementById("mc-youtube").addEventListener("click", () => {
+      window.open("https://www.youtube.com/@FitFoodChefUK", "_blank");
+    });
+    document.getElementById("mc-coaching").addEventListener("click", () => {
+      window.location.href = "mailto:hello@fitfoodchef.uk?subject=1:1%20Cooking%20or%20Coaching%20Enquiry&body=Tell%20me%20a%20bit%20about%20your%20goals%2C%20your%20kitchen%20setup%2C%20and%20what%20you%27d%20like%20help%20with.";
+    });
+
+    // Affiliate switcher
+    const affiliateCopy = {
+      airfryer: {
+        title: "Air fryer – crispy, low-effort wins",
+        body: [
+          "Perfect for high-protein, lower-fat ‘fried’ chicken, wedges and veg.",
+          "We’ll add links here to the models I’ve tested and rate once you send them over."
+        ]
+      },
+      sousvide: {
+        title: "Sous vide – steak game changer",
+        body: [
+          "Dial in your doneness every time, then finish hard in a pan.",
+          "Great for batch-cooking protein while keeping it restaurant-level."
+        ]
+      },
+      knives: {
+        title: "Knives – the ones I actually use",
+        body: [
+          "You don’t need 18 knives, just a few that hold an edge and feel right in the hand.",
+          "We’ll list my daily drivers here with notes on what they’re best for."
+        ]
+      },
+      utensils: {
+        title: "Utensils – spatulas, whisks, tongs",
+        body: [
+          "The unsexy kit that makes everything easier and faster.",
+          "Tongs that actually grip, spatulas that don’t melt, whisks that reach the corners."
+        ]
+      },
+      cookware: {
+        title: "Cookware – pans & trays that survive",
+        body: [
+          "Roasting trays that don’t warp, pans that can handle high heat, and non-stick where it matters.",
+          "We’ll plug in links plus advice on what to prioritise if you’re kitting out from scratch."
+        ]
+      },
+      gadgets: {
+        title: "Gadgets – useful, not gimmicky",
+        body: [
+          "Thermometers, scales, timers – the kit that actually makes you a better cook.",
+          "Once your list is ready, we’ll drop the recommendations and affiliate links here."
+        ]
+      },
+      crockery: {
+        title: "Crockery – plates & bowls for plating",
+        body: [
+          "Simple, versatile pieces that make food look better without screaming ‘food blogger’.",
+          "We’ll show plate sizes, shapes, and links so people can copy the vibe."
+        ]
+      }
+    };
+
+    const affiliateDetail = document.getElementById("affiliate-detail");
+    document.querySelectorAll(".affiliate-item").forEach(item => {
+      item.addEventListener("click", () => {
+        document.querySelectorAll(".affiliate-item").forEach(i => i.classList.remove("active"));
+        item.classList.add("active");
+        const key = item.dataset.aff;
+        const data = affiliateCopy[key];
+        if (!data) return;
+        affiliateDetail.innerHTML = `
+          <p><strong>${data.title}</strong></p>
+          ${data.body.map(p => `<p>${p}</p>`).join("")}
+        `;
+      });
+    });
+
+    // Chatbot toggle
+    const chatLauncher = document.getElementById("chat-launcher");
+    const chatWindow = document.getElementById("chat-window");
+    const chatClose = document.getElementById("chat-close");
+
+    function toggleChat(force) {
+      const show = force !== undefined ? force : chatWindow.style.display !== "flex";
+      chatWindow.style.display = show ? "flex" : "none";
+    }
+
+    chatLauncher.addEventListener("click", () => toggleChat());
+    chatClose.addEventListener("click", () => toggleChat(false));
+
+    // Hide chat when clicking outside on mobile-ish screens
+    document.addEventListener("click", (e) => {
+      if (!chatWindow.contains(e.target) && !chatLauncher.contains(e.target)) {
+        // don’t auto-close on very wide screens unless they click outside a long way
+        if (window.innerWidth < 900) toggleChat(false);
+      }
+    });
+
+    // Chatbot option handlers
+    document.getElementById("chat-youtube").addEventListener("click", () => {
+      window.open("https://www.youtube.com/@FitFoodChefUK", "_blank");
+      toggleChat(false);
+    });
+
+    document.getElementById("chat-coaching").addEventListener("click", () => {
+      window.location.href = "mailto:hello@fitfoodchef.uk?subject=1:1%20Cooking%20or%20Coaching%20Enquiry&body=Tell%20me%20a%20bit%20about%20your%20goals%2C%20your%20kitchen%20setup%2C%20and%20what%20you%27d%20like%20help%20with.";
+      toggleChat(false);
+    });
+
+    document.getElementById("chat-collab").addEventListener("click", () => {
+      window.location.href = "mailto:hello@fitfoodchef.uk?subject=Brand%20%2F%20Collab%20%2F%20Media%20Enquiry&body=Tell%20me%20about%20your%20brand%2C%20the%20idea%2C%20and%20timelines.";
+      toggleChat(false);
+    });
+
+    document.getElementById("chat-affiliates").addEventListener("click", () => {
+      const navHeight = document.querySelector(".top-nav").offsetHeight + 20;
+      const section = document.getElementById("affiliates");
+      window.scrollTo({ top: section.offsetTop - navHeight, behavior: "smooth" });
+      toggleChat(false);
+    });
+
+    document.getElementById("chat-other").addEventListener("click", () => {
+      window.location.href = "mailto:hello@fitfoodchef.uk?subject=Fit%20Food%20Question&body=Fire%20away%20%E2%80%93%20the%20more%20detail%2C%20the%20better.";
+      toggleChat(false);
+    });
+  </script>
+</body>
+</html>
