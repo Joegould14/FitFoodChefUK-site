@@ -1,170 +1,335 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joe Gould – Bio | Fit Food UK</title>
+  <meta charset="UTF-8" />
+  <title>Fit Food Chef UK</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  
+  <!-- Preload hero images -->
+  <link rel="preload" as="image" href="fit-food-logo.jpg">
+  <link rel="preload" as="image" href="chef-portrait.jpg">
+  <link rel="preload" as="image" href="gym-rack.jpg">
 
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: #0e0f11;
-            color: #e9e9e9;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-        }
+  <!-- Favicon & Apple touch icon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-        header {
-            padding: 20px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(255,255,255,0.03);
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-            backdrop-filter: blur(10px);
-        }
+  <style>
+    :root {
+      --bg: #05060a;
+      --bg-elevated: #0b0e16;
+      --bg-soft: #101320;
+      --card: #111521;
+      --card-softer: #151a28;
+      --accent: #f5c561;
+      --accent-soft: rgba(245, 197, 97, 0.2);
+      --accent-strong: #ffda7a;
+      --text: #f9fafb;
+      --muted: #a7b0c2;
+      --border-subtle: rgba(255, 255, 255, 0.06);
+      --danger: #ff4b6a;
+      --radius-lg: 26px;
+      --radius-md: 18px;
+      --radius-sm: 999px;
+      --shadow-soft: 0 22px 60px rgba(0, 0, 0, 0.75);
+      --shadow-chip: 0 10px 25px rgba(0, 0, 0, 0.6);
+      --transition-fast: 0.18s ease-out;
+      --transition-med: 0.25s ease-out;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    * { margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    html, body { height: 100%; }
+    body {
+      min-height: 100vh;
+      min-height: -webkit-fill-available;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", sans-serif;
+      background: radial-gradient(circle at top, #1b2236 0, #05060a 52%, #000 100%);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; height: auto; display: block; }
 
-        nav a {
-            color: #e9e9e9;
-            margin-left: 20px;
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-        }
-        nav a:hover {
-            color: #00c2ff;
-        }
+    /* Layout */
+    .page-shell {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 18px 16px 100px;
+    }
 
-        .container {
-            max-width: 900px;
-            margin: 60px auto;
-            padding: 30px;
-            background: rgba(255,255,255,0.04);
-            border-radius: 22px;
-            border: 1px solid rgba(255,255,255,0.08);
-            backdrop-filter: blur(12px);
-        }
+    /* Top Navigation */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(20px);
+      background: linear-gradient(to bottom, rgba(5,6,10,0.96), rgba(5,6,10,0.92), rgba(5,6,10,0.86));
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.80);
+      padding: 12px 18px;
+      padding-top: max(12px, env(safe-area-inset-top));
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+    .nav-left { display: flex; align-items: center; gap: 12px; }
+    .nav-logo-mark {
+      width: 32px; height: 32px; border-radius: 12px;
+      background: radial-gradient(circle at 30% 0%, #f5c561, #8f5a13);
+      display: flex; align-items: center; justify-content: center;
+      color: #111; font-weight: 800; font-size: 18px; letter-spacing: .03em;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.7);
+      cursor: pointer;
+    }
+    .nav-title-main { font-size: 14px; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; cursor: pointer; }
+    .nav-title-sub { font-size: 11px; color: var(--muted); letter-spacing: .14em; text-transform: uppercase; cursor: pointer; }
+    .nav-links { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-link {
+      font-size: 12px; padding: 7px 14px; border-radius: 999px;
+      background: rgba(255,255,255,0.01); color: var(--muted);
+      border: 1px solid transparent; cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    .nav-link:hover { color: var(--text); border-color: rgba(245,197,97,0.6); background: rgba(245,197,97,0.08); transform: translateY(-1px); }
+    .nav-link.active { color: #111; background: var(--accent); box-shadow: 0 10px 26px rgba(245,197,97,0.45); }
 
-        h1 {
-            font-size: 2.6rem;
-            margin-bottom: 10px;
-        }
+    @media (max-width: 720px) {
+      .top-nav { flex-wrap: wrap; row-gap: 10px; padding-inline: 14px; }
+      .nav-links { justify-content: center; width: 100%; }
+    }
 
-        h2 {
-            margin-top: 40px;
-            font-size: 1.4rem;
-            color: #9bd4ff;
-        }
+    /* Reusable section styling */
+    section { margin-bottom: 60px; }
+    .section-label { font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+    .section-title { font-size: 26px; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; margin-bottom: 18px; }
 
-        p {
-            font-size: 1.05rem;
-            opacity: 0.92;
-        }
+    /* Hero */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1.05fr) minmax(0,0.95fr);
+      gap: 26px;
+      align-items: stretch;
+    }
 
-        .portrait {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 25px;
-            border: 3px solid rgba(255,255,255,0.15);
-        }
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; }
+    }
 
-        .bio-section {
-            text-align: center;
-            margin-bottom: 40px;
-        }
+    .hero-main-card {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: radial-gradient(circle at top, #1d2439 0, #080b13 50%, #05070d 100%);
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow: var(--shadow-soft);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
 
-        .home-btn {
-            display: inline-block;
-            margin-top: 40px;
-            padding: 12px 28px;
-            border-radius: 40px;
-            font-size: 1rem;
-            color: #000;
-            background: #00c2ff;
-            text-decoration: none;
-            font-weight: 600;
-        }
-        .home-btn:hover {
-            background: #44d4ff;
-        }
+    .hero-logo {
+      width: 180px;
+      max-width: 60%;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(245,197,97,0.4);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.9);
+      margin-bottom: 6px;
+    }
 
-        @media (max-width: 700px) {
-            .container {
-                margin: 30px 16px;
-                padding: 22px;
-            }
-            h1 {
-                font-size: 2rem;
-            }
-            .portrait {
-                width: 150px;
-                height: 150px;
-            }
-        }
-    </style>
+    .hero-heading {
+      font-size: 38px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .hero-copy { font-size: 13px; color: var(--muted); max-width: 650px; }
+
+    .hero-side { display: flex; flex-direction: column; gap: 16px; }
+    .hero-image-card {
+      position: relative;
+      flex: 1;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(255,255,255,0.10);
+    }
+    .hero-image-card img {
+      width:100%; height:100%; object-fit:cover; filter:brightness(1.0); transform:scale(1.02);
+    }
+
+    /* Chatbot */
+    .chat-launcher {
+      position:fixed; right:22px; bottom:22px; width:70px; height:70px;
+      border-radius:50%; background:radial-gradient(circle at 30% 0, #f5c561, #9e6111);
+      box-shadow:0 20px 45px rgba(0,0,0,0.85);
+      display:flex; align-items:center; justify-content:center;
+      cursor:pointer; z-index:60;
+    }
+    .chat-launcher-inner {
+      width:46px; height:46px; border-radius:50%; background:#11141b;
+      display:flex; align-items:center; justify-content:center;
+      color:var(--accent-strong);
+      font-size:11px; letter-spacing:.16em; text-transform:uppercase;
+    }
+
+    .chat-window {
+      position:fixed; right:22px; bottom:104px; width:320px; max-width:calc(100vw - 32px);
+      border-radius:22px; background:radial-gradient(circle at top, #161b28, #05060b);
+      border:1px solid rgba(255,255,255,0.16); 
+      box-shadow:0 28px 70px rgba(0,0,0,0.95);
+      padding:14px; z-index:60; display:none;
+      flex-direction:column; gap:10px;
+    }
+
+    .chat-close {
+      width:24px; height:24px; border-radius:999px; background:rgba(255,255,255,0.06);
+      display:flex; align-items:center; justify-content:center; cursor:pointer;
+    }
+
+    .chat-option {
+      border-radius:999px;
+      padding:8px 11px;
+      display:flex; align-items:center; gap:8px;
+      background:rgba(5,6,10,0.9);
+      border:1px solid rgba(255,255,255,0.1);
+      cursor:pointer; font-size:12px;
+      color:white; /* ← FIXED TO ALWAYS BE VISIBLE */
+    }
+    .chat-option:hover {
+      background:rgba(245,197,97,0.16);
+      border-color:rgba(245,197,97,0.9);
+      transform:translateY(-1px);
+    }
+
+  </style>
 </head>
 
 <body>
+  <div class="page-shell">
 
-<header>
-    <div style="font-weight:700; font-size:1.1rem;">FIT FOOD UK</div>
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+      <div class="nav-left">
+        <div class="nav-logo-mark" onclick="location.href='index.html'">FF</div>
+        <div onclick="location.href='index.html'">
+          <div class="nav-title-main">Fit Food Chef UK</div>
+          <div class="nav-title-sub">Macros · Muscle · Flavour</div>
+        </div>
+      </div>
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="bio.html">Bio</a>
-        <a href="masterclass.html">Masterclass</a>
-        <a href="social.html">Social Media</a>
-        <a href="affiliates.html">Affiliate Links</a>
+      <div class="nav-links">
+        <button class="nav-link active" data-target="home">Home</button>
+        <button class="nav-link" data-target="bio" onclick="location.href='bio.html'">Bio</button>
+        <button class="nav-link" data-target="masterclass">Masterclass</button>
+        <button class="nav-link" data-target="social">Social Media</button>
+        <button class="nav-link" data-target="affiliates">Affiliate Links</button>
+      </div>
     </nav>
-</header>
 
-<div class="container">
+    <!-- HERO -->
+    <section id="home">
+      <div class="hero-grid">
 
-    <div class="bio-section">
-        <img src="chef-portrait.jpg" alt="Joe Gould Portrait" class="portrait">
-        <h1>Joe Gould</h1>
-        <p style="opacity:0.75;">Award-winning British chef • Michelin background • Fitness-driven flavour specialist</p>
-    </div>
+        <!-- LEFT: MAIN -->
+        <div class="hero-main-card">
+          <img src="fit-food-logo.jpg" class="hero-logo">
 
-    <p>
-        Joe Gould is an award-winning British chef with over 17 years of experience leading some of the UK’s most respected luxury hotel kitchens. 
-        Currently Head Chef at <strong>Fawsley Hall Hotel & Spa</strong>, Joe oversees a 65-bedroom historic property with multiple dining outlets, 
-        a brigade of 16 chefs, and a modern seasonal menu shaped around strong commercial performance and uncompromising culinary standards.
-    </p>
+          <h1 class="hero-heading">Fit Food UK</h1>
 
-    <p>
-        Before joining Fawsley Hall, Joe served as <strong>Executive Chef at the Relais & Châteaux Glenapp Castle</strong>, where he led the culinary 
-        programme across fine dining, private penthouse service, outdoor sea-safari cooking, large-scale corporate events, and high-profile 
-        international occasions including <strong>COP26</strong>. His food and leadership featured in multiple national television programmes 
-        throughout 2021–2023.
-    </p>
+          <p class="hero-copy">
+            Im Joe, a restaurant chef who lifts weights and cares about hitting my protein target as much as I care about crispy skin, glossy sauces and potatoes cooked properly. Fit Food Chef UK is where those two worlds meet.
+          </p>
 
-    <p>
-        Earlier in his career, Joe earned <strong>three consecutive AA Rosettes</strong> as Head Chef at Fishmore Hall Hotel & Spa and refined his 
-        modern British style at <strong>Lainston House</strong>. He was also part of the acclaimed kitchen team at <strong>Coworth Park (Restaurant John Campbell)</strong> 
-        that was awarded a <strong>Michelin star</strong>, contributing to one of the most technically respected restaurants in the country at the time.
-    </p>
+          <p class="hero-copy">
+            Expect chef-level tips, techniques and recipes that respect your macros without wrecking your appetite for life. No boiled chicken. No sad rice. Just serious cooking for people who take training seriously.
+          </p>
+        </div>
 
-    <p>
-        Alongside his hotel and restaurant work, Joe has also cooked for <strong>McLaren’s Formula One team as Jenson Button’s private chef</strong>, 
-        served as an exhibition chef for the <strong>North American Olive Oil Conventions</strong>, and worked with Rhubarb Food Design on prestigious 
-        events including Ascot’s private boxes and major corporate openings.
-    </p>
+        <!-- RIGHT: IMAGES -->
+        <div class="hero-side">
+          <div class="hero-image-card"><img src="chef-portrait.jpg" alt=""></div>
+          <div class="hero-image-card"><img src="gym-rack.jpg" alt=""></div>
+        </div>
 
-    <p>
-        Joe is a former <strong>Chaine des Rôtisseurs UK Young Chef of the Year</strong> and has completed stages across Michelin-starred kitchens 
-        throughout Europe. Today, he brings this wealth of classical and modern technique to <strong>Fit Food UK</strong> — helping people elevate 
-        their nutrition, master restaurant-level flavour, and build a lifestyle that supports strength, performance, and real-world sustainability.
-    </p>
+      </div>
+    </section>
 
-    <div style="text-align:center;">
-        <a href="index.html" class="home-btn">Back to Home</a>
-    </div>
+    <!-- SOCIAL SECTION -->
+    <section id="social">
+      <div class="section-label">CONNECT</div>
+      <div class="section-title">Social Media</div>
 
-</div>
+      <div class="content-card">
+        <p>Different platforms, different energy. Same chef.</p>
+      </div>
+
+      <div class="social-grid">
+        <a href="https://www.instagram.com/fitfoodchefuk" target="_blank" class="social-card">
+          <div class="social-label">Instagram</div>
+          <div class="social-name">fitfoodchefuk</div>
+          <div class="social-footer">Stories · Recipes · Chaos</div>
+        </a>
+
+        <a href="https://www.tiktok.com/@fitfoodchefuk" target="_blank" class="social-card">
+          <div class="social-label">TikTok</div>
+          <div class="social-name">@fitfoodchefuk</div>
+          <div class="social-footer">Fast cuts · Vibes</div>
+        </a>
+
+        <a href="https://www.youtube.com/@FitFoodChefUK" target="_blank" class="social-card">
+          <div class="social-label">YouTube</div>
+          <div class="social-name">FitFoodChefUK</div>
+          <div class="social-footer">Long form · Masterclasses</div>
+        </a>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- CHATBOT -->
+  <div class="chat-launcher" id="chat-launcher">
+    <div class="chat-launcher-inner">Ask<br>Joe</div>
+  </div>
+
+  <div class="chat-window" id="chat-window">
+    <div class="chat-close" id="chat-close">✕</div>
+
+    <div class="chat-option">Email Joe (hello@fitfoodchef.uk)</div>
+    <div class="chat-option">Link me to your YouTube</div>
+    <div class="chat-option">Link me to Instagram</div>
+    <div class="chat-option">Link me to TikTok</div>
+    <div class="chat-option">I want 1:1 cooking lessons</div>
+    <div class="chat-option">Use Fit Food Chef Affiliate Links</div>
+  </div>
+
+  <script>
+    const chatLauncher = document.getElementById("chat-launcher");
+    const chatWindow = document.getElementById("chat-window");
+    const chatClose = document.getElementById("chat-close");
+
+    chatLauncher.onclick = () => chatWindow.style.display = "flex";
+    chatClose.onclick = () => chatWindow.style.display = "none";
+
+    document.querySelectorAll(".chat-option").forEach(opt => {
+      opt.addEventListener("click", () => {
+        const text = opt.textContent.trim();
+
+        if (text.includes("Email")) window.location.href = "mailto:hello@fitfoodchef.uk";
+        if (text.includes("YouTube")) window.open("https://www.youtube.com/@FitFoodChefUK","_blank");
+        if (text.includes("Instagram")) window.open("https://www.instagram.com/fitfoodchefuk","_blank");
+        if (text.includes("TikTok")) window.open("https://www.tiktok.com/@fitfoodchefuk","_blank");
+        if (text.includes("1:1")) window.location.href = "mailto:hello@fitfoodchef.uk?subject=1:1 Cooking Lessons";
+        if (text.includes("Affiliate")) window.location.href = "#affiliates";
+      });
+    });
+  </script>
 
 </body>
 </html>
