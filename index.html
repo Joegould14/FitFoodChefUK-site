@@ -226,6 +226,57 @@
     .social-handle { font-size:13px; color:var(--muted); }
     .social-footer { margin-top:10px; font-size:11px; color:rgba(245,197,97,0.9); letter-spacing:.18em; text-transform:uppercase; }
 
+    /* Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    @media (max-width: 900px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    @media (max-width: 600px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .gallery-item {
+      position: relative;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: #05060a;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      aspect-ratio: 4 / 3;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.02);
+      filter: brightness(0.9);
+      transition: transform var(--transition-med), filter var(--transition-med);
+    }
+    .gallery-item:hover img {
+      transform: scale(1.06);
+      filter: brightness(1);
+    }
+    .gallery-caption {
+      position: absolute;
+      left: 10px;
+      bottom: 10px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(5, 6, 10, 0.82);
+      border: 1px solid rgba(245, 197, 97, 0.7);
+      font-size: 10px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--accent-strong);
+    }
+
     /* Affiliates */
     .affiliate-layout { display:grid; grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr); gap:20px; }
     @media (max-width:880px) { .affiliate-layout { grid-template-columns:1fr; } }
@@ -517,6 +568,66 @@
         </div>
       </div>
     </section>
+
+    <!-- GALLERY -->
+    <section id="gallery">
+      <div class="section-label">Gallery</div>
+      <div class="section-title">Dishes &amp; Behind the Scenes</div>
+
+      <div class="content-card" style="margin-bottom:18px;">
+        <p style="font-size:13px; color:var(--muted);">
+          A rolling highlight reel of plates and testing. These are all real dishes from the kitchen —
+          as new masterclasses drop, this grid will evolve with them.
+        </p>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="gallery-artichoke.jpg" alt="Artichoke-based dish">
+          <div class="gallery-caption">Artichoke</div>
+        </div>
+        <div class="gallery-item">
+          <img src="gallery-beef.jpg" alt="Beef dish">
+          <div class="gallery-caption">Beef</div>
+        </div>
+        <div class="gallery-item">
+          <img src="gallery-chocolate.jpg" alt="Chocolate dessert">
+          <div class="gallery-caption">Chocolate</div>
+        </div>
+        <div class="gallery-item">
+          <img src="gallery-hamhock.jpg" alt="Ham hock dish">
+          <div class="gallery-caption">Ham hock</div>
+        </div>
+        <div class="gallery-item">
+          <img src="gallery-jerusalemartichoke2.jpg" alt="Jerusalem artichoke dish">
+          <div class="gallery-caption">Jerusalem artichoke</div>
+        </div>
+        <div class="gallery-item">
+          <img src="gallery-pork.jpg" alt="Pork dish">
+          <div class="gallery-caption">Pork</div>
+        </div>
+        <div class="gallery-item">
+          <img src="gallery-quail.jpg" alt="Quail dish">
+          <div class="gallery-caption">Quail</div>
+        </div>
+        <div class="gallery-item">
+          <img src="gallery-rabbit.jpg" alt="Rabbit dish">
+          <div class="gallery-caption">Rabbit</div>
+        </div>
+        <div class="gallery-item">
+          <img src="gallery-snapper.jpg" alt="Snapper fish dish">
+          <div class="gallery-caption">Snapper</div>
+        </div>
+        <div class="gallery-item">
+          <img src="gallery-sole.jpg" alt="Sole fish dish">
+          <div class="gallery-caption">Sole</div>
+        </div>
+        <div class="gallery-item">
+          <img src="gallery-venison.jpg" alt="Venison dish">
+          <div class="gallery-caption">Venison</div>
+        </div>
+      </div>
+    </section>
   </div>
 
   <!-- CHATBOT -->
@@ -696,7 +807,6 @@
     // Hide chat when clicking outside on mobile-ish screens
     document.addEventListener("click", (e) => {
       if (!chatWindow.contains(e.target) && !chatLauncher.contains(e.target)) {
-        // don’t auto-close on very wide screens unless they click outside a long way
         if (window.innerWidth < 900) toggleChat(false);
       }
     });
