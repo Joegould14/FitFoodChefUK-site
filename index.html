@@ -8,7 +8,7 @@
   <!-- Preload hero images -->
   <link rel="preload" as="image" href="fit-food-logo.jpg">
   <link rel="preload" as="image" href="chef-portrait.jpg">
-  <link rel="preload" as="image" href="gym-rack.jpg">
+  <link rel="preload" as="image" href="main.jpg">
 
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -74,14 +74,13 @@
       gap: 16px;
       margin-bottom: 22px;
     }
-    .nav-left { display: flex; align-items: center; gap: 12px; }
+    .nav-left { display: flex; align-items: center; gap: 12px; cursor: pointer; }
     .nav-logo-mark {
       width: 32px; height: 32px; border-radius: 12px;
       background: radial-gradient(circle at 30% 0%, #f5c561, #8f5a13);
       display: flex; align-items: center; justify-content: center;
       color: #111; font-weight: 800; font-size: 18px; letter-spacing: .03em;
       box-shadow: 0 8px 20px rgba(0,0,0,0.7);
-      cursor: pointer;
     }
     .nav-title-main { font-size: 14px; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; }
     .nav-title-sub { font-size: 11px; color: var(--muted); letter-spacing: .14em; text-transform: uppercase; }
@@ -240,56 +239,6 @@
     .affiliate-item:hover { background:rgba(245,197,97,0.12); border-color:rgba(245,197,97,0.7); transform:translateY(-1px); }
     .affiliate-item.active { background:radial-gradient(circle at 0 0, rgba(245,197,97,0.22), rgba(5,6,10,0.95)); border-color:var(--accent); }
 
-    /* GALLERY */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 18px;
-    }
-    .gallery-card {
-      position: relative;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      background: #05060a;
-      border: 1px solid var(--border-subtle);
-      box-shadow: var(--shadow-soft);
-      min-height: 220px;
-    }
-    .gallery-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      filter: brightness(0.9);
-      transform: scale(1.02);
-      transition: transform 0.45s ease-out, filter 0.45s ease-out;
-    }
-    .gallery-card:hover img {
-      transform: scale(1.06);
-      filter: brightness(1);
-    }
-    .gallery-card-overlay {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at top, rgba(0,0,0,0.30), rgba(0,0,0,0.90));
-      display: flex;
-      align-items: flex-end;
-      justify-content: flex-start;
-      padding: 14px 16px;
-      pointer-events: none;
-    }
-    .gallery-chip {
-      font-size: 11px;
-      letter-spacing: .20em;
-      text-transform: uppercase;
-      padding: 6px 13px;
-      border-radius: 999px;
-      background: rgba(5,6,10,0.9);
-      border: 1px solid rgba(245,197,97,0.85);
-      color: var(--accent-strong);
-      box-shadow: var(--shadow-chip);
-    }
-
     /* Chatbot */
     .chat-launcher {
       position:fixed; right:22px; bottom:22px; width:70px; height:70px;
@@ -340,6 +289,97 @@
     }
     .chat-option-text-main { font-weight:500; }
     .chat-option-text-sub { font-size:11px; color:var(--muted); }
+
+    /* Gallery (plates) */
+    .plates-section { margin-top: 10px; }
+    .plates-title { font-size: 26px; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; margin-bottom: 18px; }
+    .gallery-grid {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:16px;
+    }
+    @media (max-width:1000px) {
+      .gallery-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    }
+    @media (max-width:640px) {
+      .gallery-grid { grid-template-columns:1fr; }
+    }
+    .gallery-card {
+      position:relative;
+      border-radius:var(--radius-lg);
+      background:var(--card);
+      border:1px solid var(--border-subtle);
+      box-shadow:var(--shadow-soft);
+      overflow:hidden;
+      min-height:200px;
+      display:flex;
+      align-items:flex-end;
+      justify-content:flex-start;
+    }
+    .gallery-card-inner {
+      position:absolute;
+      inset:0;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      padding:14px;
+    }
+    .gallery-card img {
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      filter:brightness(0.85);
+      transform:scale(1.02);
+    }
+    .gallery-card-overlay {
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top, rgba(5,6,10,0.88), rgba(5,6,10,0.15), transparent);
+      mix-blend-mode:multiply;
+    }
+    .gallery-card-label {
+      align-self:flex-start;
+      padding:6px 14px;
+      border-radius:999px;
+      border:1px solid rgba(245,197,97,0.7);
+      background:rgba(5,6,10,0.9);
+      color:var(--accent-strong);
+      font-size:11px;
+      letter-spacing:.2em;
+      text-transform:uppercase;
+      box-shadow:0 10px 25px rgba(0,0,0,0.7);
+    }
+    /* Hide the white heading text in each gallery tile */
+    .gallery-card-title { display:none; }
+
+    /* Masterclass image strip */
+    .masterclass-gallery {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .masterclass-image-card {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow: var(--shadow-soft);
+      background: #000;
+      min-height: 220px;
+    }
+    .masterclass-image-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.02);
+      filter: brightness(0.9);
+    }
+    @media (max-width: 880px) {
+      .masterclass-gallery {
+        grid-template-columns: 1fr;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -347,8 +387,8 @@
 
     <!-- Top Navigation -->
     <nav class="top-nav">
-      <div class="nav-left">
-        <div class="nav-logo-mark" id="nav-logo-home">FF</div>
+      <div class="nav-left" id="nav-home-logo">
+        <div class="nav-logo-mark">FF</div>
         <div class="nav-title">
           <div class="nav-title-main">Fit Food Chef UK</div>
           <div class="nav-title-sub">Macros · Muscle · Flavour</div>
@@ -441,12 +481,10 @@
               <span class="hero-image-label-dot"></span>Chef · Coach
             </div>
           </div>
+          <!-- UPDATED: main hero image, no label text -->
           <div class="hero-image-card">
-            <img src="gym-rack.jpg" alt="Gym power rack">
+            <img src="main.jpg" alt="Fit Food Chef main hero image">
             <div class="hero-image-overlay"></div>
-            <div class="hero-image-label">
-              <span class="hero-image-label-dot"></span>Rack &amp; Pan Sessions
-            </div>
           </div>
         </div>
       </div>
@@ -473,7 +511,7 @@
           </p>
         </div>
         <div class="content-card">
-          <p><strong>What you’ll get from me:</strong></p>
+          <p>What you’ll get from me:</p>
           <ul style="margin-left:18px; font-size:13px; color:var(--muted); line-height:1.7;">
             <li>Step-by-step masterclasses where I explain the “why”, not just the “how”.</li>
             <li>Macro-friendly spins on restaurant dishes that still feel like a treat.</li>
@@ -508,6 +546,16 @@
           <p style="font-size:12px; color:var(--muted); margin-top:4px;">
             1:1 sessions can be tailored to cooking skills, kitchen setup, or a specific training goal.
           </p>
+        </div>
+      </div>
+
+      <!-- NEW: Two masterclass images under the cards -->
+      <div class="masterclass-gallery">
+        <div class="masterclass-image-card">
+          <img src="masterclass1.jpg" alt="Masterclass dish 1">
+        </div>
+        <div class="masterclass-image-card">
+          <img src="masterclass2.jpg" alt="Masterclass dish 2">
         </div>
       </div>
     </section>
@@ -570,84 +618,107 @@
     </section>
 
     <!-- GALLERY -->
-    <section id="gallery">
+    <section id="gallery" class="plates-section">
       <div class="section-label">Plates</div>
       <div class="section-title">Gallery</div>
+
       <div class="gallery-grid">
         <div class="gallery-card">
           <img src="gallery-artichoke.jpg" alt="Artichoke-based dish">
-          <div class="gallery-card-overlay">
-            <span class="gallery-chip">Artichoke</span>
+          <div class="gallery-card-overlay"></div>
+          <div class="gallery-card-inner">
+            <div class="gallery-card-title">Artichoke-based dish</div>
+            <div class="gallery-card-label">Artichoke</div>
           </div>
         </div>
 
         <div class="gallery-card">
           <img src="gallery-beef.jpg" alt="Beef dish">
-          <div class="gallery-card-overlay">
-            <span class="gallery-chip">Beef</span>
+          <div class="gallery-card-overlay"></div>
+          <div class="gallery-card-inner">
+            <div class="gallery-card-title">Beef dish</div>
+            <div class="gallery-card-label">Beef</div>
           </div>
         </div>
 
         <div class="gallery-card">
           <img src="gallery-chocolate.jpg" alt="Chocolate dessert">
-          <div class="gallery-card-overlay">
-            <span class="gallery-chip">Chocolate</span>
+          <div class="gallery-card-overlay"></div>
+          <div class="gallery-card-inner">
+            <div class="gallery-card-title">Chocolate dessert</div>
+            <div class="gallery-card-label">Chocolate</div>
           </div>
         </div>
 
         <div class="gallery-card">
           <img src="gallery-hamhock.jpg" alt="Ham hock dish">
-          <div class="gallery-card-overlay">
-            <span class="gallery-chip">Ham hock</span>
+          <div class="gallery-card-overlay"></div>
+          <div class="gallery-card-inner">
+            <div class="gallery-card-title">Ham hock dish</div>
+            <div class="gallery-card-label">Ham hock</div>
           </div>
         </div>
 
         <div class="gallery-card">
           <img src="gallery-jerusalemartichoke2.jpg" alt="Jerusalem artichoke dish">
-          <div class="gallery-card-overlay">
-            <span class="gallery-chip">Jerusalem artichoke</span>
+          <div class="gallery-card-overlay"></div>
+          <div class="gallery-card-inner">
+            <div class="gallery-card-title">Jerusalem artichoke dish</div>
+            <div class="gallery-card-label">Jerusalem artichoke</div>
           </div>
         </div>
 
         <div class="gallery-card">
           <img src="gallery-pork.jpg" alt="Pork dish">
-          <div class="gallery-card-overlay">
-            <span class="gallery-chip">Pork</span>
+          <div class="gallery-card-overlay"></div>
+          <div class="gallery-card-inner">
+            <div class="gallery-card-title">Pork dish</div>
+            <div class="gallery-card-label">Pork</div>
           </div>
         </div>
 
         <div class="gallery-card">
           <img src="gallery-quail.jpg" alt="Quail dish">
-          <div class="gallery-card-overlay">
-            <span class="gallery-chip">Quail</span>
+          <div class="gallery-card-overlay"></div>
+          <div class="gallery-card-inner">
+            <div class="gallery-card-title">Quail dish</div>
+            <div class="gallery-card-label">Quail</div>
           </div>
         </div>
 
         <div class="gallery-card">
           <img src="gallery-rabbit.jpg" alt="Rabbit dish">
-          <div class="gallery-card-overlay">
-            <span class="gallery-chip">Rabbit</span>
+          <div class="gallery-card-overlay"></div>
+          <div class="gallery-card-inner">
+            <div class="gallery-card-title">Rabbit dish</div>
+            <div class="gallery-card-label">Rabbit</div>
           </div>
         </div>
 
         <div class="gallery-card">
           <img src="gallery-snapper.jpg" alt="Snapper fish dish">
-          <div class="gallery-card-overlay">
-            <span class="gallery-chip">Snapper</span>
+          <div class="gallery-card-overlay"></div>
+          <div class="gallery-card-inner">
+            <div class="gallery-card-title">Snapper fish dish</div>
+            <div class="gallery-card-label">Snapper</div>
           </div>
         </div>
 
         <div class="gallery-card">
           <img src="gallery-sole.jpg" alt="Sole fish dish">
-          <div class="gallery-card-overlay">
-            <span class="gallery-chip">Sole</span>
+          <div class="gallery-card-overlay"></div>
+          <div class="gallery-card-inner">
+            <div class="gallery-card-title">Sole fish dish</div>
+            <div class="gallery-card-label">Sole</div>
           </div>
         </div>
 
         <div class="gallery-card">
           <img src="gallery-venison.jpg" alt="Venison dish">
-          <div class="gallery-card-overlay">
-            <span class="gallery-chip">Venison</span>
+          <div class="gallery-card-overlay"></div>
+          <div class="gallery-card-inner">
+            <div class="gallery-card-title">Venison dish</div>
+            <div class="gallery-card-label">Venison</div>
           </div>
         </div>
       </div>
@@ -713,30 +784,28 @@
   </div>
 
   <script>
-    // Smooth scroll for nav
-    function scrollToSection(id) {
-      const target = document.getElementById(id);
-      if (!target) return;
+    // Make logo area act as "home" button
+    document.getElementById("nav-home-logo").addEventListener("click", () => {
+      const homeSection = document.getElementById("home");
       const navHeight = document.querySelector(".top-nav").offsetHeight + 20;
-      window.scrollTo({
-        top: target.offsetTop - navHeight,
-        behavior: "smooth"
-      });
-    }
+      window.scrollTo({ top: homeSection.offsetTop - navHeight, behavior: "smooth" });
+      document.querySelectorAll(".nav-link").forEach(b => b.classList.remove("active"));
+      document.querySelector('.nav-link[data-target="home"]').classList.add("active");
+    });
 
+    // Smooth scroll for nav buttons
     document.querySelectorAll(".nav-link").forEach(btn => {
       btn.addEventListener("click", () => {
-        scrollToSection(btn.dataset.target);
+        const target = document.getElementById(btn.dataset.target);
+        if (!target) return;
+        const navHeight = document.querySelector(".top-nav").offsetHeight + 20;
+        window.scrollTo({
+          top: target.offsetTop - navHeight,
+          behavior: "smooth"
+        });
         document.querySelectorAll(".nav-link").forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
       });
-    });
-
-    // Make FF logo act as Home button
-    document.getElementById("nav-logo-home").addEventListener("click", () => {
-      scrollToSection("home");
-      document.querySelectorAll(".nav-link").forEach(b => b.classList.remove("active"));
-      document.querySelector('.nav-link[data-target="home"]').classList.add("active");
     });
 
     // Hero CTAs
@@ -863,7 +932,9 @@
     });
 
     document.getElementById("chat-affiliates").addEventListener("click", () => {
-      scrollToSection("affiliates");
+      const navHeight = document.querySelector(".top-nav").offsetHeight + 20;
+      const section = document.getElementById("affiliates");
+      window.scrollTo({ top: section.offsetTop - navHeight, behavior: "smooth" });
       toggleChat(false);
     });
 
