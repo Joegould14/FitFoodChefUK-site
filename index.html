@@ -1,18 +1,16 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <title>Fit Food Chef UK</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-
   <!-- Preload hero images -->
   <link rel="preload" as="image" href="fit-food-logo.jpg">
   <link rel="preload" as="image" href="chef-portrait.jpg">
   <link rel="preload" as="image" href="main.jpg">
-
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-
   <style>
     :root {
       --bg: #05060a;
@@ -53,13 +51,11 @@
     }
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; height: auto; display: block; }
-
     .page-shell {
       max-width: 1200px;
       margin: 0 auto;
       padding: 18px 16px 100px;
     }
-
     /* Top Navigation */
     .top-nav {
       position: sticky;
@@ -136,7 +132,6 @@
       .top-nav { flex-wrap: wrap; row-gap: 10px; padding-inline: 14px; }
       .nav-links { justify-content: center; width: 100%; }
     }
-
     section { margin-bottom: 60px; }
     .section-label {
       font-size: 11px;
@@ -152,7 +147,6 @@
       font-weight: 600;
       margin-bottom: 18px;
     }
-
     /* HERO */
     .hero-grid {
       display: grid;
@@ -251,7 +245,6 @@
     .hero-copy p {
       margin-bottom:10px;
     }
-
     .hero-ctas {
       display:flex;
       flex-direction:column;
@@ -302,7 +295,6 @@
       color:var(--muted);
       padding-inline:10px;
     }
-
     .hero-side {
       display:flex;
       flex-direction:column;
@@ -351,13 +343,11 @@
       border-radius:50%;
       background:var(--accent-strong);
     }
-
     @media (max-width:900px) {
       .hero-grid { grid-template-columns:1fr; }
       .hero-main-card { order:1; }
       .hero-side { order:2; }
     }
-
     /* Generic cards */
     .content-card {
       border-radius:var(--radius-lg);
@@ -380,7 +370,6 @@
     @media (max-width:880px) {
       .content-grid-2 { grid-template-columns:1fr; }
     }
-
     /* Masterclass images */
     .masterclass-images {
       margin-top:18px;
@@ -399,7 +388,6 @@
     @media (max-width:720px) {
       .masterclass-images { grid-template-columns:1fr; }
     }
-
     .btn-primary, .btn-ghost {
       font-size:13px;
       padding:9px 15px;
@@ -431,7 +419,6 @@
       background:rgba(245,197,97,0.12);
       transform:translateY(-1px);
     }
-
     /* Social */
     .social-grid {
       display:grid;
@@ -482,7 +469,6 @@
       letter-spacing:.18em;
       text-transform:uppercase;
     }
-
     /* Affiliates */
     .affiliate-layout {
       display:grid;
@@ -520,7 +506,6 @@
       background:radial-gradient(circle at 0 0, rgba(245,197,97,0.22), rgba(5,6,10,0.95));
       border-color:var(--accent);
     }
-
     /* Gallery */
     .gallery-grid {
       display:grid;
@@ -561,7 +546,6 @@
       text-transform:uppercase;
       color:var(--accent-strong);
     }
-
     /* Chatbot */
     .chat-launcher {
       position:fixed;
@@ -698,7 +682,6 @@
         <button class="nav-link" data-target="gallery">Gallery</button>
       </div>
     </nav>
-
     <!-- HOME / HERO -->
     <section id="home">
       <div class="hero-grid">
@@ -709,7 +692,6 @@
             <div class="hero-logo">
               <img src="fit-food-logo.jpg" alt="Fit Food Chef UK Logo">
             </div>
-
             <!-- Chips -->
             <div class="hero-chips-row">
               <div class="chip-pill">
@@ -720,17 +702,14 @@
                 Lift Weights &amp; Pans
               </div>
             </div>
-
             <!-- Heading & subtitle -->
             <h1 class="hero-heading">Fit Food UK</h1>
             <p class="hero-subtitle">
               Restaurant-level cooking for people who care about macros, muscle, and flavour —
               with a bit of British nonsense on top.
             </p>
-
             <div class="hero-divider"></div>
-
-            <!-- NEW INTRO COPY AS PARAGRAPHS -->
+            <!-- INTRO COPY -->
             <div class="hero-copy" style="margin-top:8px; line-height:1.65;">
               <p>
                 I’m not here to show you another ‘high-protein 30-minute meal’ you can bang out with a few simple
@@ -748,7 +727,6 @@
                 <strong>Welcome to Fit Food.</strong>
               </p>
             </div>
-
             <!-- CTAs -->
             <div class="hero-ctas">
               <button class="hero-cta" id="cta-youtube">
@@ -763,7 +741,6 @@
                 </div>
                 <div class="hero-cta-right-label">Full lessons</div>
               </button>
-
               <button class="hero-cta" id="cta-instagram">
                 <div class="hero-cta-left">
                   <div class="hero-cta-icon">@</div>
@@ -776,7 +753,6 @@
                 </div>
                 <div class="hero-cta-right-label">Daily hits</div>
               </button>
-
               <button class="hero-cta" id="cta-tiktok">
                 <div class="hero-cta-left">
                   <div class="hero-cta-icon">TT</div>
@@ -790,7 +766,6 @@
                 <div class="hero-cta-right-label">Quick hits</div>
               </button>
             </div>
-
             <!-- Coming soon -->
             <div class="hero-coming-soon" style="margin-top:14px;">
               <div class="section-label" style="margin-bottom:4px;">Coming soon</div>
@@ -804,7 +779,6 @@
             </div>
           </div>
         </div>
-
         <!-- RIGHT: HERO IMAGES -->
         <div class="hero-side">
           <!-- Portrait -->
@@ -816,7 +790,6 @@
               Chef · Coach
             </div>
           </div>
-
           <!-- Main gym / barbell image (no label) -->
           <div class="hero-image-card">
             <img src="main.jpg" alt="Gym barbell and squat rack">
@@ -825,7 +798,6 @@
         </div>
       </div>
     </section>
-
     <!-- BIO -->
     <section id="bio">
       <div class="section-label">About</div>
@@ -856,7 +828,6 @@
         </div>
       </div>
     </section>
-
     <!-- MASTERCLASS -->
     <section id="masterclass">
       <div class="section-label">Teach</div>
@@ -884,14 +855,12 @@
           </p>
         </div>
       </div>
-
       <!-- MASTERCLASS IMAGES -->
       <div class="masterclass-images">
         <img src="masterclass1.jpg" alt="Fit Food masterclass dish 1">
         <img src="masterclass2.jpg" alt="Fit Food masterclass dish 2">
       </div>
     </section>
-
     <!-- SOCIAL MEDIA -->
     <section id="social">
       <div class="section-label">Connect</div>
@@ -920,7 +889,6 @@
         </a>
       </div>
     </section>
-
     <!-- AFFILIATE LINKS -->
     <section id="affiliates">
       <div class="section-label">Tools</div>
@@ -948,41 +916,84 @@
         </div>
       </div>
     </section>
-
     <!-- GALLERY -->
     <section id="gallery">
       <div class="section-label">Plates</div>
       <div class="section-title">Gallery</div>
       <div class="gallery-grid">
-        <!-- IMPORTANT: keep filenames matching what you uploaded -->
         <div class="gallery-item">
-          <img src="dish1.jpg" alt="Signature dish 1">
+          <img src="gallery-artichoke.jpg" alt="Artichoke-based dish">
           <div class="gallery-overlay">
-            <div class="gallery-title">Dish title 1</div>
+            <div class="gallery-title">ARTICHOKE</div>
           </div>
         </div>
         <div class="gallery-item">
-          <img src="dish2.jpg" alt="Signature dish 2">
+          <img src="gallery-beef.jpg" alt="Beef dish">
           <div class="gallery-overlay">
-            <div class="gallery-title">Dish title 2</div>
+            <div class="gallery-title">BEEF</div>
           </div>
         </div>
         <div class="gallery-item">
-          <img src="dish3.jpg" alt="Signature dish 3">
+          <img src="gallery-chocolate.jpg" alt="Chocolate dessert">
           <div class="gallery-overlay">
-            <div class="gallery-title">Dish title 3</div>
+            <div class="gallery-title">CHOCOLATE</div>
           </div>
         </div>
-        <!-- You can duplicate these blocks and swap src + title to match your real filenames -->
+        <div class="gallery-item">
+          <img src="gallery-hamhock.jpg" alt="Ham hock dish">
+          <div class="gallery-overlay">
+            <div class="gallery-title">HAM HOCK</div>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="gallery-jerusalemartichoke2.jpg" alt="Jerusalem artichoke dish">
+          <div class="gallery-overlay">
+            <div class="gallery-title">JERUSALEM ARTICHOKE</div>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="gallery-pork.jpg" alt="Pork dish">
+          <div class="gallery-overlay">
+            <div class="gallery-title">PORK</div>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="gallery-quail.jpg" alt="Quail dish">
+          <div class="gallery-overlay">
+            <div class="gallery-title">QUAIL</div>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="gallery-rabbit.jpg" alt="Rabbit dish">
+          <div class="gallery-overlay">
+            <div class="gallery-title">RABBIT</div>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="gallery-snapper.jpg" alt="Snapper fish dish">
+          <div class="gallery-overlay">
+            <div class="gallery-title">SNAPPER</div>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="gallery-sole.jpg" alt="Sole fish dish">
+          <div class="gallery-overlay">
+            <div class="gallery-title">SOLE</div>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="gallery-venison.jpg" alt="Venison dish">
+          <div class="gallery-overlay">
+            <div class="gallery-title">VENISON</div>
+          </div>
+        </div>
       </div>
     </section>
   </div>
-
   <!-- CHATBOT -->
   <div class="chat-launcher" id="chat-launcher">
     <div class="chat-launcher-inner">Ask<br>Joe</div>
   </div>
-
   <div class="chat-window" id="chat-window">
     <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px;">
       <div>
@@ -992,7 +1003,6 @@
       </div>
       <div class="chat-close" id="chat-close">✕</div>
     </div>
-
     <div class="chat-options-list">
       <button class="chat-option" id="chat-youtube">
         <div class="chat-option-icon">▶︎</div>
@@ -1001,7 +1011,6 @@
           <div class="chat-option-text-sub">Long-form masterclasses with full breakdowns.</div>
         </div>
       </button>
-
       <button class="chat-option" id="chat-coaching">
         <div class="chat-option-icon">1:1</div>
         <div>
@@ -1009,7 +1018,6 @@
           <div class="chat-option-text-sub">Online or in person, tailored to your goals.</div>
         </div>
       </button>
-
       <button class="chat-option" id="chat-collab">
         <div class="chat-option-icon">PR</div>
         <div>
@@ -1017,7 +1025,6 @@
           <div class="chat-option-text-sub">Partnerships, events, and media opportunities.</div>
         </div>
       </button>
-
       <button class="chat-option" id="chat-affiliates">
         <div class="chat-option-icon">★</div>
         <div>
@@ -1025,7 +1032,6 @@
           <div class="chat-option-text-sub">See the kit I actually use in the kitchen &amp; gym.</div>
         </div>
       </button>
-
       <button class="chat-option" id="chat-other">
         <div class="chat-option-icon">?</div>
         <div>
@@ -1035,7 +1041,6 @@
       </button>
     </div>
   </div>
-
   <script>
     // Smooth scroll for nav
     document.querySelectorAll(".nav-link").forEach(btn => {
@@ -1051,7 +1056,6 @@
         btn.classList.add("active");
       });
     });
-
     // Hero CTAs
     document.getElementById("cta-youtube").addEventListener("click", () => {
       window.open("https://www.youtube.com/@FitFoodChefUK", "_blank");
@@ -1060,9 +1064,8 @@
       window.open("https://www.instagram.com/fitfoodchefuk", "_blank");
     });
     document.getElementById("cta-tiktok").addEventListener("click", () => {
-      window.open("https://www.tiktok.com/@fitfoodchef.uk".replace(".uk.uk",".uk"), "_blank");
+      window.open("https://www.tiktok.com/@fitfoodchefuk", "_blank");
     });
-
     // Masterclass buttons
     document.getElementById("mc-youtube").addEventListener("click", () => {
       window.open("https://www.youtube.com/@FitFoodChefUK", "_blank");
@@ -1070,7 +1073,6 @@
     document.getElementById("mc-coaching").addEventListener("click", () => {
       window.location.href = "mailto:hello@fitfoodchef.uk?subject=1:1%20Cooking%20or%20Coaching%20Enquiry&body=Tell%20me%20a%20bit%20about%20your%20goals%2C%20your%20kitchen%20setup%2C%20and%20what%20you%27d%20like%20help%20with.";
     });
-
     // Affiliate switcher
     const affiliateCopy = {
       airfryer: {
@@ -1123,7 +1125,6 @@
         ]
       }
     };
-
     const affiliateDetail = document.getElementById("affiliate-detail");
     document.querySelectorAll(".affiliate-item").forEach(item => {
       item.addEventListener("click", () => {
@@ -1138,50 +1139,41 @@
         `;
       });
     });
-
     // Chatbot toggle
     const chatLauncher = document.getElementById("chat-launcher");
     const chatWindow = document.getElementById("chat-window");
     const chatClose = document.getElementById("chat-close");
-
     function toggleChat(force) {
       const show = force !== undefined ? force : chatWindow.style.display !== "flex";
       chatWindow.style.display = show ? "flex" : "none";
     }
-
     chatLauncher.addEventListener("click", () => toggleChat());
     chatClose.addEventListener("click", () => toggleChat(false));
-
     // Hide chat when clicking outside on smaller screens
     document.addEventListener("click", (e) => {
       if (!chatWindow.contains(e.target) && !chatLauncher.contains(e.target)) {
         if (window.innerWidth < 900) toggleChat(false);
       }
     });
-
     // Chatbot option handlers
     document.getElementById("chat-youtube").addEventListener("click", () => {
       window.open("https://www.youtube.com/@FitFoodChefUK", "_blank");
       toggleChat(false);
     });
-
     document.getElementById("chat-coaching").addEventListener("click", () => {
       window.location.href = "mailto:hello@fitfoodchef.uk?subject=1:1%20Cooking%20or%20Coaching%20Enquiry&body=Tell%20me%20a%20bit%20about%20your%20goals%2C%20your%20kitchen%20setup%2C%20and%20what%20you%27d%20like%20help%20with.";
       toggleChat(false);
     });
-
     document.getElementById("chat-collab").addEventListener("click", () => {
       window.location.href = "mailto:hello@fitfoodchef.uk?subject=Brand%20%2F%20Collab%20%2F%20Media%20Enquiry&body=Tell%20me%20about%20your%20brand%2C%20the%20idea%2C%20and%20timelines.";
       toggleChat(false);
     });
-
     document.getElementById("chat-affiliates").addEventListener("click", () => {
       const navHeight = document.querySelector(".top-nav").offsetHeight + 20;
       const section = document.getElementById("affiliates");
       window.scrollTo({ top: section.offsetTop - navHeight, behavior: "smooth" });
       toggleChat(false);
     });
-
     document.getElementById("chat-other").addEventListener("click", () => {
       window.location.href = "mailto:hello@fitfoodchef.uk?subject=Fit%20Food%20Question&body=Fire%20away%20%E2%80%93%20the%20more%20detail%2C%20the%20better.";
       toggleChat(false);
@@ -1189,3 +1181,4 @@
   </script>
 </body>
 </html>
+```
