@@ -36,7 +36,11 @@
       --transition-med: 0.25s ease-out;
     }
     *, *::before, *::after { box-sizing: border-box; }
-    * { margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    * {
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
     html, body { height: 100%; }
     body {
       min-height: 100vh;
@@ -74,21 +78,47 @@
       gap: 16px;
       margin-bottom: 22px;
     }
-    .nav-left { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+    .nav-left { display: flex; align-items: center; gap: 12px; }
     .nav-logo-mark {
-      width: 32px; height: 32px; border-radius: 12px;
+      width: 32px;
+      height: 32px;
+      border-radius: 12px;
       background: radial-gradient(circle at 30% 0%, #f5c561, #8f5a13);
-      display: flex; align-items: center; justify-content: center;
-      color: #111; font-weight: 800; font-size: 18px; letter-spacing: .03em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #111;
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: .03em;
       box-shadow: 0 8px 20px rgba(0,0,0,0.7);
     }
-    .nav-title-main { font-size: 14px; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; }
-    .nav-title-sub { font-size: 11px; color: var(--muted); letter-spacing: .14em; text-transform: uppercase; }
-    .nav-links { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-title-main {
+      font-size: 14px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .nav-title-sub {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .nav-links {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
     .nav-link {
-      font-size: 12px; padding: 7px 14px; border-radius: 999px;
-      background: rgba(255,255,255,0.01); color: var(--muted);
-      border: 1px solid transparent; cursor: pointer;
+      font-size: 12px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.01);
+      color: var(--muted);
+      border: 1px solid transparent;
+      cursor: pointer;
       transition: all var(--transition-fast);
     }
     .nav-link:hover {
@@ -108,45 +138,139 @@
     }
 
     section { margin-bottom: 60px; }
-    .section-label { font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
-    .section-title { font-size: 26px; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; margin-bottom: 18px; }
+    .section-label {
+      font-size: 11px;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-size: 26px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
 
     /* HERO */
-    .hero-grid { display: grid; grid-template-columns: minmax(0,1.05fr) minmax(0,0.95fr); gap: 26px; align-items: stretch; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1.05fr) minmax(0,0.95fr);
+      gap: 26px;
+      align-items: stretch;
+    }
     .hero-main-card {
-      position: relative; border-radius: var(--radius-lg); overflow: hidden;
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
       background: radial-gradient(circle at top, #1d2439 0, #080b13 50%, #05070d 100%);
-      border: 1px solid rgba(255,255,255,0.14); box-shadow: var(--shadow-soft);
-      padding: 24px; display: flex; flex-direction: column; gap: 18px;
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow: var(--shadow-soft);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
     }
     .hero-main-card::before {
-      content:""; position:absolute; inset:-40%;
+      content:"";
+      position:absolute;
+      inset:-40%;
       background:
         radial-gradient(circle at 0 0, rgba(245,197,97,0.09), transparent 55%),
         radial-gradient(circle at 100% 0, rgba(93,127,255,0.12), transparent 50%),
         radial-gradient(circle at 50% 100%, rgba(0,0,0,0.8), transparent 55%);
-      opacity:.85; pointer-events:none;
+      opacity:.85;
+      pointer-events:none;
     }
-    .hero-main-inner { position:relative; z-index:1; display:flex; flex-direction:column; gap:16px; }
-    .hero-logo { width:180px; max-width:60%; border-radius:18px; overflow:hidden; border:1px solid rgba(245,197,97,0.4); box-shadow:0 18px 40px rgba(0,0,0,0.9); margin-bottom:6px; }
+    .hero-main-inner {
+      position:relative;
+      z-index:1;
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+    .hero-logo {
+      width:180px;
+      max-width:60%;
+      border-radius:18px;
+      overflow:hidden;
+      border:1px solid rgba(245,197,97,0.4);
+      box-shadow:0 18px 40px rgba(0,0,0,0.9);
+      margin-bottom:6px;
+    }
     .hero-chips-row { display:flex; gap:8px; flex-wrap:wrap; }
     .chip-pill {
-      font-size:11px; letter-spacing:.16em; text-transform:uppercase; padding:7px 14px; border-radius:999px;
-      border:1px solid rgba(255,255,255,0.1); background:rgba(5,6,10,0.86); color:var(--muted);
-      box-shadow:var(--shadow-chip); display:inline-flex; align-items:center; gap:8px;
+      font-size:11px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      padding:7px 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,0.1);
+      background:rgba(5,6,10,0.86);
+      color:var(--muted);
+      box-shadow:var(--shadow-chip);
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
     }
-    .chip-pill .dot { width:7px; height:7px; border-radius:50%; background:#3bff9f; box-shadow:0 0 0 3px rgba(59,255,159,0.32); }
-    .chip-outline { border-color:rgba(245,197,97,0.5); background:radial-gradient(circle at 0 0, rgba(245,197,97,0.14), rgba(5,6,10,0.9)); color:var(--accent-strong); }
-    .hero-heading { font-size:38px; letter-spacing:.12em; text-transform:uppercase; font-weight:700; margin:6px 0 4px; }
-    .hero-subtitle { font-size:14px; color:var(--muted); max-width:560px; }
-    .hero-divider { height:1px; background:linear-gradient(to right, rgba(245,197,97,0.15), rgba(255,255,255,0.04), transparent); margin:14px 0 2px; }
-    .hero-copy { font-size:13px; color:var(--muted); max-width:650px; }
+    .chip-pill .dot {
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:#3bff9f;
+      box-shadow:0 0 0 3px rgba(59,255,159,0.32);
+    }
+    .chip-outline {
+      border-color:rgba(245,197,97,0.5);
+      background:radial-gradient(circle at 0 0, rgba(245,197,97,0.14), rgba(5,6,10,0.9));
+      color:var(--accent-strong);
+    }
+    .hero-heading {
+      font-size:38px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      font-weight:700;
+      margin:6px 0 4px;
+    }
+    .hero-subtitle {
+      font-size:14px;
+      color:var(--muted);
+      max-width:560px;
+    }
+    .hero-divider {
+      height:1px;
+      background:linear-gradient(to right, rgba(245,197,97,0.15), rgba(255,255,255,0.04), transparent);
+      margin:14px 0 2px;
+    }
+    .hero-copy {
+      font-size:13px;
+      color:var(--muted);
+      max-width:650px;
+    }
+    .hero-copy p {
+      margin-bottom:10px;
+    }
 
-    .hero-ctas { display:flex; flex-direction:column; gap:10px; margin-top:10px; }
+    .hero-ctas {
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      margin-top:10px;
+    }
     .hero-cta {
-      position:relative; border-radius:999px; padding:10px 14px; display:flex; align-items:center; justify-content:space-between; gap:14px;
-      background:radial-gradient(circle at 0 0, rgba(255,255,255,0.06), #05070e); border:1px solid rgba(255,255,255,0.12);
-      cursor:pointer; overflow:hidden; transition:all var(--transition-fast);
+      position:relative;
+      border-radius:999px;
+      padding:10px 14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      background:radial-gradient(circle at 0 0, rgba(255,255,255,0.06), #05070e);
+      border:1px solid rgba(255,255,255,0.12);
+      cursor:pointer;
+      overflow:hidden;
+      transition:all var(--transition-fast);
     }
     .hero-cta:hover {
       border-color:rgba(245,197,97,0.7);
@@ -155,27 +279,78 @@
       transform:translateY(-1px);
     }
     .hero-cta-icon {
-      width:26px; height:26px; border-radius:999px;
-      background:radial-gradient(circle at 30% 0, #f5c561, #9e6111); color:#111;
-      display:flex; align-items:center; justify-content:center; box-shadow:0 8px 22px rgba(0,0,0,0.7); flex-shrink:0;
-      font-size:11px; font-weight:600;
+      width:26px;
+      height:26px;
+      border-radius:999px;
+      background:radial-gradient(circle at 30% 0, #f5c561, #9e6111);
+      color:#111;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 8px 22px rgba(0,0,0,0.7);
+      flex-shrink:0;
+      font-size:11px;
+      font-weight:600;
     }
     .hero-cta-left { display:flex; align-items:center; gap:10px; }
     .hero-cta-text-main { font-size:13px; font-weight:500; }
     .hero-cta-text-sub { font-size:11px; color:var(--muted); }
-    .hero-cta-right-label { font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); padding-inline:10px; }
-
-    .hero-side { display:flex; flex-direction:column; gap:16px; }
-    .hero-image-card { position:relative; flex:1; border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-soft); border:1px solid rgba(255,255,255,0.10); }
-    .hero-image-card img { width:100%; height:100%; object-fit:cover; filter:brightness(0.85); transform:scale(1.02); }
-    .hero-image-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(5,6,10,0.75), rgba(5,6,10,0.35), transparent); mix-blend-mode:multiply; }
-    .hero-image-label {
-      position:absolute; left:16px; bottom:16px; padding:6px 12px; border-radius:999px;
-      font-size:10px; letter-spacing:.22em; text-transform:uppercase;
-      background:rgba(5,6,10,0.78); border:1px solid rgba(245,197,97,0.5); color:var(--accent-strong);
-      display:inline-flex; align-items:center; gap:8px;
+    .hero-cta-right-label {
+      font-size:10px;
+      letter-spacing:.2em;
+      text-transform:uppercase;
+      color:var(--muted);
+      padding-inline:10px;
     }
-    .hero-image-label-dot { width:6px; height:6px; border-radius:50%; background:var(--accent-strong); }
+
+    .hero-side {
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+    .hero-image-card {
+      position:relative;
+      flex:1;
+      border-radius:var(--radius-lg);
+      overflow:hidden;
+      box-shadow:var(--shadow-soft);
+      border:1px solid rgba(255,255,255,0.10);
+    }
+    .hero-image-card img {
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      filter:brightness(0.85);
+      transform:scale(1.02);
+    }
+    .hero-image-overlay {
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top, rgba(5,6,10,0.75), rgba(5,6,10,0.35), transparent);
+      mix-blend-mode:multiply;
+    }
+    .hero-image-label {
+      position:absolute;
+      left:16px;
+      bottom:16px;
+      padding:6px 12px;
+      border-radius:999px;
+      font-size:10px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      background:rgba(5,6,10,0.78);
+      border:1px solid rgba(245,197,97,0.5);
+      color:var(--accent-strong);
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+    .hero-image-label-dot {
+      width:6px;
+      height:6px;
+      border-radius:50%;
+      background:var(--accent-strong);
+    }
 
     @media (max-width:900px) {
       .hero-grid { grid-template-columns:1fr; }
@@ -191,89 +366,294 @@
       box-shadow:var(--shadow-soft);
       padding:22px 20px;
     }
-    .content-card p { font-size:13px; color:var(--muted); line-height:1.7; margin-bottom:10px; }
-    .content-grid-2 { display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,0.9fr); gap:20px; }
-    @media (max-width:880px) { .content-grid-2 { grid-template-columns:1fr; } }
+    .content-card p {
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.7;
+      margin-bottom:10px;
+    }
+    .content-grid-2 {
+      display:grid;
+      grid-template-columns:minmax(0,1.1fr) minmax(0,0.9fr);
+      gap:20px;
+    }
+    @media (max-width:880px) {
+      .content-grid-2 { grid-template-columns:1fr; }
+    }
+
+    /* Masterclass images */
+    .masterclass-images {
+      margin-top:18px;
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:14px;
+    }
+    .masterclass-images img {
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      border-radius:var(--radius-md);
+      border:1px solid var(--border-subtle);
+      box-shadow:var(--shadow-soft);
+    }
+    @media (max-width:720px) {
+      .masterclass-images { grid-template-columns:1fr; }
+    }
 
     .btn-primary, .btn-ghost {
-      font-size:13px; padding:9px 15px; border-radius:var(--radius-sm); cursor:pointer;
-      border:1px solid transparent; display:inline-flex; align-items:center; gap:8px;
-      transition:all var(--transition-fast); white-space:nowrap;
+      font-size:13px;
+      padding:9px 15px;
+      border-radius:var(--radius-sm);
+      cursor:pointer;
+      border:1px solid transparent;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      transition:all var(--transition-fast);
+      white-space:nowrap;
     }
-    .btn-primary { background:var(--accent); color:#111; font-weight:600; box-shadow:0 12px 30px rgba(245,197,97,0.55); }
-    .btn-primary:hover { transform:translateY(-1px); box-shadow:0 18px 40px rgba(245,197,97,0.7); }
-    .btn-ghost { background:rgba(5,6,10,0.9); color:var(--accent-strong); border-color:rgba(245,197,97,0.7); }
-    .btn-ghost:hover { background:rgba(245,197,97,0.12); transform:translateY(-1px); }
+    .btn-primary {
+      background:var(--accent);
+      color:#111;
+      font-weight:600;
+      box-shadow:0 12px 30px rgba(245,197,97,0.55);
+    }
+    .btn-primary:hover {
+      transform:translateY(-1px);
+      box-shadow:0 18px 40px rgba(245,197,97,0.7);
+    }
+    .btn-ghost {
+      background:rgba(5,6,10,0.9);
+      color:var(--accent-strong);
+      border-color:rgba(245,197,97,0.7);
+    }
+    .btn-ghost:hover {
+      background:rgba(245,197,97,0.12);
+      transform:translateY(-1px);
+    }
 
     /* Social */
-    .social-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
-    @media (max-width:900px) { .social-grid { grid-template-columns:1fr; } }
+    .social-grid {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:16px;
+    }
+    @media (max-width:900px) {
+      .social-grid { grid-template-columns:1fr; }
+    }
     .social-card {
-      background:var(--card-softer); border-radius:var(--radius-md); padding:16px;
-      border:1px solid var(--accent); box-shadow:0 16px 40px rgba(0,0,0,0.8);
-      position:relative; overflow:hidden; cursor:pointer;
+      background:var(--card-softer);
+      border-radius:var(--radius-md);
+      padding:16px;
+      border:1px solid var(--accent);
+      box-shadow:0 16px 40px rgba(0,0,0,0.8);
+      position:relative;
+      overflow:hidden;
+      cursor:pointer;
       transition:all var(--transition-med);
     }
     .social-card::before {
-      content:""; position:absolute; inset:0;
+      content:"";
+      position:absolute;
+      inset:0;
       background:radial-gradient(circle at 0 0, rgba(245,197,97,0.18), transparent 55%);
-      opacity:0; transition:opacity var(--transition-med);
+      opacity:0;
+      transition:opacity var(--transition-med);
     }
     .social-card:hover::before { opacity:1; }
-    .social-card:hover { transform:translateY(-3px); box-shadow:0 22px 60px rgba(0,0,0,0.95); border-color:var(--accent-strong); }
-    .social-label { font-size:11px; letter-spacing:.26em; text-transform:uppercase; color:rgba(245,197,97,0.95); margin-bottom:6px; }
+    .social-card:hover {
+      transform:translateY(-3px);
+      box-shadow:0 22px 60px rgba(0,0,0,0.95);
+      border-color:var(--accent-strong);
+    }
+    .social-label {
+      font-size:11px;
+      letter-spacing:.26em;
+      text-transform:uppercase;
+      color:rgba(245,197,97,0.95);
+      margin-bottom:6px;
+    }
     .social-name { font-size:15px; font-weight:600; margin-bottom:2px; }
     .social-handle { font-size:13px; color:var(--muted); }
-    .social-footer { margin-top:10px; font-size:11px; color:rgba(245,197,97,0.9); letter-spacing:.18em; text-transform:uppercase; }
+    .social-footer {
+      margin-top:10px;
+      font-size:11px;
+      color:rgba(245,197,97,0.9);
+      letter-spacing:.18em;
+      text-transform:uppercase;
+    }
 
     /* Affiliates */
-    .affiliate-layout { display:grid; grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr); gap:20px; }
-    @media (max-width:880px) { .affiliate-layout { grid-template-columns:1fr; } }
-    .affiliate-item {
-      display:flex; align-items:center; justify-content:space-between; gap:10px;
-      padding:9px 10px; border-radius:999px; font-size:13px; color:var(--muted);
-      background:rgba(5,6,10,0.9); border:1px solid transparent; margin-bottom:6px;
-      cursor:pointer; transition:all var(--transition-fast);
+    .affiliate-layout {
+      display:grid;
+      grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr);
+      gap:20px;
     }
-    .affiliate-item span { font-weight:500; color:var(--text); }
-    .affiliate-item:hover { background:rgba(245,197,97,0.12); border-color:rgba(245,197,97,0.7); transform:translateY(-1px); }
-    .affiliate-item.active { background:radial-gradient(circle at 0 0, rgba(245,197,97,0.22), rgba(5,6,10,0.95)); border-color:var(--accent); }
+    @media (max-width:880px) {
+      .affiliate-layout { grid-template-columns:1fr; }
+    }
+    .affiliate-item {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:9px 10px;
+      border-radius:999px;
+      font-size:13px;
+      color:var(--muted);
+      background:rgba(5,6,10,0.9);
+      border:1px solid transparent;
+      margin-bottom:6px;
+      cursor:pointer;
+      transition:all var(--transition-fast);
+    }
+    .affiliate-item span {
+      font-weight:500;
+      color:var(--text);
+    }
+    .affiliate-item:hover {
+      background:rgba(245,197,97,0.12);
+      border-color:rgba(245,197,97,0.7);
+      transform:translateY(-1px);
+    }
+    .affiliate-item.active {
+      background:radial-gradient(circle at 0 0, rgba(245,197,97,0.22), rgba(5,6,10,0.95));
+      border-color:var(--accent);
+    }
+
+    /* Gallery */
+    .gallery-grid {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:16px;
+    }
+    @media (max-width:900px) {
+      .gallery-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    }
+    @media (max-width:600px) {
+      .gallery-grid { grid-template-columns:1fr; }
+    }
+    .gallery-item {
+      position:relative;
+      border-radius:var(--radius-md);
+      overflow:hidden;
+      background:#000;
+      border:1px solid var(--border-subtle);
+      box-shadow:var(--shadow-soft);
+    }
+    .gallery-item img {
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .gallery-overlay {
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top, rgba(0,0,0,0.78), transparent 55%);
+      display:flex;
+      align-items:flex-end;
+      padding:10px 12px;
+    }
+    .gallery-title {
+      font-size:12px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:var(--accent-strong);
+    }
 
     /* Chatbot */
     .chat-launcher {
-      position:fixed; right:22px; bottom:22px; width:70px; height:70px;
-      border-radius:50%; background:radial-gradient(circle at 30% 0, #f5c561, #9e6111);
-      box-shadow:0 20px 45px rgba(0,0,0,0.85); display:flex; align-items:center; justify-content:center;
-      cursor:pointer; z-index:60; border:2px solid rgba(255,255,255,0.24);
+      position:fixed;
+      right:22px;
+      bottom:22px;
+      width:70px;
+      height:70px;
+      border-radius:50%;
+      background:radial-gradient(circle at 30% 0, #f5c561, #9e6111);
+      box-shadow:0 20px 45px rgba(0,0,0,0.85);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      z-index:60;
+      border:2px solid rgba(255,255,255,0.24);
     }
     .chat-launcher-inner {
-      width:46px; height:46px; border-radius:50%; background:#11141b;
-      display:flex; align-items:center; justify-content:center; color:var(--accent-strong);
-      font-size:11px; letter-spacing:.16em; text-transform:uppercase; text-align:center;
+      width:46px;
+      height:46px;
+      border-radius:50%;
+      background:#11141b;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--accent-strong);
+      font-size:11px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      text-align:center;
       box-shadow:inset 0 0 0 1px rgba(245,197,97,0.6);
     }
     .chat-window {
-      position:fixed; right:22px; bottom:104px; width:320px; max-width:calc(100vw - 32px);
-      border-radius:22px; background:radial-gradient(circle at top, #161b28, #05060b);
-      border:1px solid rgba(255,255,255,0.16); box-shadow:0 28px 70px rgba(0,0,0,0.95);
-      padding:14px; z-index:60; display:none; flex-direction:column; gap:10px;
+      position:fixed;
+      right:22px;
+      bottom:104px;
+      width:320px;
+      max-width:calc(100vw - 32px);
+      border-radius:22px;
+      background:radial-gradient(circle at top, #161b28, #05060b);
+      border:1px solid rgba(255,255,255,0.16);
+      box-shadow:0 28px 70px rgba(0,0,0,0.95);
+      padding:14px;
+      z-index:60;
+      display:none;
+      flex-direction:column;
+      gap:10px;
     }
     .chat-header-title-top {
-      font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--muted);
+      font-size:11px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color:var(--muted);
     }
-    .chat-header-title-main { font-size:14px; font-weight:600; }
-    .chat-header-sub { font-size:12px; color:var(--muted); margin-top:2px; }
+    .chat-header-title-main {
+      font-size:14px;
+      font-weight:600;
+    }
+    .chat-header-sub {
+      font-size:12px;
+      color:var(--muted);
+      margin-top:2px;
+    }
     .chat-close {
-      width:24px; height:24px; border-radius:999px;
+      width:24px;
+      height:24px;
+      border-radius:999px;
       background:rgba(255,255,255,0.06);
-      display:flex; align-items:center; justify-content:center;
-      cursor:pointer; font-size:13px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      font-size:13px;
     }
-    .chat-options-list { display:flex; flex-direction:column; gap:8px; margin-top:10px; }
+    .chat-options-list {
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      margin-top:10px;
+    }
     .chat-option {
-      border-radius:999px; padding:8px 11px; display:flex; align-items:center; gap:8px;
-      background:rgba(5,6,10,0.9); border:1px solid rgba(255,255,255,0.1); cursor:pointer;
-      font-size:12px; color:var(--text); transition:all var(--transition-fast);
+      border-radius:999px;
+      padding:8px 11px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      background:rgba(5,6,10,0.9);
+      border:1px solid rgba(255,255,255,0.1);
+      cursor:pointer;
+      font-size:12px;
+      color:var(--text);
+      transition:all var(--transition-fast);
     }
     .chat-option:hover {
       background:rgba(245,197,97,0.16);
@@ -282,112 +662,27 @@
       transform:translateY(-1px);
     }
     .chat-option-icon {
-      width:22px; height:22px; border-radius:999px;
-      background:radial-gradient(circle at 30% 0, #f5c561, #8f5a13); color:#111;
-      display:flex; align-items:center; justify-content:center; flex-shrink:0;
-      font-size:12px; font-weight:600;
+      width:22px;
+      height:22px;
+      border-radius:999px;
+      background:radial-gradient(circle at 30% 0, #f5c561, #8f5a13);
+      color:#111;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-shrink:0;
+      font-size:12px;
+      font-weight:600;
     }
     .chat-option-text-main { font-weight:500; }
     .chat-option-text-sub { font-size:11px; color:var(--muted); }
-
-    /* Gallery (plates) */
-    .plates-section { margin-top: 10px; }
-    .plates-title { font-size: 26px; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; margin-bottom: 18px; }
-    .gallery-grid {
-      display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:16px;
-    }
-    @media (max-width:1000px) {
-      .gallery-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
-    }
-    @media (max-width:640px) {
-      .gallery-grid { grid-template-columns:1fr; }
-    }
-    .gallery-card {
-      position:relative;
-      border-radius:var(--radius-lg);
-      background:var(--card);
-      border:1px solid var(--border-subtle);
-      box-shadow:var(--shadow-soft);
-      overflow:hidden;
-      min-height:200px;
-      display:flex;
-      align-items:flex-end;
-      justify-content:flex-start;
-    }
-    .gallery-card-inner {
-      position:absolute;
-      inset:0;
-      display:flex;
-      flex-direction:column;
-      justify-content:flex-end;
-      padding:14px;
-    }
-    .gallery-card img {
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      filter:brightness(0.85);
-      transform:scale(1.02);
-    }
-    .gallery-card-overlay {
-      position:absolute;
-      inset:0;
-      background:linear-gradient(to top, rgba(5,6,10,0.88), rgba(5,6,10,0.15), transparent);
-      mix-blend-mode:multiply;
-    }
-    .gallery-card-label {
-      align-self:flex-start;
-      padding:6px 14px;
-      border-radius:999px;
-      border:1px solid rgba(245,197,97,0.7);
-      background:rgba(5,6,10,0.9);
-      color:var(--accent-strong);
-      font-size:11px;
-      letter-spacing:.2em;
-      text-transform:uppercase;
-      box-shadow:0 10px 25px rgba(0,0,0,0.7);
-    }
-    /* Hide the white heading text in each gallery tile */
-    .gallery-card-title { display:none; }
-
-    /* Masterclass image strip */
-    .masterclass-gallery {
-      margin-top: 24px;
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-    .masterclass-image-card {
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.10);
-      box-shadow: var(--shadow-soft);
-      background: #000;
-      min-height: 220px;
-    }
-    .masterclass-image-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transform: scale(1.02);
-      filter: brightness(0.9);
-    }
-    @media (max-width: 880px) {
-      .masterclass-gallery {
-        grid-template-columns: 1fr;
-      }
-    }
-
   </style>
 </head>
 <body>
   <div class="page-shell">
-
     <!-- Top Navigation -->
     <nav class="top-nav">
-      <div class="nav-left" id="nav-home-logo">
+      <div class="nav-left">
         <div class="nav-logo-mark">FF</div>
         <div class="nav-title">
           <div class="nav-title-main">Fit Food Chef UK</div>
@@ -407,37 +702,63 @@
     <!-- HOME / HERO -->
     <section id="home">
       <div class="hero-grid">
+        <!-- LEFT: MAIN HERO CARD -->
         <div class="hero-main-card">
           <div class="hero-main-inner">
+            <!-- Logo -->
             <div class="hero-logo">
               <img src="fit-food-logo.jpg" alt="Fit Food Chef UK Logo">
             </div>
-            <div class="hero-chips-row">
-              <div class="chip-pill"><span class="dot"></span>Fit Food UK · Links</div>
-              <div class="chip-pill chip-outline">Lift Weights &amp; Pans</div>
-            </div>
-            <h1 class="hero-heading">Fit Food UK</h1>
-            <p class="hero-subtitle">Restaurant-level cooking for people who care about macros, muscle, and flavour — with a bit of British nonsense on top.</p>
-            <div class="hero-divider"></div>
-           <div class="hero-copy" style="margin-top:8px; line-height:1.65;">
-  I’m not here to show you another ‘high-protein 30-minute meal’ you can bang out with a few simple ingredients. 
-  I’m here to show you detail — real, professional, fine-dining detail. Techniques that build flavour and elevate 
-  a dish into something memorable.
-  <br><br>
-  This is for enthusiastic cooks. <strong>What we cook together is serious.</strong>
-  <br><br>
-  <em>How we choose what to cook each week… not so much.</em>
-  <br><br>
-  <strong>Welcome to Fit Food.</strong>
-</div>
 
+            <!-- Chips -->
+            <div class="hero-chips-row">
+              <div class="chip-pill">
+                <span class="dot"></span>
+                Fit Food UK · Links
+              </div>
+              <div class="chip-pill chip-outline">
+                Lift Weights &amp; Pans
+              </div>
+            </div>
+
+            <!-- Heading & subtitle -->
+            <h1 class="hero-heading">Fit Food UK</h1>
+            <p class="hero-subtitle">
+              Restaurant-level cooking for people who care about macros, muscle, and flavour —
+              with a bit of British nonsense on top.
+            </p>
+
+            <div class="hero-divider"></div>
+
+            <!-- NEW INTRO COPY AS PARAGRAPHS -->
+            <div class="hero-copy" style="margin-top:8px; line-height:1.65;">
+              <p>
+                I’m not here to show you another ‘high-protein 30-minute meal’ you can bang out with a few simple
+                ingredients. I’m here to show you detail — real, professional, fine-dining detail. Techniques that
+                build flavour and elevate a dish into something memorable.
+              </p>
+              <p>
+                This is for enthusiastic cooks.
+                <strong> What we cook together is serious.</strong>
+              </p>
+              <p>
+                <em>How we choose what to cook each week… not so much.</em>
+              </p>
+              <p>
+                <strong>Welcome to Fit Food.</strong>
+              </p>
+            </div>
+
+            <!-- CTAs -->
             <div class="hero-ctas">
               <button class="hero-cta" id="cta-youtube">
                 <div class="hero-cta-left">
                   <div class="hero-cta-icon">▶︎</div>
                   <div>
                     <div class="hero-cta-text-main">Watch masterclasses on YouTube</div>
-                    <div class="hero-cta-text-sub">Full episodes · long-form teaching · macro breakdowns</div>
+                    <div class="hero-cta-text-sub">
+                      Full episodes · long-form teaching · macro breakdowns
+                    </div>
                   </div>
                 </div>
                 <div class="hero-cta-right-label">Full lessons</div>
@@ -448,7 +769,9 @@
                   <div class="hero-cta-icon">@</div>
                   <div>
                     <div class="hero-cta-text-main">Follow daily chaos on Instagram</div>
-                    <div class="hero-cta-text-sub">Short-form recipes · behind the scenes · Brain Board clips</div>
+                    <div class="hero-cta-text-sub">
+                      Short-form recipes · behind the scenes · Brain Board clips
+                    </div>
                   </div>
                 </div>
                 <div class="hero-cta-right-label">Daily hits</div>
@@ -459,13 +782,16 @@
                   <div class="hero-cta-icon">TT</div>
                   <div>
                     <div class="hero-cta-text-main">Fast cuts &amp; chaos on TikTok</div>
-                    <div class="hero-cta-text-sub">Quick recipes · sound-on energy · pure vibes</div>
+                    <div class="hero-cta-text-sub">
+                      Quick recipes · sound-on energy · pure vibes
+                    </div>
                   </div>
                 </div>
                 <div class="hero-cta-right-label">Quick hits</div>
               </button>
             </div>
 
+            <!-- Coming soon -->
             <div class="hero-coming-soon" style="margin-top:14px;">
               <div class="section-label" style="margin-bottom:4px;">Coming soon</div>
               <p class="hero-copy">
@@ -479,17 +805,21 @@
           </div>
         </div>
 
+        <!-- RIGHT: HERO IMAGES -->
         <div class="hero-side">
+          <!-- Portrait -->
           <div class="hero-image-card">
             <img src="chef-portrait.jpg" alt="Fit Food Chef portrait">
             <div class="hero-image-overlay"></div>
             <div class="hero-image-label">
-              <span class="hero-image-label-dot"></span>Chef · Coach
+              <span class="hero-image-label-dot"></span>
+              Chef · Coach
             </div>
           </div>
-          <!-- UPDATED: main hero image, no label text -->
+
+          <!-- Main gym / barbell image (no label) -->
           <div class="hero-image-card">
-            <img src="main.jpg" alt="Fit Food Chef main hero image">
+            <img src="main.jpg" alt="Gym barbell and squat rack">
             <div class="hero-image-overlay"></div>
           </div>
         </div>
@@ -517,7 +847,7 @@
           </p>
         </div>
         <div class="content-card">
-          <p>What you’ll get from me:</p>
+          <p><strong>What you’ll get from me:</strong></p>
           <ul style="margin-left:18px; font-size:13px; color:var(--muted); line-height:1.7;">
             <li>Step-by-step masterclasses where I explain the “why”, not just the “how”.</li>
             <li>Macro-friendly spins on restaurant dishes that still feel like a treat.</li>
@@ -555,14 +885,10 @@
         </div>
       </div>
 
-      <!-- NEW: Two masterclass images under the cards -->
-      <div class="masterclass-gallery">
-        <div class="masterclass-image-card">
-          <img src="masterclass1.jpg" alt="Masterclass dish 1">
-        </div>
-        <div class="masterclass-image-card">
-          <img src="masterclass2.jpg" alt="Masterclass dish 2">
-        </div>
+      <!-- MASTERCLASS IMAGES -->
+      <div class="masterclass-images">
+        <img src="masterclass1.jpg" alt="Fit Food masterclass dish 1">
+        <img src="masterclass2.jpg" alt="Fit Food masterclass dish 2">
       </div>
     </section>
 
@@ -624,109 +950,30 @@
     </section>
 
     <!-- GALLERY -->
-    <section id="gallery" class="plates-section">
+    <section id="gallery">
       <div class="section-label">Plates</div>
       <div class="section-title">Gallery</div>
-
       <div class="gallery-grid">
-        <div class="gallery-card">
-          <img src="gallery-artichoke.jpg" alt="Artichoke-based dish">
-          <div class="gallery-card-overlay"></div>
-          <div class="gallery-card-inner">
-            <div class="gallery-card-title">Artichoke-based dish</div>
-            <div class="gallery-card-label">Artichoke</div>
+        <!-- IMPORTANT: keep filenames matching what you uploaded -->
+        <div class="gallery-item">
+          <img src="dish1.jpg" alt="Signature dish 1">
+          <div class="gallery-overlay">
+            <div class="gallery-title">Dish title 1</div>
           </div>
         </div>
-
-        <div class="gallery-card">
-          <img src="gallery-beef.jpg" alt="Beef dish">
-          <div class="gallery-card-overlay"></div>
-          <div class="gallery-card-inner">
-            <div class="gallery-card-title">Beef dish</div>
-            <div class="gallery-card-label">Beef</div>
+        <div class="gallery-item">
+          <img src="dish2.jpg" alt="Signature dish 2">
+          <div class="gallery-overlay">
+            <div class="gallery-title">Dish title 2</div>
           </div>
         </div>
-
-        <div class="gallery-card">
-          <img src="gallery-chocolate.jpg" alt="Chocolate dessert">
-          <div class="gallery-card-overlay"></div>
-          <div class="gallery-card-inner">
-            <div class="gallery-card-title">Chocolate dessert</div>
-            <div class="gallery-card-label">Chocolate</div>
+        <div class="gallery-item">
+          <img src="dish3.jpg" alt="Signature dish 3">
+          <div class="gallery-overlay">
+            <div class="gallery-title">Dish title 3</div>
           </div>
         </div>
-
-        <div class="gallery-card">
-          <img src="gallery-hamhock.jpg" alt="Ham hock dish">
-          <div class="gallery-card-overlay"></div>
-          <div class="gallery-card-inner">
-            <div class="gallery-card-title">Ham hock dish</div>
-            <div class="gallery-card-label">Ham hock</div>
-          </div>
-        </div>
-
-        <div class="gallery-card">
-          <img src="gallery-jerusalemartichoke2.jpg" alt="Jerusalem artichoke dish">
-          <div class="gallery-card-overlay"></div>
-          <div class="gallery-card-inner">
-            <div class="gallery-card-title">Jerusalem artichoke dish</div>
-            <div class="gallery-card-label">Jerusalem artichoke</div>
-          </div>
-        </div>
-
-        <div class="gallery-card">
-          <img src="gallery-pork.jpg" alt="Pork dish">
-          <div class="gallery-card-overlay"></div>
-          <div class="gallery-card-inner">
-            <div class="gallery-card-title">Pork dish</div>
-            <div class="gallery-card-label">Pork</div>
-          </div>
-        </div>
-
-        <div class="gallery-card">
-          <img src="gallery-quail.jpg" alt="Quail dish">
-          <div class="gallery-card-overlay"></div>
-          <div class="gallery-card-inner">
-            <div class="gallery-card-title">Quail dish</div>
-            <div class="gallery-card-label">Quail</div>
-          </div>
-        </div>
-
-        <div class="gallery-card">
-          <img src="gallery-rabbit.jpg" alt="Rabbit dish">
-          <div class="gallery-card-overlay"></div>
-          <div class="gallery-card-inner">
-            <div class="gallery-card-title">Rabbit dish</div>
-            <div class="gallery-card-label">Rabbit</div>
-          </div>
-        </div>
-
-        <div class="gallery-card">
-          <img src="gallery-snapper.jpg" alt="Snapper fish dish">
-          <div class="gallery-card-overlay"></div>
-          <div class="gallery-card-inner">
-            <div class="gallery-card-title">Snapper fish dish</div>
-            <div class="gallery-card-label">Snapper</div>
-          </div>
-        </div>
-
-        <div class="gallery-card">
-          <img src="gallery-sole.jpg" alt="Sole fish dish">
-          <div class="gallery-card-overlay"></div>
-          <div class="gallery-card-inner">
-            <div class="gallery-card-title">Sole fish dish</div>
-            <div class="gallery-card-label">Sole</div>
-          </div>
-        </div>
-
-        <div class="gallery-card">
-          <img src="gallery-venison.jpg" alt="Venison dish">
-          <div class="gallery-card-overlay"></div>
-          <div class="gallery-card-inner">
-            <div class="gallery-card-title">Venison dish</div>
-            <div class="gallery-card-label">Venison</div>
-          </div>
-        </div>
+        <!-- You can duplicate these blocks and swap src + title to match your real filenames -->
       </div>
     </section>
   </div>
@@ -790,16 +1037,7 @@
   </div>
 
   <script>
-    // Make logo area act as "home" button
-    document.getElementById("nav-home-logo").addEventListener("click", () => {
-      const homeSection = document.getElementById("home");
-      const navHeight = document.querySelector(".top-nav").offsetHeight + 20;
-      window.scrollTo({ top: homeSection.offsetTop - navHeight, behavior: "smooth" });
-      document.querySelectorAll(".nav-link").forEach(b => b.classList.remove("active"));
-      document.querySelector('.nav-link[data-target="home"]').classList.add("active");
-    });
-
-    // Smooth scroll for nav buttons
+    // Smooth scroll for nav
     document.querySelectorAll(".nav-link").forEach(btn => {
       btn.addEventListener("click", () => {
         const target = document.getElementById(btn.dataset.target);
@@ -822,7 +1060,7 @@
       window.open("https://www.instagram.com/fitfoodchefuk", "_blank");
     });
     document.getElementById("cta-tiktok").addEventListener("click", () => {
-      window.open("https://www.tiktok.com/@fitfoodchefuk", "_blank");
+      window.open("https://www.tiktok.com/@fitfoodchef.uk".replace(".uk.uk",".uk"), "_blank");
     });
 
     // Masterclass buttons
@@ -914,7 +1152,7 @@
     chatLauncher.addEventListener("click", () => toggleChat());
     chatClose.addEventListener("click", () => toggleChat(false));
 
-    // Hide chat when clicking outside on mobile-ish screens
+    // Hide chat when clicking outside on smaller screens
     document.addEventListener("click", (e) => {
       if (!chatWindow.contains(e.target) && !chatLauncher.contains(e.target)) {
         if (window.innerWidth < 900) toggleChat(false);
