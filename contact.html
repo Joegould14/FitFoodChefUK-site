@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Fit Food Operations — Contact</title>
+  <meta name="description" content="Operational support for food enterprises" />
+
+  <style>
+    :root{
+      --bg:#0b0c0f;
+      --bg2:#07080b;
+      --panel:rgba(255,255,255,.035);
+      --hair:rgba(255,255,255,.10);
+      --text:#eaeaea;
+      --muted:rgba(234,234,234,.70);
+      --gold:#c9a44a;
+      --stroke:2px;
+      --max:1100px;
+      --radius:26px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      color:var(--text);
+      line-height:1.5;
+      background:
+        radial-gradient(900px 520px at 18% 0%, rgba(201,164,74,.12), transparent 62%),
+        radial-gradient(700px 460px at 82% 12%, rgba(201,164,74,.06), transparent 60%),
+        linear-gradient(180deg, var(--bg2) 0%, var(--bg) 55%, var(--bg2) 100%);
+    }
+    a{color:inherit;text-decoration:none}
+    a:hover{opacity:.94}
+
+    header{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter: blur(10px);
+      background: rgba(7,8,11,.62);
+      border-bottom:1px solid var(--hair);
+    }
+    .nav{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:10px 14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .brand{display:flex; align-items:center;}
+    .logo{height:42px; width:auto; display:block;}
+
+    nav{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      flex-wrap:nowrap;
+      white-space:nowrap;
+      flex:0 0 auto;
+    }
+    nav a{
+      font-size:clamp(.82rem, 2.4vw, .92rem);
+      padding:7px 9px;
+      border-radius:12px;
+      border:1px solid transparent;
+      color:rgba(234,234,234,.70);
+      line-height:1;
+    }
+    nav a:hover{
+      border-color:rgba(255,255,255,.12);
+      background:rgba(255,255,255,.03);
+    }
+
+    .pageTitleSection{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 32px 14px 20px;
+      text-align: center;
+    }
+    .pageTitle{
+      margin: 0;
+      font-size: 2.2rem;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      font-weight: 100;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    .pageTagline{
+      margin: 12px auto 0;
+      font-size: 1.1rem;
+      color: var(--muted);
+      line-height: 1.4;
+      max-width: 720px;
+      font-weight: 300;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    .wrap{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:10px 14px 44px;
+    }
+
+    .card{
+      border-radius:var(--radius);
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.02));
+      padding:18px;
+      overflow:hidden;
+    }
+    .card + .card{ margin-top:14px; }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:14px;
+      align-items:start;
+    }
+
+    .hint{
+      color:rgba(234,234,234,.62);
+      font-size:.96rem;
+      margin:0 0 12px;
+    }
+
+    .fieldset{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+      margin-top:12px;
+    }
+    .field{display:flex; flex-direction:column; gap:7px;}
+    label{
+      font-size:.9rem;
+      color:rgba(234,234,234,.70);
+    }
+    input, select, textarea{
+      width:100%;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+      padding:11px 12px;
+      outline:none;
+      font-size: .98rem;
+    }
+    textarea{min-height:130px; resize:vertical;}
+    input:focus, select:focus, textarea:focus{
+      border-color: rgba(201,164,74,.55);
+      box-shadow: 0 0 0 4px rgba(201,164,74,.14);
+    }
+
+    .full{grid-column: 1 / -1;}
+
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:14px;
+      align-items:center;
+    }
+    .btn{
+      appearance:none;
+      border:none;
+      cursor:pointer;
+      border-radius:16px;
+      padding:11px 14px;
+      font-weight:650;
+      color:rgba(234,234,234,.92);
+      background: linear-gradient(180deg, rgba(201,164,74,.18), rgba(255,255,255,.02));
+      border:1px solid rgba(201,164,74,.55);
+    }
+    .btn:hover{opacity:.95}
+    .btn:active{transform:translateY(1px)}
+    .ghost{
+      appearance:none;
+      border:none;
+      cursor:pointer;
+      border-radius:16px;
+      padding:11px 14px;
+      font-weight:650;
+      color:rgba(234,234,234,.86);
+      background: rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.12);
+    }
+
+    .micro{
+      margin:10px 0 0;
+      font-size:.88rem;
+      color:rgba(234,234,234,.55);
+      line-height:1.45;
+    }
+
+    .sideBox h3{
+      margin:0 0 10px;
+      font-size:1.05rem;
+      font-weight:600;
+      color:rgba(234,234,234,.92);
+    }
+    .sideBox p{margin:0 0 10px; color:rgba(234,234,234,.70)}
+    .sideBox ul{margin:0; padding-left:18px; color:rgba(234,234,234,.70)}
+    .sideBox li{margin:7px 0}
+
+    .status{
+      margin-top:10px;
+      font-size:.9rem;
+      color:rgba(224,192,114,.85);
+      display:none;
+    }
+
+    footer{
+      margin-top:24px;
+      padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.08);
+      color:rgba(234,234,234,.55);
+      font-size:.9rem;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    @media (max-width: 920px){
+      .nav{padding:10px 10px;}
+      nav{gap:4px;}
+      nav a{padding:7px 7px;}
+      .pageTitle {font-size: 1.9rem;}
+      .pageTagline {font-size: 1rem;}
+      .grid{grid-template-columns:1fr;}
+      .fieldset{grid-template-columns:1fr;}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *{scroll-behavior:auto;}
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="nav">
+      <div class="brand">
+        <a href="index.html">
+          <img src="fit-food-logo.jpg" alt="Fit Food Operations" class="logo">
+        </a>
+      </div>
+      <nav aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="bio.html">Bio</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="pageTitleSection">
+    <h1 class="pageTitle">Contact</h1>
+    <p class="pageTagline">A short brief is enough to start. If it’s a fit, we’ll scope the project and agree a fixed fee.</p>
+  </div>
+
+  <main class="wrap">
+    <div class="grid">
+      <!-- Form -->
+      <div class="card">
+        <p class="hint">Fill this in and it will generate a structured email to <strong>hello@fitfoodchef.uk</strong>.</p>
+
+        <form id="enquiryForm">
+          <div class="fieldset">
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" autocomplete="name" placeholder="Your name" required>
+            </div>
+
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+            </div>
+
+            <div class="field">
+              <label for="phone">Phone (optional)</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+44…">
+            </div>
+
+            <div class="field">
+              <label for="location">Location</label>
+              <input id="location" name="location" type="text" placeholder="Town / City">
+            </div>
+
+            <div class="field">
+              <label for="type">Enquiry type</label>
+              <select id="type" name="type" required>
+                <option value="" selected disabled>Select one…</option>
+                <option>Food Business Startup</option>
+                <option>Adding a Food Offering</option>
+                <option>New Management</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="stage">Stage</label>
+              <select id="stage" name="stage">
+                <option value="" selected disabled>Select one…</option>
+                <option>Idea / Planning</option>
+                <option>Pre-launch (space secured)</option>
+                <option>Trading (needs improvement)</option>
+                <option>Takeover / Handover</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="timeline">Timeline</label>
+              <select id="timeline" name="timeline">
+                <option value="" selected disabled>Select one…</option>
+                <option>ASAP (1–2 weeks)</option>
+                <option>2–6 weeks</option>
+                <option>6–12 weeks</option>
+                <option>3+ months</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="budget">Budget range (optional)</label>
+              <select id="budget" name="budget">
+                <option value="" selected disabled>Select one…</option>
+                <option>Under £1k</option>
+                <option>£1k–£3k</option>
+                <option>£3k–£7k</option>
+                <option>£7k+</option>
+              </select>
+            </div>
+
+            <div class="field full">
+              <label for="message">What are you building / what’s broken?</label>
+              <textarea id="message" name="message" placeholder="Keep it practical: concept, covers, staffing reality, biggest constraint, and what a win looks like." required></textarea>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="btn" type="submit">Generate email</button>
+            <button class="ghost" type="button" id="copyBtn">Copy enquiry</button>
+          </div>
+
+          <div id="status" class="status">Copied.</div>
+
+          <p class="micro">
+            No spam, no mailing list. This simply opens your email client with a pre-filled message.
+          </p>
+        </form>
+      </div>
+
+      <!-- Side guidance -->
+      <div class="card sideBox">
+        <h3>To save time</h3>
+        <p>Helpful details (if you have them):</p>
+        <ul>
+          <li>Type of service (counter / seated / delivery)</li>
+          <li>Approx covers or orders per day</li>
+          <li>Menu size and complexity</li>
+          <li>Current kit list / constraints</li>
+          <li>Staffing level and skill ceiling</li>
+        </ul>
+        <p class="micro" style="margin-top:12px;">
+          Prefer email direct? <br>
+          <strong><a href="mailto:hello@fitfoodchef.uk">hello@fitfoodchef.uk</a></strong>
+        </p>
+      </div>
+    </div>
+
+    <footer>
+      <div>© <span id="year"></span> Fit Food</div>
+      <div>Fit-for-purpose food operations</div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function sanitize(v){ return (v || "").toString().trim(); }
+
+    function buildEnquiryText(data){
+      return [
+        "ENQUIRY — FIT FOOD OPERATIONS",
+        "",
+        "Name: " + data.name,
+        "Email: " + data.email,
+        "Phone: " + (data.phone || "—"),
+        "Location: " + (data.location || "—"),
+        "",
+        "Enquiry type: " + data.type,
+        "Stage: " + (data.stage || "—"),
+        "Timeline: " + (data.timeline || "—"),
+        "Budget range: " + (data.budget || "—"),
+        "",
+        "Brief:",
+        data.message
+      ].join("\n");
+    }
+
+    function openMailto(subject, body){
+      const to = "hello@fitfoodchef.uk";
+      const url = "mailto:" + encodeURIComponent(to)
+        + "?subject=" + encodeURIComponent(subject)
+        + "&body=" + encodeURIComponent(body);
+      window.location.href = url;
+    }
+
+    async function copyToClipboard(text){
+      try{
+        await navigator.clipboard.writeText(text);
+        return true;
+      }catch(e){
+        // Fallback for older browsers
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        ta.style.position = "fixed";
+        ta.style.left = "-9999px";
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        let ok = false;
+        try{ ok = document.execCommand("copy"); }catch(_){}
+        document.body.removeChild(ta);
+        return ok;
+      }
+    }
+
+    const form = document.getElementById("enquiryForm");
+    const status = document.getElementById("status");
+    const copyBtn = document.getElementById("copyBtn");
+
+    function showStatus(msg){
+      status.textContent = msg;
+      status.style.display = "block";
+      window.setTimeout(() => { status.style.display = "none"; }, 1400);
+    }
+
+    function collect(){
+      const data = {
+        name: sanitize(document.getElementById("name").value),
+        email: sanitize(document.getElementById("email").value),
+        phone: sanitize(document.getElementById("phone").value),
+        location: sanitize(document.getElementById("location").value),
+        type: sanitize(document.getElementById("type").value),
+        stage: sanitize(document.getElementById("stage").value),
+        timeline: sanitize(document.getElementById("timeline").value),
+        budget: sanitize(document.getElementById("budget").value),
+        message: sanitize(document.getElementById("message").value),
+      };
+      return data;
+    }
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const data = collect();
+
+      // basic guard
+      if(!data.name || !data.email || !data.type || !data.message){
+        showStatus("Please complete required fields.");
+        return;
+      }
+
+      const subject = "Enquiry — " + data.type + (data.location ? " (" + data.location + ")" : "");
+      const body = buildEnquiryText(data);
+
+      openMailto(subject, body);
+    });
+
+    copyBtn.addEventListener("click", async () => {
+      const data = collect();
+      const text = buildEnquiryText(data);
+      const ok = await copyToClipboard(text);
+      showStatus(ok ? "Copied enquiry to clipboard." : "Copy failed — please try again.");
+    });
+  </script>
+</body>
+</html>
