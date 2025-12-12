@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Fit Food Chef UK</title>
+  <title>Fit Food</title>
   <meta name="description" content="Fit-for-purpose food operations." />
 
   <style>
@@ -201,13 +201,15 @@
       border-radius:999px;
       background: rgba(255,255,255,.01);
     }
+
+    /* Split motion: lift straight up first, then rotate */
     .domeGroup{
       position:absolute;
       left:50%; bottom:14px;
       transform: translateX(-50%);
       width:170px; height:92px;
-      transform-origin: 30% 90%;
-      animation: clocheLift 3.4s ease-in-out infinite;
+      transform-origin: 50% 92%;
+      animation: clocheLift 4.42s ease-in-out infinite; /* 30% slower vs 3.4s */
     }
     .dome{
       position:absolute;
@@ -219,7 +221,6 @@
       border-radius:999px 999px 18px 18px;
       background: rgba(255,255,255,.01);
     }
-    /* Knob sits on crown */
     .knob{
       position:absolute;
       left:50%; top:2px;
@@ -240,16 +241,17 @@
       background: rgba(255,255,255,.01);
     }
 
-    /* Subtle “lift & rotate off” loop */
+    /* Comes up first (away), THEN rotates 45deg, then returns */
     @keyframes clocheLift{
       0%   { transform: translateX(-50%) translateY(0) rotate(0deg); }
-      55%  { transform: translateX(-50%) translateY(0) rotate(0deg); } /* dwell */
-      72%  { transform: translateX(-50%) translateY(-22px) rotate(-45deg); }
-      84%  { transform: translateX(-50%) translateY(-18px) rotate(-38deg); } /* slight settle */
+      58%  { transform: translateX(-50%) translateY(0) rotate(0deg); } /* dwell */
+      72%  { transform: translateX(-50%) translateY(-22px) rotate(0deg); } /* lift */
+      84%  { transform: translateX(-50%) translateY(-26px) rotate(-45deg); } /* rotate away */
+      92%  { transform: translateX(-50%) translateY(-18px) rotate(-32deg); } /* small settle */
       100% { transform: translateX(-50%) translateY(0) rotate(0deg); }
     }
 
-    /* ===================== ICON 3: PADLOCK LOOP ===================== */
+    /* ===================== ICON 3: PADLOCK LOOP (refined) ===================== */
     .lockWrap{
       position:absolute;
       left:50%; bottom:8px;
@@ -295,23 +297,28 @@
       border-bottom:none;
       border-radius:999px 999px 0 0;
       background: transparent;
-      transform-origin: 20% 85%;
+      transform-origin: 18% 85%;
       animation: unlock 3.6s ease-in-out infinite;
     }
+
+    /* Remove the black end-square by using a pseudo-element that matches background only,
+       and only covers the gap area (smaller + positioned tighter). */
     .shackle:after{
       content:"";
       position:absolute;
       right:-2px; bottom:-2px;
-      width:22px; height:24px;
-      background: var(--bg);
+      width:14px; height:18px;
+      background: transparent;
+      /* use a gradient to blend instead of a hard square */
+      background: linear-gradient(180deg, transparent 0%, var(--bg) 40%, var(--bg) 100%);
+      border-radius: 0 0 0 8px;
     }
 
-    /* Subtle unlock loop (open, pause, close) */
     @keyframes unlock{
       0%   { transform: translateX(-50%) translateY(0) rotate(0deg); }
-      58%  { transform: translateX(-50%) translateY(0) rotate(0deg); } /* dwell */
+      58%  { transform: translateX(-50%) translateY(0) rotate(0deg); }
       72%  { transform: translateX(-50%) translateY(-10px) rotate(-35deg); }
-      84%  { transform: translateX(-50%) translateY(-10px) rotate(-35deg); } /* hold open */
+      84%  { transform: translateX(-50%) translateY(-10px) rotate(-35deg); }
       100% { transform: translateX(-50%) translateY(0) rotate(0deg); }
     }
 
@@ -328,12 +335,10 @@
     }
 
     @media (max-width: 920px){
-      nav{display:none;}
       .doors{grid-template-columns:1fr;}
       .door{min-height:300px;}
     }
 
-    /* Respect reduced motion */
     @media (prefers-reduced-motion: reduce){
       .steam span{ animation:none; opacity:.6; }
       .domeGroup, .shackle{ animation:none; }
@@ -346,24 +351,15 @@
     <div class="nav">
       <div class="brand">
         <div class="mark" aria-hidden="true"></div>
-        <span>Fit Food Chef UK</span>
+        <span>Fit Food</span>
       </div>
 
       <nav aria-label="Primary navigation">
         <a href="index.html">Home</a>
         <a href="bio.html">Bio</a>
-        <a href="contact.html">Contact</a>
-        <a href="testimonials.html">Testimonials</a>
         <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
       </nav>
-
-      <a href="contact.html" style="
-        display:inline-flex; align-items:center; justify-content:center;
-        gap:10px; padding:11px 14px; border-radius:14px;
-        border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.03);
-        color:rgba(234,234,234,.85); font-weight:650; white-space:nowrap;">
-        Start
-      </a>
     </div>
   </header>
 
@@ -410,7 +406,7 @@
     </div>
 
     <footer>
-      <div>© <span id="year"></span> Fit Food Chef UK</div>
+      <div>© <span id="year"></span> Fit Food</div>
       <div>Fit-for-purpose food operations</div>
     </footer>
   </main>
