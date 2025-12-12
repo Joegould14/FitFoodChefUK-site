@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Fit Food Chef UK — Fit-for-purpose food operations</title>
+  <meta name="description" content="Hands-on, fit-for-purpose food operations for startups and early-stage businesses. Real-world operational delivery — beyond what AI can do." />
+
+  <style>
+    :root{
+      --bg: #0b0c0f;
+      --panel: rgba(255,255,255,.04);
+      --panel2: rgba(255,255,255,.06);
+      --text: #e9e9ea;
+      --muted: rgba(233,233,234,.72);
+      --hair: rgba(255,255,255,.10);
+      --gold: #c9a44a;
+      --gold2:#e0c072;
+      --shadow: 0 18px 50px rgba(0,0,0,.55);
+      --radius: 18px;
+      --radius2: 26px;
+      --max: 1100px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 600px at 20% 0%, rgba(201,164,74,.20), transparent 55%),
+                  radial-gradient(900px 500px at 80% 10%, rgba(224,192,114,.10), transparent 60%),
+                  linear-gradient(180deg, #07080b 0%, #0b0c0f 35%, #07080b 100%);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    a:hover { opacity: .92; }
+
+    .wrap{ max-width: var(--max); margin: 0 auto; padding: 22px; }
+
+    /* Top bar */
+    header{
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(10px);
+      background: rgba(7,8,11,.55);
+      border-bottom: 1px solid var(--hair);
+      z-index: 10;
+    }
+
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      gap: 14px;
+      padding: 14px 22px;
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    .brand{
+      display:flex; align-items:center; gap: 10px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-size: .86rem;
+      color: rgba(233,233,234,.88);
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    .mark{
+      width: 34px; height: 34px;
+      border-radius: 10px;
+      border: 1px solid rgba(201,164,74,.45);
+      background:
+        radial-gradient(10px 10px at 25% 30%, rgba(224,192,114,.55), transparent 55%),
+        radial-gradient(14px 12px at 70% 70%, rgba(201,164,74,.35), transparent 60%),
+        rgba(255,255,255,.03);
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      position: relative;
+      overflow: hidden;
+    }
+    .mark:after{
+      content:"";
+      position:absolute; inset:-40%;
+      background: linear-gradient(120deg, transparent 0%, rgba(201,164,74,.25) 45%, transparent 70%);
+      transform: rotate(15deg);
+      opacity:.55;
+    }
+
+    .links{
+      display:flex; align-items:center; gap: 14px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .links a{
+      font-size: .92rem;
+      color: rgba(233,233,234,.75);
+      padding: 8px 10px;
+      border-radius: 12px;
+      border: 1px solid transparent;
+    }
+    .links a:hover{
+      border-color: rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+    }
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap: 10px;
+      padding: 11px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(201,164,74,.55);
+      background: linear-gradient(180deg, rgba(201,164,74,.18), rgba(255,255,255,.02));
+      box-shadow: 0 14px 34px rgba(0,0,0,.35);
+      color: rgba(233,233,234,.95);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .btn:hover{
+      border-color: rgba(224,192,114,.85);
+      transform: translateY(-1px);
+      transition: transform .12s ease;
+    }
+    .btn small{ font-weight: 500; color: rgba(233,233,234,.70); }
+
+    /* Hero */
+    .hero{
+      padding: 44px 0 10px;
+    }
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .heroMain{ padding: 28px; }
+
+    .kicker{
+      display:inline-flex; gap: 10px; align-items:center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(201,164,74,.35);
+      background: rgba(201,164,74,.08);
+      color: rgba(233,233,234,.85);
+      font-size: .92rem;
+    }
+    .dot{
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 0 6px rgba(201,164,74,.15);
+    }
+
+    h1{
+      margin: 16px 0 12px;
+      font-size: clamp(2.0rem, 4.2vw, 3.2rem);
+      letter-spacing: -0.02em;
+      line-height: 1.08;
+    }
+    .sub{
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 62ch;
+    }
+
+    .heroActions{
+      display:flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .ghost{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap: 10px;
+      padding: 11px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      color: rgba(233,233,234,.85);
+      font-weight: 600;
+    }
+    .ghost:hover{ border-color: rgba(255,255,255,.18); }
+
+    .heroSide{
+      padding: 18px;
+    }
+    .sideBlock{
+      padding: 16px 16px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      margin-bottom: 12px;
+    }
+    .sideTitle{
+      font-weight: 700;
+      letter-spacing: .02em;
+      margin: 0 0 8px;
+      color: rgba(233,233,234,.92);
+    }
+    .sideText{
+      margin:0;
+      color: rgba(233,233,234,.72);
+      font-size: .96rem;
+    }
+    .badgeLine{
+      display:flex; flex-wrap:wrap; gap: 8px;
+      margin-top: 10px;
+    }
+    .badge{
+      font-size: .86rem;
+      color: rgba(233,233,234,.78);
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(201,164,74,.25);
+      background: rgba(201,164,74,.07);
+    }
+
+    /* Sections */
+    section{ padding: 26px 0; }
+    .sectionTitle{
+      font-size: 1.35rem;
+      margin: 0 0 10px;
+      letter-spacing: -0.01em;
+    }
+    .sectionLead{
+      color: var(--muted);
+      margin: 0 0 18px;
+      max-width: 80ch;
+    }
+
+    .grid2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .tile{
+      padding: 18px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+    }
+    .tile h3{
+      margin: 0 0 8px;
+      font-size: 1.05rem;
+      letter-spacing: -0.01em;
+    }
+    .tile p{ margin: 0; color: rgba(233,233,234,.74); }
+    .tile ul{ margin: 10px 0 0; padding-left: 18px; color: rgba(233,233,234,.74); }
+    .tile li{ margin: 6px 0; }
+
+    /* AI section */
+    .ai{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+    .ai .tile{
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+    }
+    .callout{
+      padding: 18px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(201,164,74,.35);
+      background: rgba(201,164,74,.08);
+    }
+    .callout strong{
+      color: rgba(233,233,234,.95);
+    }
+
+    /* Pricing */
+    .pricing{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 16px;
+      align-items: start;
+    }
+    .priceBox{
+      padding: 18px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+    }
+    .priceBox p{ margin: 0; color: rgba(233,233,234,.74); }
+    .priceBox .pill{
+      display:inline-block;
+      margin-top: 10px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(201,164,74,.30);
+      background: rgba(201,164,74,.07);
+      color: rgba(233,233,234,.80);
+      font-size: .90rem;
+    }
+
+    /* Contact */
+    .contact{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+    form{
+      display:flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    label{
+      font-size: .92rem;
+      color: rgba(233,233,234,.78);
+    }
+    input, textarea{
+      width: 100%;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      color: rgba(233,233,234,.92);
+      outline: none;
+    }
+    input:focus, textarea:focus{
+      border-color: rgba(224,192,114,.55);
+      box-shadow: 0 0 0 4px rgba(201,164,74,.14);
+    }
+    textarea{ min-height: 120px; resize: vertical; }
+
+    footer{
+      padding: 26px 0 40px;
+      border-top: 1px solid var(--hair);
+      margin-top: 26px;
+      color: rgba(233,233,234,.55);
+      font-size: .9rem;
+    }
+
+    .split{
+      display:flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Responsive */
+    @media (max-width: 920px){
+      .heroGrid{ grid-template-columns: 1fr; }
+      .pricing{ grid-template-columns: 1fr; }
+      .ai{ grid-template-columns: 1fr; }
+      .contact{ grid-template-columns: 1fr; }
+      .links{ display:none; } /* keep it clean on mobile */
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="nav">
+      <div class="brand">
+        <div class="mark" aria-hidden="true"></div>
+        <span>Fit Food Chef UK</span>
+      </div>
+
+      <nav class="links" aria-label="Primary">
+        <a href="#who">Who I help</a>
+        <a href="#work">What I do</a>
+        <a href="#ai">Why not AI</a>
+        <a href="#pricing">Project fees</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a class="btn" href="#contact" title="Start an enquiry">
+        Start a project <small>→</small>
+      </a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="heroGrid">
+        <div class="card">
+          <div class="heroMain">
+            <div class="kicker"><span class="dot" aria-hidden="true"></span> Fit-for-purpose food operations</div>
+
+            <h1>Hands-on operational delivery for startups that need food to actually work.</h1>
+
+            <p class="sub">
+              I help early-stage businesses and food startups turn ambition into a food operation that fits the
+              real world: the space, the staffing reality, the workflow, the compliance exposure, and the commercial constraints.
+            </p>
+
+            <div class="heroActions">
+              <a class="btn" href="#contact">Enquire about a project <small>→</small></a>
+              <a class="ghost" href="#ai">How this differs from “consultancy”</a>
+            </div>
+          </div>
+        </div>
+
+        <aside class="card">
+          <div class="heroSide">
+            <div class="sideBlock">
+              <p class="sideTitle">What “FIT” means</p>
+              <p class="sideText">
+                Not “healthy”. Fit for purpose: food designed around the business running it — not an idealised version of it.
+              </p>
+              <div class="badgeLine">
+                <span class="badge">Space</span>
+                <span class="badge">Staffing</span>
+                <span class="badge">Workflow</span>
+                <span class="badge">Compliance</span>
+                <span class="badge">Margin</span>
+              </div>
+            </div>
+
+            <div class="sideBlock">
+              <p class="sideTitle">About</p>
+              <p class="sideText">
+                20+ years in high-end hospitality, operating at 3 AA Rosette level. Chef-led, operations-first.
+              </p>
+            </div>
+
+            <div class="sideBlock">
+              <p class="sideTitle">How you pay</p>
+              <p class="sideText">
+                Project fee, scoped upfront. You’re paying for decisions, delivery and accountability — not hourly “advice”.
+              </p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- WHO -->
+    <section id="who">
+      <h2 class="sectionTitle">Who I help</h2>
+      <p class="sectionLead">
+        Two kinds of founders hire me. Different visions. Same risk: food that doesn’t fit reality.
+      </p>
+
+      <div class="grid2">
+        <div class="tile">
+          <h3>Businesses adding a food element</h3>
+          <p>Food supports the main business — it must be controlled, resilient and commercially sane.</p>
+          <ul>
+            <li>Gyms, co-working, experiential venues, lifestyle hotels, retail concepts</li>
+            <li>You want a food offer that strengthens the brand without becoming a liability</li>
+          </ul>
+        </div>
+
+        <div class="tile">
+          <h3>Food startups</h3>
+          <p>You’ve got the idea. You need the operation to survive contact with staff, service and volume.</p>
+          <ul>
+            <li>First-time founders and early-stage teams</li>
+            <li>Pre-launch or “we’re about to outgrow our current setup”</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT -->
+    <section id="work">
+      <h2 class="sectionTitle">What I do</h2>
+      <p class="sectionLead">
+        I don’t sell concepts. I deliver workable food operations — designed around constraints and executed with real-world practicality.
+      </p>
+
+      <div class="grid2">
+        <div class="tile">
+          <h3>Operational feasibility & stress testing</h3>
+          <p>We challenge assumptions early — before expensive mistakes get built in.</p>
+          <ul>
+            <li>“Should food exist here at all?”</li>
+            <li>Service model and workflow reality</li>
+            <li>Staffing and skill ceiling</li>
+            <li>Compliance exposure and operational risk</li>
+          </ul>
+        </div>
+
+        <div class="tile">
+          <h3>Menu scope & operational design</h3>
+          <p>Most failure comes from over-reach. I design for stability, not ego.</p>
+          <ul>
+            <li>Define what you do <em>not</em> serve</li>
+            <li>Build around available labour and training time</li>
+            <li>Make food fit the day-to-day business flow</li>
+          </ul>
+        </div>
+
+        <div class="tile">
+          <h3>Equipment specification & procurement support</h3>
+          <p>Buy the right kit once — sized to your space, volume and staffing reality.</p>
+          <ul>
+            <li>Equipment lists that earn their footprint</li>
+            <li>Supplier shortlists and purchasing guidance</li>
+            <li>Setup sequencing to avoid rework</li>
+          </ul>
+        </div>
+
+        <div class="tile">
+          <h3>Hands-on operational delivery</h3>
+          <p>On site when needed — building practical systems, not just writing recommendations.</p>
+          <ul>
+            <li>Workflow walkthroughs and fixes</li>
+            <li>Operational standards and checks</li>
+            <li>Training where it matters</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI -->
+    <section id="ai">
+      <h2 class="sectionTitle">Where I help that AI can’t</h2>
+      <p class="sectionLead">
+        AI is useful. It’s also blind to context. The difference is physical reality: space, movement, friction, timing, people.
+      </p>
+
+      <div class="ai">
+        <div class="callout">
+          <p style="margin:0; color: rgba(233,233,234,.82);">
+            <strong>AI can generate options.</strong><br/>
+            I make decisions that survive the real world: what fits your space, your staff, your workflow and your actual constraints.
+          </p>
+        </div>
+
+        <div class="tile">
+          <h3>What “hands-on” means</h3>
+          <ul>
+            <li>I physically assess your space and operational flow</li>
+            <li>I stress-test service and staffing assumptions</li>
+            <li>I spot constraints you didn’t think to ask about</li>
+            <li>I translate ambition into a system people can run</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing">
+      <h2 class="sectionTitle">Project fees, not hourly consultancy</h2>
+      <p class="sectionLead">
+        You’re not paying for time. You’re paying for judgement, delivery, and an operation that works beyond opening week.
+      </p>
+
+      <div class="pricing">
+        <div class="priceBox">
+          <h3 style="margin:0 0 8px;">How projects typically run</h3>
+          <p>
+            Every engagement is scoped upfront with a clear end point, deliverables and timeline.
+            No drifting retainers. No “advice” that leaves you holding the risk.
+          </p>
+          <div class="pill">Scoped • Fixed deliverables • Real-world accountability</div>
+        </div>
+
+        <div class="priceBox">
+          <h3 style="margin:0 0 8px;">A note on equipment and suppliers</h3>
+          <p>
+            If I specify suppliers or equipment routes, it’s because they make operational sense.
+            In some cases I may receive a referral fee — it does not change your price or my recommendations.
+          </p>
+          <div class="pill">Fit first • Trust preserved • Procurement simplified</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2 class="sectionTitle">Start a project</h2>
+      <p class="sectionLead">
+        If you’re building something new (or about to), and you want food to work in reality — not just on paper — get in touch.
+      </p>
+
+      <div class="contact">
+        <div class="tile">
+          <h3>Fastest route</h3>
+          <p style="color: rgba(233,233,234,.74); margin: 0 0 12px;">
+            Email me with a short summary: what you’re building, location, stage (idea/pre-launch/trading), and your main constraint.
+          </p>
+          <p style="margin: 0 0 16px;">
+            <a class="btn" href="mailto:hello@fitfoodchef.uk?subject=Project%20enquiry%20—%20Fit%20Food%20Operations">
+              Email hello@fitfoodchef.uk <small>→</small>
+            </a>
+          </p>
+          <p style="color: rgba(233,233,234,.62); margin: 0;">
+            If you’re not ready for a project fee, you’re not ready for this service. That’s deliberate.
+          </p>
+        </div>
+
+        <div class="tile">
+          <h3>Enquiry form (optional)</h3>
+          <p style="color: rgba(233,233,234,.74); margin: 0 0 12px;">
+            This form is currently set up as a placeholder. If you want it to actually send, I can wire it to Formspree or your own backend.
+          </p>
+
+          <form action="#" method="post" onsubmit="return false;">
+            <div>
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" placeholder="Your name" autocomplete="name" />
+            </div>
+
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" />
+            </div>
+
+            <div>
+              <label for="msg">What are you building?</label>
+              <textarea id="msg" name="message" placeholder="Location, stage, what food needs to do for the business, and your biggest constraint."></textarea>
+            </div>
+
+            <button class="ghost" type="submit" aria-disabled="true" title="Form not wired yet">
+              Form not wired yet
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="split">
+        <div>© <span id="year"></span> Fit Food Chef UK</div>
+        <div style="color: rgba(233,233,234,.55);">
+          Fit-for-purpose food operations • Hands-on delivery • Project fees
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
