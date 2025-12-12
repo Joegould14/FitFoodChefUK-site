@@ -2,147 +2,648 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Fit Food Chef UK – Under Maintenance</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Fit Food Chef UK — Fit-for-purpose food operations</title>
+  <meta name="description" content="Hands-on operational delivery for food startups, businesses adding a food offering, and venues under new management. Fit for purpose, in the real world." />
 
-  <!-- Brand styling -->
   <style>
-    :root {
-      --bg: #0f0f0f;
-      --gold: #c9a44a;
-      --text: #eaeaea;
-      --muted: #9a9a9a;
+    :root{
+      --bg:#0f0f0f;
+      --panel:rgba(255,255,255,.03);
+      --hair:rgba(255,255,255,.10);
+      --text:#eaeaea;
+      --muted:rgba(234,234,234,.70);
+      --gold:#c9a44a;
+      --gold2:#e0c072;
+      --max:1100px;
+      --r:18px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      background:
+        radial-gradient(1000px 500px at 15% 0%, rgba(201,164,74,.14), transparent 60%),
+        radial-gradient(900px 500px at 85% 15%, rgba(224,192,114,.08), transparent 60%),
+        linear-gradient(180deg, #090909 0%, #0f0f0f 45%, #090909 100%);
+      color:var(--text);
+      line-height:1.5;
     }
 
-    body {
-      min-height: 100vh;
-      background: var(--bg);
-      color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-                   Roboto, Helvetica, Arial, sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
+    a{color:inherit;text-decoration:none}
+    a:hover{opacity:.92}
+
+    /* Top nav */
+    header{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter: blur(10px);
+      background: rgba(10,10,10,.55);
+      border-bottom:1px solid var(--hair);
+    }
+    .nav{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:12px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      font-size:.86rem;
+      color:rgba(234,234,234,.88);
+      user-select:none;
+      white-space:nowrap;
+    }
+    .mark{
+      width:30px;height:30px;border-radius:10px;
+      border:1px solid rgba(201,164,74,.45);
+      background: rgba(255,255,255,.03);
+      position:relative; overflow:hidden;
+    }
+    .mark:after{
+      content:"";
+      position:absolute; inset:-40%;
+      background: linear-gradient(120deg, transparent 0%, rgba(201,164,74,.25) 45%, transparent 70%);
+      transform: rotate(15deg);
+      opacity:.55;
+    }
+    nav{
+      display:flex; align-items:center; gap:6px; flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    nav a{
+      font-size:.92rem;
+      padding:8px 10px;
+      border-radius:12px;
+      border:1px solid transparent;
+      color:rgba(234,234,234,.72);
+    }
+    nav a:hover{
+      border-color:rgba(255,255,255,.12);
+      background:rgba(255,255,255,.03);
     }
 
-    .container {
-      max-width: 720px;
-      text-align: center;
+    /* Layout */
+    .wrap{max-width:var(--max); margin:0 auto; padding:26px 18px 44px;}
+
+    .hero{
+      padding:34px 0 10px;
+      text-align:center;
+    }
+    .kicker{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(201,164,74,.30);
+      background:rgba(201,164,74,.08);
+      color:rgba(234,234,234,.86);
+      font-size:.92rem;
+      margin-bottom:14px;
+    }
+    .dot{
+      width:8px;height:8px;border-radius:50%;
+      background:var(--gold);
+      box-shadow:0 0 0 6px rgba(201,164,74,.15);
     }
 
-    /* Pan icon */
-    .pan {
-      width: 140px;
-      height: 70px;
-      margin: 0 auto 48px;
-      position: relative;
-      border: 3px solid var(--gold);
-      border-top: none;
-      border-radius: 0 0 20px 20px;
+    h1{
+      margin:0 auto 10px;
+      font-size:clamp(2.0rem, 4.2vw, 3.0rem);
+      letter-spacing:-0.02em;
+      line-height:1.08;
+      max-width:22ch;
+    }
+    .sub{
+      margin:0 auto;
+      color:var(--muted);
+      max-width:78ch;
+      font-size:1.05rem;
     }
 
-    .pan::after {
-      content: "";
-      position: absolute;
-      right: -38px;
-      top: 18px;
-      width: 36px;
-      height: 10px;
-      border: 3px solid var(--gold);
-      border-left: none;
-      border-radius: 0 8px 8px 0;
+    /* Three doors */
+    .doors{
+      margin-top:26px;
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:14px;
+    }
+    .door{
+      border-radius:26px;
+      border:1px solid rgba(255,255,255,.10);
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+      padding:18px;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+      transition: transform .12s ease, border-color .12s ease, background .12s ease;
+      min-height:260px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      gap:10px;
+    }
+    .door:hover{
+      transform: translateY(-2px);
+      border-color: rgba(224,192,114,.45);
+      background:linear-gradient(180deg, rgba(201,164,74,.11), rgba(255,255,255,.03));
+    }
+    .door:focus-visible{
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(201,164,74,.18);
+      border-color: rgba(224,192,114,.65);
     }
 
-    .steam {
-      position: absolute;
-      top: -50px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 10px;
+    .icon{
+      width:160px;
+      height:110px;
+      margin:0 auto 4px;
+      position:relative;
     }
 
-    .steam span {
-      width: 6px;
-      height: 30px;
-      border-radius: 3px;
+    .doorTitle{
+      margin:4px 0 0;
+      font-size:1.05rem;
+      letter-spacing:-0.01em;
+    }
+    .doorLine{
+      margin:0 auto;
+      max-width:34ch;
+      color:rgba(234,234,234,.72);
+      font-size:.96rem;
+    }
+    .doorHint{
+      margin-top:6px;
+      font-size:.90rem;
+      color:rgba(234,234,234,.60);
+      letter-spacing:.06em;
+      text-transform:uppercase;
+    }
+
+    /* Sections */
+    section{
+      padding:28px 0;
+      border-top:1px solid rgba(255,255,255,.08);
+      margin-top:22px;
+    }
+    .sectionTitle{
+      font-size:1.35rem;
+      margin:0 0 10px;
+      letter-spacing:-0.01em;
+    }
+    .lead{
+      margin:0 0 16px;
+      color:var(--muted);
+      max-width:85ch;
+    }
+
+    .grid2{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+    .card{
+      border-radius:var(--r);
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.03);
+      padding:16px;
+    }
+    .card h3{margin:0 0 8px; font-size:1.02rem}
+    .card p{margin:0; color:rgba(234,234,234,.74)}
+    .card ul{margin:10px 0 0; padding-left:18px; color:rgba(234,234,234,.74)}
+    .card li{margin:6px 0}
+
+    .contactRow{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:11px 14px;
+      border-radius:14px;
+      border:1px solid rgba(201,164,74,.55);
+      background: linear-gradient(180deg, rgba(201,164,74,.18), rgba(255,255,255,.02));
+      color:rgba(234,234,234,.95);
+      font-weight:700;
+      white-space:nowrap;
+    }
+    .ghost{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:11px 14px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.03);
+      color:rgba(234,234,234,.85);
+      font-weight:650;
+      white-space:nowrap;
+    }
+
+    /* ===== ICON 1: Pan + Steam ===== */
+    .pan{
+      position:absolute;
+      left:50%; bottom:0;
+      transform:translateX(-50%);
+      width:150px; height:70px;
+      border:2px solid var(--gold);
+      border-top:none;
+      border-radius:0 0 20px 20px;
+      background: rgba(255,255,255,.01);
+    }
+    .pan:after{
+      content:"";
+      position:absolute;
+      right:-36px; top:20px;
+      width:34px; height:10px;
+      border:2px solid var(--gold);
+      border-left:none;
+      border-radius:0 8px 8px 0;
+    }
+    .steam{
+      position:absolute;
+      left:50%; top:0;
+      transform:translate(-50%,-8px);
+      display:flex; gap:12px;
+    }
+    .steam span{
+      width:6px; height:30px;
+      border-radius:3px;
       background: var(--gold);
-      opacity: 0;
-      animation: steam 2.5s infinite;
+      opacity:0;
+      animation: steam 2.6s infinite;
+    }
+    .steam span:nth-child(2){ animation-delay:.45s; }
+    .steam span:nth-child(3){ animation-delay:.9s; }
+    @keyframes steam{
+      0%{ transform: translateY(10px); opacity:0; }
+      30%{ opacity:.85; }
+      100%{ transform: translateY(-22px); opacity:0; }
     }
 
-    .steam span:nth-child(2) {
-      animation-delay: 0.4s;
+    /* ===== ICON 2: Cloche lifting ===== */
+    .clocheBase{
+      position:absolute;
+      left:50%; bottom:10px;
+      transform:translateX(-50%);
+      width:150px; height:14px;
+      border:2px solid var(--gold);
+      border-radius:999px;
+      background: rgba(255,255,255,.01);
+    }
+    .clocheDome{
+      position:absolute;
+      left:50%; bottom:22px;
+      transform:translateX(-50%);
+      width:150px; height:74px;
+      border:2px solid var(--gold);
+      border-bottom:none;
+      border-radius:999px 999px 16px 16px;
+      background: rgba(255,255,255,.01);
+      transition: transform .18s ease;
+    }
+    .clocheKnob{
+      position:absolute;
+      left:50%; bottom:88px;
+      transform:translateX(-50%);
+      width:22px; height:10px;
+      border:2px solid var(--gold);
+      border-radius:999px 999px 10px 10px;
+      background: rgba(255,255,255,.01);
+      transition: transform .18s ease;
+    }
+    .door:hover .clocheDome{ transform: translateX(-50%) translateY(-10px) rotate(-2deg); }
+    .door:hover .clocheKnob{ transform: translateX(-50%) translateY(-10px) rotate(-2deg); }
+
+    /* ===== ICON 3: Key handover ===== */
+    .key{
+      position:absolute;
+      left:50%; bottom:34px;
+      transform:translateX(-50%);
+      width:150px; height:10px;
+      background: var(--gold);
+      border-radius:999px;
+    }
+    .key:before{
+      content:"";
+      position:absolute;
+      left:-16px; top:50%;
+      transform:translateY(-50%);
+      width:30px; height:30px;
+      border:2px solid var(--gold);
+      border-radius:50%;
+      background: transparent;
+    }
+    .key:after{
+      content:"";
+      position:absolute;
+      right:14px; top:50%;
+      transform:translateY(-50%);
+      width:34px; height:18px;
+      border:2px solid var(--gold);
+      border-left:none;
+      border-radius:0 12px 12px 0;
+      background: transparent;
+      opacity:.95;
+    }
+    .handoverHand{
+      position:absolute;
+      left:50%; bottom:10px;
+      transform:translateX(-50%);
+      width:150px; height:42px;
+      border:2px solid var(--gold);
+      border-top:none;
+      border-radius:0 0 22px 22px;
+      background: rgba(255,255,255,.01);
+    }
+    .handoverHand:before{
+      content:"";
+      position:absolute;
+      left:18px; top:8px;
+      width:28px; height:12px;
+      border:2px solid var(--gold);
+      border-top:none;
+      border-left:none;
+      border-radius:0 0 12px 0;
+      opacity:.9;
+    }
+    .handoverHand:after{
+      content:"";
+      position:absolute;
+      right:18px; top:8px;
+      width:28px; height:12px;
+      border:2px solid var(--gold);
+      border-top:none;
+      border-right:none;
+      border-radius:0 0 0 12px;
+      opacity:.9;
     }
 
-    .steam span:nth-child(3) {
-      animation-delay: 0.8s;
+    footer{
+      padding:22px 0 36px;
+      color:rgba(234,234,234,.55);
+      font-size:.9rem;
+      border-top:1px solid rgba(255,255,255,.08);
+      margin-top:24px;
     }
 
-    @keyframes steam {
-      0% {
-        transform: translateY(10px);
-        opacity: 0;
-      }
-      30% {
-        opacity: 0.8;
-      }
-      100% {
-        transform: translateY(-20px);
-        opacity: 0;
-      }
-    }
-
-    h1 {
-      font-size: clamp(1.8rem, 4vw, 2.6rem);
-      letter-spacing: 0.04em;
-      margin-bottom: 20px;
-    }
-
-    p {
-      font-size: 1.05rem;
-      line-height: 1.6;
-      color: var(--muted);
-      margin-bottom: 10px;
-    }
-
-    .brand {
-      margin-top: 50px;
-      font-size: 0.85rem;
-      letter-spacing: 0.25em;
-      color: var(--gold);
+    /* Responsive */
+    @media (max-width: 920px){
+      nav{display:none;} /* minimal mobile */
+      .doors{grid-template-columns:1fr; }
+      .door{min-height:230px}
+      .grid2{grid-template-columns:1fr;}
     }
   </style>
 </head>
 
 <body>
-  <main class="container">
-    <div class="pan">
-      <div class="steam">
-        <span></span>
-        <span></span>
-        <span></span>
+  <header>
+    <div class="nav">
+      <div class="brand">
+        <div class="mark" aria-hidden="true"></div>
+        <span>Fit Food Chef UK</span>
       </div>
+
+      <nav aria-label="Primary navigation">
+        <a href="#home">Home</a>
+        <a href="#bio">Bio</a>
+        <a href="#contact">Contact</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#gallery">Gallery</a>
+      </nav>
+
+      <a class="ghost" href="#contact" aria-label="Start a project">Start</a>
+    </div>
+  </header>
+
+  <main class="wrap" id="home">
+    <div class="hero">
+      <div class="kicker"><span class="dot" aria-hidden="true"></span> Fit-for-purpose food operations</div>
+      <h1>Hands-on delivery for founders who need food to work in the real world.</h1>
+      <p class="sub">
+        I help startups and new operators build food systems that fit the space, the staffing reality, the workflow and the commercial constraints —
+        not an idealised version of them.
+      </p>
     </div>
 
-    <h1>We’re cooking up something new</h1>
+    <!-- Three big categories -->
+    <div class="doors" aria-label="Choose your path">
+      <a class="door" href="#food-startups" aria-label="Food business startups">
+        <div class="icon" aria-hidden="true">
+          <div class="steam"><span></span><span></span><span></span></div>
+          <div class="pan"></div>
+        </div>
+        <div>
+          <div class="doorTitle">Food Business Startups</div>
+          <div class="doorLine">From idea to a workable operation — scoped, stress-tested, deliverable.</div>
+          <div class="doorHint">Explore →</div>
+        </div>
+      </a>
 
-    <p>
-      Fit Food Chef UK is currently undergoing a little maintenance.
-    </p>
-    <p>
-      The kitchen will reopen shortly — sharper, leaner, and more intentional.
-    </p>
+      <a class="door" href="#adding-offer" aria-label="Adding a food offering">
+        <div class="icon" aria-hidden="true">
+          <div class="clocheKnob"></div>
+          <div class="clocheDome"></div>
+          <div class="clocheBase"></div>
+        </div>
+        <div>
+          <div class="doorTitle">Adding a Food Offering</div>
+          <div class="doorLine">Make food fit your business — without turning it into a liability.</div>
+          <div class="doorHint">Explore →</div>
+        </div>
+      </a>
 
-    <div class="brand">FIT FOOD CHEF UK</div>
+      <a class="door" href="#new-management" aria-label="Food businesses under new management">
+        <div class="icon" aria-hidden="true">
+          <div class="key"></div>
+          <div class="handoverHand"></div>
+        </div>
+        <div>
+          <div class="doorTitle">New Management</div>
+          <div class="doorLine">Stabilise standards, margin and workflow fast — with real-world fixes.</div>
+          <div class="doorHint">Explore →</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- BIO -->
+    <section id="bio">
+      <h2 class="sectionTitle">Bio</h2>
+      <p class="lead">
+        I’m a professional chef with 20+ years in high-end hospitality, operating at 3 AA Rosette level.
+        Fit Food means fit-for-purpose: designing food operations around the reality of your space, staff, service and budget.
+      </p>
+
+      <div class="grid2">
+        <div class="card">
+          <h3>What you’re really paying for</h3>
+          <p>Judgement, delivery, and an operation that works beyond opening week — not “ideas” or generic PDFs.</p>
+          <ul>
+            <li>On-site observation and workflow stress testing</li>
+            <li>Practical constraints applied before you spend money</li>
+            <li>Decisions that survive real staffing and service conditions</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Where I help that AI can’t</h3>
+          <p>AI is useful for options. It can’t see your reality.</p>
+          <ul>
+            <li>I physically assess your space and movement</li>
+            <li>I spot friction points you didn’t think to ask about</li>
+            <li>I design for the people you can actually hire</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORY 1 -->
+    <section id="food-startups">
+      <h2 class="sectionTitle">Food Business Startups</h2>
+      <p class="lead">
+        You’ve got the idea. Now it needs to be runnable — with real staff, real service pressure, real suppliers and real constraints.
+      </p>
+      <div class="grid2">
+        <div class="card">
+          <h3>Typical work</h3>
+          <ul>
+            <li>Feasibility + reality check before you commit</li>
+            <li>Menu scope and complexity control</li>
+            <li>Workflow design and service sequencing</li>
+            <li>Staffing skill ceiling and training plan</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Outcome</h3>
+          <ul>
+            <li>A food operation that fits your model and budget</li>
+            <li>Fewer expensive mistakes baked in</li>
+            <li>Clarity on what to do — and what to avoid</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORY 2 -->
+    <section id="adding-offer">
+      <h2 class="sectionTitle">Adding a Food Offering</h2>
+      <p class="lead">
+        Food should support the business — not dominate it. The goal is a controlled offer that fits your space, staffing and flow.
+      </p>
+      <div class="grid2">
+        <div class="card">
+          <h3>Typical work</h3>
+          <ul>
+            <li>Define the offer (and its limits)</li>
+            <li>Service model and operational flow</li>
+            <li>Equipment specification that earns its footprint</li>
+            <li>Supplier + procurement guidance</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Outcome</h3>
+          <ul>
+            <li>A lean, stable food system</li>
+            <li>Reduced compliance and staffing risk</li>
+            <li>Food that fits your brand without breaking operations</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORY 3 -->
+    <section id="new-management">
+      <h2 class="sectionTitle">New Management</h2>
+      <p class="lead">
+        Taking over an existing food operation? The fastest wins come from stabilising standards and workflow —
+        then tightening margins and training.
+      </p>
+      <div class="grid2">
+        <div class="card">
+          <h3>Typical work</h3>
+          <ul>
+            <li>Rapid operational assessment</li>
+            <li>Workflow fixes and standards reset</li>
+            <li>Menu scope correction (remove what breaks service)</li>
+            <li>Training and checks that hold without you</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Outcome</h3>
+          <ul>
+            <li>Stability fast — less chaos, more control</li>
+            <li>Clear priorities and an achievable plan</li>
+            <li>Practical systems staff can actually follow</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials">
+      <h2 class="sectionTitle">Testimonials</h2>
+      <p class="lead">
+        Add real quotes here when you’re ready. Keep them short and specific (what changed, what improved, what risk was avoided).
+      </p>
+      <div class="grid2">
+        <div class="card">
+          <h3>Placeholder</h3>
+          <p>“Joe helped us strip back complexity and rebuild service flow. It finally worked with the team we could hire.”</p>
+        </div>
+        <div class="card">
+          <h3>Placeholder</h3>
+          <p>“The equipment plan saved us from buying the wrong kit twice. The operation fit the space immediately.”</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery">
+      <h2 class="sectionTitle">Gallery</h2>
+      <p class="lead">
+        Keep this minimal: 6–12 images max. Spaces, workflows, kit layouts, service passes — anything that signals “real operations”.
+      </p>
+      <div class="grid2">
+        <div class="card"><h3>Placeholder</h3><p>Add images later.</p></div>
+        <div class="card"><h3>Placeholder</h3><p>Add images later.</p></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2 class="sectionTitle">Contact</h2>
+      <p class="lead">
+        I work on a project fee, scoped upfront. If you’re looking for free advice or hourly consultancy, this won’t be a fit.
+      </p>
+      <div class="card">
+        <h3>Start a project</h3>
+        <p style="color:rgba(234,234,234,.74); margin:0 0 14px;">
+          Email a short summary: what you’re building, location, stage (idea / pre-launch / trading), and the main constraint.
+        </p>
+        <div class="contactRow">
+          <a class="btn" href="mailto:hello@fitfoodchef.uk?subject=Project%20enquiry%20—%20Fit%20Food%20Chef%20UK">Email hello@fitfoodchef.uk</a>
+          <a class="ghost" href="#home">Back to top</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+        <div>© <span id="year"></span> Fit Food Chef UK</div>
+        <div>Fit-for-purpose food operations • Hands-on delivery • Project fees</div>
+      </div>
+    </footer>
   </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
-
