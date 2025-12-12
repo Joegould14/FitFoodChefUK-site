@@ -4,17 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Fit Food</title>
-  <meta name="description" content="Fit-for-purpose food operations." />
+  <meta name="description" content="Delivering hands on operation support to food businesses." />
 
   <style>
     :root{
-      --bg:#0f0f0f;
+      --bg:#0b0c0f;
+      --bg2:#07080b;
+      --panel:rgba(255,255,255,.035);
       --hair:rgba(255,255,255,.10);
+
       --text:#eaeaea;
+      --muted:rgba(234,234,234,.70);
+
       --gold:#c9a44a;
-      --gold2:#e0c072;
-      --max:1100px;
       --stroke:2px;
+
+      --max:1100px;
     }
 
     *{box-sizing:border-box}
@@ -22,73 +27,109 @@
     body{
       margin:0;
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-      background:
-        radial-gradient(1000px 500px at 15% 0%, rgba(201,164,74,.14), transparent 60%),
-        radial-gradient(900px 500px at 85% 15%, rgba(224,192,114,.08), transparent 60%),
-        linear-gradient(180deg, #090909 0%, #0f0f0f 45%, #090909 100%);
       color:var(--text);
       line-height:1.5;
+
+      /* More consistent palette: subtle gold glow + deep black base */
+      background:
+        radial-gradient(900px 520px at 18% 0%, rgba(201,164,74,.12), transparent 62%),
+        radial-gradient(700px 460px at 82% 12%, rgba(201,164,74,.06), transparent 60%),
+        linear-gradient(180deg, var(--bg2) 0%, var(--bg) 55%, var(--bg2) 100%);
     }
 
     a{color:inherit;text-decoration:none}
-    a:hover{opacity:.95}
+    a:hover{opacity:.94}
 
-    /* Thin top nav */
+    /* ===== Thin top bar ===== */
     header{
       position:sticky; top:0; z-index:10;
       backdrop-filter: blur(10px);
-      background: rgba(10,10,10,.55);
+      background: rgba(7,8,11,.62);
       border-bottom:1px solid var(--hair);
     }
     .nav{
       max-width:var(--max);
       margin:0 auto;
-      padding:12px 18px;
+      padding:10px 14px;
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:14px;
+      gap:10px;
     }
+
     .brand{
-      display:flex; align-items:center; gap:10px;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      font-size:.86rem;
-      color:rgba(234,234,234,.88);
-      user-select:none;
-      white-space:nowrap;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width: 0;
     }
     .mark{
-      width:30px;height:30px;border-radius:10px;
-      border:1px solid rgba(201,164,74,.45);
+      width:28px;height:28px;border-radius:10px;
+      border:1px solid rgba(201,164,74,.55);
       background: rgba(255,255,255,.03);
-      position:relative; overflow:hidden;
+      position:relative;
+      flex:0 0 auto;
+      overflow:hidden;
     }
     .mark:after{
       content:"";
-      position:absolute; inset:-40%;
-      background: linear-gradient(120deg, transparent 0%, rgba(201,164,74,.25) 45%, transparent 70%);
+      position:absolute; inset:-55%;
+      background: linear-gradient(120deg, transparent 0%, rgba(201,164,74,.25) 48%, transparent 70%);
       transform: rotate(15deg);
-      opacity:.55;
+      opacity:.6;
     }
+    .brandText{
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+      min-width:0;
+    }
+    .brandTitle{
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      font-size:.86rem;
+      color:rgba(234,234,234,.90);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .brandTag{
+      font-size:.82rem;
+      color:rgba(234,234,234,.62);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    /* Force nav links to stay on ONE ROW even on mobile */
     nav{
-      display:flex; align-items:center; gap:6px; flex-wrap:wrap;
-      justify-content:flex-end;
+      display:flex;
+      align-items:center;
+      gap:6px;
+      flex-wrap:nowrap;
+      white-space:nowrap;
+      flex:0 0 auto;
     }
     nav a{
-      font-size:.92rem;
-      padding:8px 10px;
+      font-size:clamp(.82rem, 2.4vw, .92rem);
+      padding:7px 9px;
       border-radius:12px;
       border:1px solid transparent;
-      color:rgba(234,234,234,.72);
+      color:rgba(234,234,234,.70);
+      line-height:1;
     }
     nav a:hover{
       border-color:rgba(255,255,255,.12);
       background:rgba(255,255,255,.03);
     }
 
-    /* Layout */
-    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 44px;}
+    /* ===== Page layout ===== */
+    .wrap{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:26px 14px 44px;
+    }
+
     .doors{
       display:grid;
       grid-template-columns:repeat(3, 1fr);
@@ -96,11 +137,10 @@
       align-items:stretch;
       margin-top:10px;
     }
-
     .door{
       border-radius:26px;
       border:1px solid rgba(255,255,255,.10);
-      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+      background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.02));
       padding:18px;
       text-align:center;
       position:relative;
@@ -115,13 +155,13 @@
     }
     .door:hover{
       transform: translateY(-2px);
-      border-color: rgba(224,192,114,.45);
-      background:linear-gradient(180deg, rgba(201,164,74,.11), rgba(255,255,255,.03));
+      border-color: rgba(201,164,74,.40);
+      background: linear-gradient(180deg, rgba(201,164,74,.06), rgba(255,255,255,.02));
     }
     .door:focus-visible{
       outline:none;
       box-shadow: 0 0 0 4px rgba(201,164,74,.18);
-      border-color: rgba(224,192,114,.65);
+      border-color: rgba(201,164,74,.55);
     }
 
     .icon{
@@ -129,22 +169,23 @@
       height:130px;
       margin:0 auto 2px;
       position:relative;
-      filter: drop-shadow(0 12px 28px rgba(0,0,0,.35));
+      filter: drop-shadow(0 12px 28px rgba(0,0,0,.38));
     }
     .doorTitle{
       margin:6px 0 0;
       font-size:1.04rem;
       letter-spacing:-0.01em;
+      color:rgba(234,234,234,.92);
     }
     .doorHint{
       margin-top:4px;
       font-size:.90rem;
-      color: rgba(234,234,234,.60);
+      color: rgba(234,234,234,.58);
       letter-spacing:.06em;
       text-transform:uppercase;
     }
 
-    /* ===================== ICON 1: PAN + STEAM ===================== */
+    /* ===== ICON 1: PAN + STEAM ===== */
     .pan{
       position:absolute;
       left:50%; bottom:8px;
@@ -185,7 +226,7 @@
       100%{ transform: translateY(-26px); opacity:0; }
     }
 
-    /* ===================== ICON 2: CLOCHE LOOP ===================== */
+    /* ===== ICON 2: CLOCHE (rise only, slower) ===== */
     .clocheWrap{
       position:absolute;
       left:50%; bottom:8px;
@@ -201,15 +242,13 @@
       border-radius:999px;
       background: rgba(255,255,255,.01);
     }
-
-    /* Split motion: lift straight up first, then rotate */
     .domeGroup{
       position:absolute;
       left:50%; bottom:14px;
       transform: translateX(-50%);
       width:170px; height:92px;
       transform-origin: 50% 92%;
-      animation: clocheLift 4.42s ease-in-out infinite; /* 30% slower vs 3.4s */
+      animation: clocheRise 4.8s ease-in-out infinite;
     }
     .dome{
       position:absolute;
@@ -241,17 +280,15 @@
       background: rgba(255,255,255,.01);
     }
 
-    /* Comes up first (away), THEN rotates 45deg, then returns */
-    @keyframes clocheLift{
-      0%   { transform: translateX(-50%) translateY(0) rotate(0deg); }
-      58%  { transform: translateX(-50%) translateY(0) rotate(0deg); } /* dwell */
-      72%  { transform: translateX(-50%) translateY(-22px) rotate(0deg); } /* lift */
-      84%  { transform: translateX(-50%) translateY(-26px) rotate(-45deg); } /* rotate away */
-      92%  { transform: translateX(-50%) translateY(-18px) rotate(-32deg); } /* small settle */
-      100% { transform: translateX(-50%) translateY(0) rotate(0deg); }
+    @keyframes clocheRise{
+      0%   { transform: translateX(-50%) translateY(0); }
+      62%  { transform: translateX(-50%) translateY(0); }      /* dwell */
+      78%  { transform: translateX(-50%) translateY(-26px); }  /* lift */
+      88%  { transform: translateX(-50%) translateY(-22px); }  /* gentle settle */
+      100% { transform: translateX(-50%) translateY(0); }
     }
 
-    /* ===================== ICON 3: PADLOCK LOOP (refined) ===================== */
+    /* ===== ICON 3: PADLOCK (slower, no black mark) ===== */
     .lockWrap{
       position:absolute;
       left:50%; bottom:8px;
@@ -298,27 +335,15 @@
       border-radius:999px 999px 0 0;
       background: transparent;
       transform-origin: 18% 85%;
-      animation: unlock 3.6s ease-in-out infinite;
+      animation: unlock 5.2s ease-in-out infinite; /* slower */
     }
-
-    /* Remove the black end-square by using a pseudo-element that matches background only,
-       and only covers the gap area (smaller + positioned tighter). */
-    .shackle:after{
-      content:"";
-      position:absolute;
-      right:-2px; bottom:-2px;
-      width:14px; height:18px;
-      background: transparent;
-      /* use a gradient to blend instead of a hard square */
-      background: linear-gradient(180deg, transparent 0%, var(--bg) 40%, var(--bg) 100%);
-      border-radius: 0 0 0 8px;
-    }
+    /* IMPORTANT: removed the gap-cover pseudo-element entirely (no black mark). */
 
     @keyframes unlock{
       0%   { transform: translateX(-50%) translateY(0) rotate(0deg); }
-      58%  { transform: translateX(-50%) translateY(0) rotate(0deg); }
-      72%  { transform: translateX(-50%) translateY(-10px) rotate(-35deg); }
-      84%  { transform: translateX(-50%) translateY(-10px) rotate(-35deg); }
+      70%  { transform: translateX(-50%) translateY(0) rotate(0deg); }   /* longer dwell */
+      82%  { transform: translateX(-50%) translateY(-10px) rotate(-32deg); }
+      90%  { transform: translateX(-50%) translateY(-10px) rotate(-32deg); } /* hold open */
       100% { transform: translateX(-50%) translateY(0) rotate(0deg); }
     }
 
@@ -337,6 +362,9 @@
     @media (max-width: 920px){
       .doors{grid-template-columns:1fr;}
       .door{min-height:300px;}
+      .nav{padding:10px 10px;}
+      nav{gap:4px;}
+      nav a{padding:7px 7px;}
     }
 
     @media (prefers-reduced-motion: reduce){
@@ -351,7 +379,10 @@
     <div class="nav">
       <div class="brand">
         <div class="mark" aria-hidden="true"></div>
-        <span>Fit Food</span>
+        <div class="brandText">
+          <div class="brandTitle">Fit Food</div>
+          <div class="brandTag">Delivering hands on operation support to food businesses</div>
+        </div>
       </div>
 
       <nav aria-label="Primary navigation">
