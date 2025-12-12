@@ -10,7 +10,7 @@
       --bg:#0b0c0f;
       --bg2:#07080b;
       --panel:rgba(255,255,255,.035);
-      --hair:rgba(255,255,000,.10);
+      --hair:rgba(255,255,255,.10);
       --text:#eaeaea;
       --muted:rgba(234,234,234,.70);
       --gold:#c9a44a;
@@ -50,45 +50,13 @@
     .brand{
       display:flex;
       align-items:center;
-      gap:10px;
-      min-width: 0;
+      justify-content:center;
+      flex:1;
     }
-    .mark{
-      width:28px;height:28px;border-radius:10px;
-      border:1px solid rgba(201,164,74,.55);
-      background: rgba(255,255,255,.03);
-      position:relative;
-      flex:0 0 auto;
-      overflow:hidden;
-    }
-    .mark:after{
-      content:"";
-      position:absolute; inset:-55%;
-      background: linear-gradient(120deg, transparent 0%, rgba(201,164,74,.25) 48%, transparent 70%);
-      transform: rotate(15deg);
-      opacity:.6;
-    }
-    .brandText{
-      display:flex;
-      flex-direction:column;
-      gap:2px;
-      min-width:0;
-    }
-    .brandTitle{
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      font-size:.86rem;
-      color:rgba(234,234,234,.90);
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-    }
-    .brandTag{
-      font-size:.82rem;
-      color:rgba(234,234,234,.62);
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
+    .logo{
+      height:42px;
+      width:auto;
+      display:block;
     }
     /* Force nav links to stay on ONE ROW even on mobile */
     nav{
@@ -112,24 +80,28 @@
       background:rgba(255,255,255,.03);
     }
 
-    /* NEW: Title section placed right under the header */
+    /* NEW: Centered title section under the header */
     .pageTitleSection {
       max-width: var(--max);
       margin: 0 auto;
-      padding: 20px 14px 10px;
-      text-align: left;
+      padding: 32px 14px 20px;
+      text-align: center;
     }
     .pageTitle {
       margin: 0;
-      font-size: 1.8rem;
+      font-size: 2.2rem;
       letter-spacing: -0.02em;
       color: var(--text);
+      font-weight: 600;
     }
     .pageTagline {
-      margin: 8px 0 0;
-      font-size: 1rem;
+      margin: 12px 0 0;
+      font-size: 1.1rem;
       color: var(--muted);
       line-height: 1.4;
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     /* ===== Page layout ===== */
@@ -286,9 +258,9 @@
     }
     @keyframes clocheRise{
       0% { transform: translateX(-50%) translateY(0); }
-      62% { transform: translateX(-50%) translateY(0); } /* dwell */
-      78% { transform: translateX(-50%) translateY(-26px); } /* lift */
-      88% { transform: translateX(-50%) translateY(-22px); } /* gentle settle */
+      62% { transform: translateX(-50%) translateY(0); }
+      78% { transform: translateX(-50%) translateY(-26px); }
+      88% { transform: translateX(-50%) translateY(-22px); }
       100% { transform: translateX(-50%) translateY(0); }
     }
     /* ===== ICON 3: PADLOCK (slower, no black mark) ===== */
@@ -337,13 +309,13 @@
       border-radius:999px 999px 0 0;
       background: transparent;
       transform-origin: 18% 85%;
-      animation: unlock 5.2s ease-in-out infinite; /* slower */
+      animation: unlock 5.2s ease-in-out infinite;
     }
     @keyframes unlock{
       0% { transform: translateX(-50%) translateY(0) rotate(0deg); }
-      70% { transform: translateX(-50%) translateY(0) rotate(0deg); } /* longer dwell */
+      70% { transform: translateX(-50%) translateY(0) rotate(0deg); }
       82% { transform: translateX(-50%) translateY(-10px) rotate(-32deg); }
-      90% { transform: translateX(-50%) translateY(-10px) rotate(-32deg); } /* hold open */
+      90% { transform: translateX(-50%) translateY(-10px) rotate(-32deg); }
       100% { transform: translateX(-50%) translateY(0) rotate(0deg); }
     }
     footer{
@@ -363,6 +335,8 @@
       .nav{padding:10px 10px;}
       nav{gap:4px;}
       nav a{padding:7px 7px;}
+      .pageTitle {font-size: 1.9rem;}
+      .pageTagline {font-size: 1rem;}
     }
     @media (prefers-reduced-motion: reduce){
       .steam span{ animation:none; opacity:.6; }
@@ -373,9 +347,11 @@
 <body>
   <header>
     <div class="nav">
-      <!-- Only the logo mark remains in the header -->
+      <!-- Centered logo replacing the previous mark -->
       <div class="brand">
-        <div class="mark" aria-hidden="true"></div>
+        <a href="index.html">
+          <img src="fit-food-logo.jpg" alt="Fit Food" class="logo">
+        </a>
       </div>
       <nav aria-label="Primary navigation">
         <a href="index.html">Home</a>
@@ -386,7 +362,7 @@
     </div>
   </header>
 
-  <!-- NEW: Title and tagline moved here, directly under the header -->
+  <!-- Centered title and tagline under the header -->
   <div class="pageTitleSection">
     <h1 class="pageTitle">Fit Food</h1>
     <p class="pageTagline">Delivering operational support to food businesses</p>
