@@ -3,20 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Fit Food Chef UK — Fit-for-purpose food operations</title>
-  <meta name="description" content="Hands-on operational delivery for food startups, businesses adding a food offering, and venues under new management. Fit for purpose, in the real world." />
+  <title>Fit Food Chef UK</title>
+  <meta name="description" content="Fit-for-purpose food operations." />
 
   <style>
     :root{
       --bg:#0f0f0f;
-      --panel:rgba(255,255,255,.03);
       --hair:rgba(255,255,255,.10);
       --text:#eaeaea;
-      --muted:rgba(234,234,234,.70);
       --gold:#c9a44a;
       --gold2:#e0c072;
       --max:1100px;
-      --r:18px;
+      --stroke:2px;
     }
 
     *{box-sizing:border-box}
@@ -33,9 +31,9 @@
     }
 
     a{color:inherit;text-decoration:none}
-    a:hover{opacity:.92}
+    a:hover{opacity:.95}
 
-    /* Top nav */
+    /* Thin top nav */
     header{
       position:sticky; top:0; z-index:10;
       backdrop-filter: blur(10px);
@@ -90,49 +88,15 @@
     }
 
     /* Layout */
-    .wrap{max-width:var(--max); margin:0 auto; padding:26px 18px 44px;}
-
-    .hero{
-      padding:34px 0 10px;
-      text-align:center;
-    }
-    .kicker{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:8px 12px;
-      border-radius:999px;
-      border:1px solid rgba(201,164,74,.30);
-      background:rgba(201,164,74,.08);
-      color:rgba(234,234,234,.86);
-      font-size:.92rem;
-      margin-bottom:14px;
-    }
-    .dot{
-      width:8px;height:8px;border-radius:50%;
-      background:var(--gold);
-      box-shadow:0 0 0 6px rgba(201,164,74,.15);
-    }
-
-    h1{
-      margin:0 auto 10px;
-      font-size:clamp(2.0rem, 4.2vw, 3.0rem);
-      letter-spacing:-0.02em;
-      line-height:1.08;
-      max-width:22ch;
-    }
-    .sub{
-      margin:0 auto;
-      color:var(--muted);
-      max-width:78ch;
-      font-size:1.05rem;
-    }
-
-    /* Three doors */
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 44px;}
     .doors{
-      margin-top:26px;
       display:grid;
       grid-template-columns:repeat(3, 1fr);
       gap:14px;
+      align-items:stretch;
+      margin-top:10px;
     }
+
     .door{
       border-radius:26px;
       border:1px solid rgba(255,255,255,.10);
@@ -141,12 +105,13 @@
       text-align:center;
       position:relative;
       overflow:hidden;
-      transition: transform .12s ease, border-color .12s ease, background .12s ease;
-      min-height:260px;
+      min-height:330px;
       display:flex;
       flex-direction:column;
       justify-content:center;
       gap:10px;
+      transition: transform .12s ease, border-color .12s ease, background .12s ease;
+      -webkit-tap-highlight-color: transparent;
     }
     .door:hover{
       transform: translateY(-2px);
@@ -154,127 +119,59 @@
       background:linear-gradient(180deg, rgba(201,164,74,.11), rgba(255,255,255,.03));
     }
     .door:focus-visible{
-      outline: none;
+      outline:none;
       box-shadow: 0 0 0 4px rgba(201,164,74,.18);
       border-color: rgba(224,192,114,.65);
     }
 
     .icon{
-      width:160px;
-      height:110px;
-      margin:0 auto 4px;
+      width:190px;
+      height:130px;
+      margin:0 auto 2px;
       position:relative;
+      filter: drop-shadow(0 12px 28px rgba(0,0,0,.35));
     }
-
     .doorTitle{
-      margin:4px 0 0;
-      font-size:1.05rem;
+      margin:6px 0 0;
+      font-size:1.04rem;
       letter-spacing:-0.01em;
     }
-    .doorLine{
-      margin:0 auto;
-      max-width:34ch;
-      color:rgba(234,234,234,.72);
-      font-size:.96rem;
-    }
     .doorHint{
-      margin-top:6px;
+      margin-top:4px;
       font-size:.90rem;
-      color:rgba(234,234,234,.60);
+      color: rgba(234,234,234,.60);
       letter-spacing:.06em;
       text-transform:uppercase;
     }
 
-    /* Sections */
-    section{
-      padding:28px 0;
-      border-top:1px solid rgba(255,255,255,.08);
-      margin-top:22px;
-    }
-    .sectionTitle{
-      font-size:1.35rem;
-      margin:0 0 10px;
-      letter-spacing:-0.01em;
-    }
-    .lead{
-      margin:0 0 16px;
-      color:var(--muted);
-      max-width:85ch;
-    }
-
-    .grid2{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:14px;
-    }
-    .card{
-      border-radius:var(--r);
-      border:1px solid rgba(255,255,255,.10);
-      background:rgba(255,255,255,.03);
-      padding:16px;
-    }
-    .card h3{margin:0 0 8px; font-size:1.02rem}
-    .card p{margin:0; color:rgba(234,234,234,.74)}
-    .card ul{margin:10px 0 0; padding-left:18px; color:rgba(234,234,234,.74)}
-    .card li{margin:6px 0}
-
-    .contactRow{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      align-items:center;
-    }
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      gap:10px;
-      padding:11px 14px;
-      border-radius:14px;
-      border:1px solid rgba(201,164,74,.55);
-      background: linear-gradient(180deg, rgba(201,164,74,.18), rgba(255,255,255,.02));
-      color:rgba(234,234,234,.95);
-      font-weight:700;
-      white-space:nowrap;
-    }
-    .ghost{
-      display:inline-flex; align-items:center; justify-content:center;
-      gap:10px;
-      padding:11px 14px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.03);
-      color:rgba(234,234,234,.85);
-      font-weight:650;
-      white-space:nowrap;
-    }
-
-    /* ===== ICON 1: Pan + Steam ===== */
+    /* ===================== ICON 1: PAN + STEAM ===================== */
     .pan{
       position:absolute;
-      left:50%; bottom:0;
+      left:50%; bottom:8px;
       transform:translateX(-50%);
-      width:150px; height:70px;
-      border:2px solid var(--gold);
+      width:160px; height:72px;
+      border:var(--stroke) solid var(--gold);
       border-top:none;
-      border-radius:0 0 20px 20px;
+      border-radius:0 0 22px 22px;
       background: rgba(255,255,255,.01);
     }
     .pan:after{
       content:"";
       position:absolute;
-      right:-36px; top:20px;
-      width:34px; height:10px;
-      border:2px solid var(--gold);
+      right:-40px; top:22px;
+      width:40px; height:12px;
+      border:var(--stroke) solid var(--gold);
       border-left:none;
-      border-radius:0 8px 8px 0;
+      border-radius:0 9px 9px 0;
     }
     .steam{
       position:absolute;
-      left:50%; top:0;
-      transform:translate(-50%,-8px);
-      display:flex; gap:12px;
+      left:50%; top:10px;
+      transform:translateX(-50%);
+      display:flex; gap:14px;
     }
     .steam span{
-      width:6px; height:30px;
+      width:6px; height:34px;
       border-radius:3px;
       background: var(--gold);
       opacity:0;
@@ -283,123 +180,163 @@
     .steam span:nth-child(2){ animation-delay:.45s; }
     .steam span:nth-child(3){ animation-delay:.9s; }
     @keyframes steam{
-      0%{ transform: translateY(10px); opacity:0; }
+      0%{ transform: translateY(12px); opacity:0; }
       30%{ opacity:.85; }
-      100%{ transform: translateY(-22px); opacity:0; }
+      100%{ transform: translateY(-26px); opacity:0; }
     }
 
-    /* ===== ICON 2: Cloche lifting ===== */
-    .clocheBase{
+    /* ===================== ICON 2: CLOCHE LOOP ===================== */
+    .clocheWrap{
       position:absolute;
-      left:50%; bottom:10px;
-      transform:translateX(-50%);
-      width:150px; height:14px;
-      border:2px solid var(--gold);
+      left:50%; bottom:8px;
+      transform: translateX(-50%);
+      width:170px; height:110px;
+    }
+    .plate{
+      position:absolute;
+      left:50%; bottom:0;
+      transform: translateX(-50%);
+      width:170px; height:14px;
+      border:var(--stroke) solid var(--gold);
       border-radius:999px;
       background: rgba(255,255,255,.01);
     }
-    .clocheDome{
+    .domeGroup{
       position:absolute;
-      left:50%; bottom:22px;
-      transform:translateX(-50%);
-      width:150px; height:74px;
-      border:2px solid var(--gold);
+      left:50%; bottom:14px;
+      transform: translateX(-50%);
+      width:170px; height:92px;
+      transform-origin: 30% 90%;
+      animation: clocheLift 3.4s ease-in-out infinite;
+    }
+    .dome{
+      position:absolute;
+      left:50%; bottom:0;
+      transform: translateX(-50%);
+      width:170px; height:82px;
+      border:var(--stroke) solid var(--gold);
       border-bottom:none;
-      border-radius:999px 999px 16px 16px;
+      border-radius:999px 999px 18px 18px;
       background: rgba(255,255,255,.01);
-      transition: transform .18s ease;
     }
-    .clocheKnob{
+    /* Knob sits on crown */
+    .knob{
       position:absolute;
-      left:50%; bottom:88px;
-      transform:translateX(-50%);
-      width:22px; height:10px;
-      border:2px solid var(--gold);
-      border-radius:999px 999px 10px 10px;
+      left:50%; top:2px;
+      transform: translateX(-50%);
+      width:26px; height:12px;
+      border:var(--stroke) solid var(--gold);
+      border-radius:999px 999px 12px 12px;
       background: rgba(255,255,255,.01);
-      transition: transform .18s ease;
     }
-    .door:hover .clocheDome{ transform: translateX(-50%) translateY(-10px) rotate(-2deg); }
-    .door:hover .clocheKnob{ transform: translateX(-50%) translateY(-10px) rotate(-2deg); }
-
-    /* ===== ICON 3: Key handover ===== */
-    .key{
-      position:absolute;
-      left:50%; bottom:34px;
-      transform:translateX(-50%);
-      width:150px; height:10px;
-      background: var(--gold);
-      border-radius:999px;
-    }
-    .key:before{
+    .knob:after{
       content:"";
       position:absolute;
-      left:-16px; top:50%;
-      transform:translateY(-50%);
-      width:30px; height:30px;
-      border:2px solid var(--gold);
+      left:50%; top:-12px;
+      transform: translateX(-50%);
+      width:14px; height:14px;
+      border:var(--stroke) solid var(--gold);
       border-radius:50%;
-      background: transparent;
-    }
-    .key:after{
-      content:"";
-      position:absolute;
-      right:14px; top:50%;
-      transform:translateY(-50%);
-      width:34px; height:18px;
-      border:2px solid var(--gold);
-      border-left:none;
-      border-radius:0 12px 12px 0;
-      background: transparent;
-      opacity:.95;
-    }
-    .handoverHand{
-      position:absolute;
-      left:50%; bottom:10px;
-      transform:translateX(-50%);
-      width:150px; height:42px;
-      border:2px solid var(--gold);
-      border-top:none;
-      border-radius:0 0 22px 22px;
       background: rgba(255,255,255,.01);
     }
-    .handoverHand:before{
-      content:"";
-      position:absolute;
-      left:18px; top:8px;
-      width:28px; height:12px;
-      border:2px solid var(--gold);
-      border-top:none;
-      border-left:none;
-      border-radius:0 0 12px 0;
-      opacity:.9;
+
+    /* Subtle “lift & rotate off” loop */
+    @keyframes clocheLift{
+      0%   { transform: translateX(-50%) translateY(0) rotate(0deg); }
+      55%  { transform: translateX(-50%) translateY(0) rotate(0deg); } /* dwell */
+      72%  { transform: translateX(-50%) translateY(-22px) rotate(-45deg); }
+      84%  { transform: translateX(-50%) translateY(-18px) rotate(-38deg); } /* slight settle */
+      100% { transform: translateX(-50%) translateY(0) rotate(0deg); }
     }
-    .handoverHand:after{
+
+    /* ===================== ICON 3: PADLOCK LOOP ===================== */
+    .lockWrap{
+      position:absolute;
+      left:50%; bottom:8px;
+      transform: translateX(-50%);
+      width:170px; height:120px;
+    }
+    .lockBody{
+      position:absolute;
+      left:50%; bottom:0;
+      transform: translateX(-50%);
+      width:120px; height:78px;
+      border:var(--stroke) solid var(--gold);
+      border-radius:18px;
+      background: rgba(255,255,255,.01);
+    }
+    .keyhole{
+      position:absolute;
+      left:50%; top:26px;
+      transform: translateX(-50%);
+      width:18px; height:18px;
+      border:var(--stroke) solid var(--gold);
+      border-radius:50%;
+      background: rgba(255,255,255,.01);
+    }
+    .keyhole:after{
       content:"";
       position:absolute;
-      right:18px; top:8px;
-      width:28px; height:12px;
-      border:2px solid var(--gold);
+      left:50%; top:16px;
+      transform: translateX(-50%);
+      width:10px; height:16px;
+      border:var(--stroke) solid var(--gold);
       border-top:none;
-      border-right:none;
-      border-radius:0 0 0 12px;
-      opacity:.9;
+      border-radius:0 0 10px 10px;
+      background: rgba(255,255,255,.01);
+    }
+
+    .shackle{
+      position:absolute;
+      left:50%; bottom:62px;
+      transform: translateX(-50%);
+      width:98px; height:72px;
+      border:var(--stroke) solid var(--gold);
+      border-bottom:none;
+      border-radius:999px 999px 0 0;
+      background: transparent;
+      transform-origin: 20% 85%;
+      animation: unlock 3.6s ease-in-out infinite;
+    }
+    .shackle:after{
+      content:"";
+      position:absolute;
+      right:-2px; bottom:-2px;
+      width:22px; height:24px;
+      background: var(--bg);
+    }
+
+    /* Subtle unlock loop (open, pause, close) */
+    @keyframes unlock{
+      0%   { transform: translateX(-50%) translateY(0) rotate(0deg); }
+      58%  { transform: translateX(-50%) translateY(0) rotate(0deg); } /* dwell */
+      72%  { transform: translateX(-50%) translateY(-10px) rotate(-35deg); }
+      84%  { transform: translateX(-50%) translateY(-10px) rotate(-35deg); } /* hold open */
+      100% { transform: translateX(-50%) translateY(0) rotate(0deg); }
     }
 
     footer{
-      padding:22px 0 36px;
+      margin-top:24px;
+      padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.08);
       color:rgba(234,234,234,.55);
       font-size:.9rem;
-      border-top:1px solid rgba(255,255,255,.08);
-      margin-top:24px;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
     }
 
-    /* Responsive */
     @media (max-width: 920px){
-      nav{display:none;} /* minimal mobile */
-      .doors{grid-template-columns:1fr; }
-      .door{min-height:230px}
-      .grid2{grid-template-columns:1fr;}
+      nav{display:none;}
+      .doors{grid-template-columns:1fr;}
+      .door{min-height:300px;}
+    }
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      .steam span{ animation:none; opacity:.6; }
+      .domeGroup, .shackle{ animation:none; }
     }
   </style>
 </head>
@@ -413,232 +350,68 @@
       </div>
 
       <nav aria-label="Primary navigation">
-        <a href="#home">Home</a>
-        <a href="#bio">Bio</a>
-        <a href="#contact">Contact</a>
-        <a href="#testimonials">Testimonials</a>
-        <a href="#gallery">Gallery</a>
+        <a href="index.html">Home</a>
+        <a href="bio.html">Bio</a>
+        <a href="contact.html">Contact</a>
+        <a href="testimonials.html">Testimonials</a>
+        <a href="gallery.html">Gallery</a>
       </nav>
 
-      <a class="ghost" href="#contact" aria-label="Start a project">Start</a>
+      <a href="contact.html" style="
+        display:inline-flex; align-items:center; justify-content:center;
+        gap:10px; padding:11px 14px; border-radius:14px;
+        border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.03);
+        color:rgba(234,234,234,.85); font-weight:650; white-space:nowrap;">
+        Start
+      </a>
     </div>
   </header>
 
-  <main class="wrap" id="home">
-    <div class="hero">
-      <div class="kicker"><span class="dot" aria-hidden="true"></span> Fit-for-purpose food operations</div>
-      <h1>Hands-on delivery for founders who need food to work in the real world.</h1>
-      <p class="sub">
-        I help startups and new operators build food systems that fit the space, the staffing reality, the workflow and the commercial constraints —
-        not an idealised version of them.
-      </p>
-    </div>
-
-    <!-- Three big categories -->
+  <main class="wrap">
     <div class="doors" aria-label="Choose your path">
-      <a class="door" href="#food-startups" aria-label="Food business startups">
+      <!-- 1) Food business startups -->
+      <a class="door" href="food-startups.html" aria-label="Food business startups">
         <div class="icon" aria-hidden="true">
           <div class="steam"><span></span><span></span><span></span></div>
           <div class="pan"></div>
         </div>
-        <div>
-          <div class="doorTitle">Food Business Startups</div>
-          <div class="doorLine">From idea to a workable operation — scoped, stress-tested, deliverable.</div>
-          <div class="doorHint">Explore →</div>
-        </div>
+        <div class="doorTitle">Food Business Startups</div>
+        <div class="doorHint">Explore →</div>
       </a>
 
-      <a class="door" href="#adding-offer" aria-label="Adding a food offering">
+      <!-- 2) Adding a food offering -->
+      <a class="door" href="adding-food.html" aria-label="Adding a food offering">
         <div class="icon" aria-hidden="true">
-          <div class="clocheKnob"></div>
-          <div class="clocheDome"></div>
-          <div class="clocheBase"></div>
+          <div class="clocheWrap">
+            <div class="domeGroup">
+              <div class="knob"></div>
+              <div class="dome"></div>
+            </div>
+            <div class="plate"></div>
+          </div>
         </div>
-        <div>
-          <div class="doorTitle">Adding a Food Offering</div>
-          <div class="doorLine">Make food fit your business — without turning it into a liability.</div>
-          <div class="doorHint">Explore →</div>
-        </div>
+        <div class="doorTitle">Adding a Food Offering</div>
+        <div class="doorHint">Explore →</div>
       </a>
 
-      <a class="door" href="#new-management" aria-label="Food businesses under new management">
+      <!-- 3) New management -->
+      <a class="door" href="new-management.html" aria-label="New management">
         <div class="icon" aria-hidden="true">
-          <div class="key"></div>
-          <div class="handoverHand"></div>
+          <div class="lockWrap">
+            <div class="shackle"></div>
+            <div class="lockBody">
+              <div class="keyhole"></div>
+            </div>
+          </div>
         </div>
-        <div>
-          <div class="doorTitle">New Management</div>
-          <div class="doorLine">Stabilise standards, margin and workflow fast — with real-world fixes.</div>
-          <div class="doorHint">Explore →</div>
-        </div>
+        <div class="doorTitle">New Management</div>
+        <div class="doorHint">Explore →</div>
       </a>
     </div>
 
-    <!-- BIO -->
-    <section id="bio">
-      <h2 class="sectionTitle">Bio</h2>
-      <p class="lead">
-        I’m a professional chef with 20+ years in high-end hospitality, operating at 3 AA Rosette level.
-        Fit Food means fit-for-purpose: designing food operations around the reality of your space, staff, service and budget.
-      </p>
-
-      <div class="grid2">
-        <div class="card">
-          <h3>What you’re really paying for</h3>
-          <p>Judgement, delivery, and an operation that works beyond opening week — not “ideas” or generic PDFs.</p>
-          <ul>
-            <li>On-site observation and workflow stress testing</li>
-            <li>Practical constraints applied before you spend money</li>
-            <li>Decisions that survive real staffing and service conditions</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Where I help that AI can’t</h3>
-          <p>AI is useful for options. It can’t see your reality.</p>
-          <ul>
-            <li>I physically assess your space and movement</li>
-            <li>I spot friction points you didn’t think to ask about</li>
-            <li>I design for the people you can actually hire</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- CATEGORY 1 -->
-    <section id="food-startups">
-      <h2 class="sectionTitle">Food Business Startups</h2>
-      <p class="lead">
-        You’ve got the idea. Now it needs to be runnable — with real staff, real service pressure, real suppliers and real constraints.
-      </p>
-      <div class="grid2">
-        <div class="card">
-          <h3>Typical work</h3>
-          <ul>
-            <li>Feasibility + reality check before you commit</li>
-            <li>Menu scope and complexity control</li>
-            <li>Workflow design and service sequencing</li>
-            <li>Staffing skill ceiling and training plan</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Outcome</h3>
-          <ul>
-            <li>A food operation that fits your model and budget</li>
-            <li>Fewer expensive mistakes baked in</li>
-            <li>Clarity on what to do — and what to avoid</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- CATEGORY 2 -->
-    <section id="adding-offer">
-      <h2 class="sectionTitle">Adding a Food Offering</h2>
-      <p class="lead">
-        Food should support the business — not dominate it. The goal is a controlled offer that fits your space, staffing and flow.
-      </p>
-      <div class="grid2">
-        <div class="card">
-          <h3>Typical work</h3>
-          <ul>
-            <li>Define the offer (and its limits)</li>
-            <li>Service model and operational flow</li>
-            <li>Equipment specification that earns its footprint</li>
-            <li>Supplier + procurement guidance</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Outcome</h3>
-          <ul>
-            <li>A lean, stable food system</li>
-            <li>Reduced compliance and staffing risk</li>
-            <li>Food that fits your brand without breaking operations</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- CATEGORY 3 -->
-    <section id="new-management">
-      <h2 class="sectionTitle">New Management</h2>
-      <p class="lead">
-        Taking over an existing food operation? The fastest wins come from stabilising standards and workflow —
-        then tightening margins and training.
-      </p>
-      <div class="grid2">
-        <div class="card">
-          <h3>Typical work</h3>
-          <ul>
-            <li>Rapid operational assessment</li>
-            <li>Workflow fixes and standards reset</li>
-            <li>Menu scope correction (remove what breaks service)</li>
-            <li>Training and checks that hold without you</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Outcome</h3>
-          <ul>
-            <li>Stability fast — less chaos, more control</li>
-            <li>Clear priorities and an achievable plan</li>
-            <li>Practical systems staff can actually follow</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- TESTIMONIALS -->
-    <section id="testimonials">
-      <h2 class="sectionTitle">Testimonials</h2>
-      <p class="lead">
-        Add real quotes here when you’re ready. Keep them short and specific (what changed, what improved, what risk was avoided).
-      </p>
-      <div class="grid2">
-        <div class="card">
-          <h3>Placeholder</h3>
-          <p>“Joe helped us strip back complexity and rebuild service flow. It finally worked with the team we could hire.”</p>
-        </div>
-        <div class="card">
-          <h3>Placeholder</h3>
-          <p>“The equipment plan saved us from buying the wrong kit twice. The operation fit the space immediately.”</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- GALLERY -->
-    <section id="gallery">
-      <h2 class="sectionTitle">Gallery</h2>
-      <p class="lead">
-        Keep this minimal: 6–12 images max. Spaces, workflows, kit layouts, service passes — anything that signals “real operations”.
-      </p>
-      <div class="grid2">
-        <div class="card"><h3>Placeholder</h3><p>Add images later.</p></div>
-        <div class="card"><h3>Placeholder</h3><p>Add images later.</p></div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact">
-      <h2 class="sectionTitle">Contact</h2>
-      <p class="lead">
-        I work on a project fee, scoped upfront. If you’re looking for free advice or hourly consultancy, this won’t be a fit.
-      </p>
-      <div class="card">
-        <h3>Start a project</h3>
-        <p style="color:rgba(234,234,234,.74); margin:0 0 14px;">
-          Email a short summary: what you’re building, location, stage (idea / pre-launch / trading), and the main constraint.
-        </p>
-        <div class="contactRow">
-          <a class="btn" href="mailto:hello@fitfoodchef.uk?subject=Project%20enquiry%20—%20Fit%20Food%20Chef%20UK">Email hello@fitfoodchef.uk</a>
-          <a class="ghost" href="#home">Back to top</a>
-        </div>
-      </div>
-    </section>
-
     <footer>
-      <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
-        <div>© <span id="year"></span> Fit Food Chef UK</div>
-        <div>Fit-for-purpose food operations • Hands-on delivery • Project fees</div>
-      </div>
+      <div>© <span id="year"></span> Fit Food Chef UK</div>
+      <div>Fit-for-purpose food operations</div>
     </footer>
   </main>
 
