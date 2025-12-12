@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fit Food Chef UK – Under Maintenance</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+  <!-- Brand styling -->
+  <style>
+    :root {
+      --bg: #0f0f0f;
+      --gold: #c9a44a;
+      --text: #eaeaea;
+      --muted: #9a9a9a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                   Roboto, Helvetica, Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .container {
+      max-width: 720px;
+      text-align: center;
+    }
+
+    /* Pan icon */
+    .pan {
+      width: 140px;
+      height: 70px;
+      margin: 0 auto 48px;
+      position: relative;
+      border: 3px solid var(--gold);
+      border-top: none;
+      border-radius: 0 0 20px 20px;
+    }
+
+    .pan::after {
+      content: "";
+      position: absolute;
+      right: -38px;
+      top: 18px;
+      width: 36px;
+      height: 10px;
+      border: 3px solid var(--gold);
+      border-left: none;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .steam {
+      position: absolute;
+      top: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+    }
+
+    .steam span {
+      width: 6px;
+      height: 30px;
+      border-radius: 3px;
+      background: var(--gold);
+      opacity: 0;
+      animation: steam 2.5s infinite;
+    }
+
+    .steam span:nth-child(2) {
+      animation-delay: 0.4s;
+    }
+
+    .steam span:nth-child(3) {
+      animation-delay: 0.8s;
+    }
+
+    @keyframes steam {
+      0% {
+        transform: translateY(10px);
+        opacity: 0;
+      }
+      30% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-20px);
+        opacity: 0;
+      }
+    }
+
+    h1 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      letter-spacing: 0.04em;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .brand {
+      margin-top: 50px;
+      font-size: 0.85rem;
+      letter-spacing: 0.25em;
+      color: var(--gold);
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+    <div class="pan">
+      <div class="steam">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+    <h1>We’re cooking up something new</h1>
+
+    <p>
+      Fit Food Chef UK is currently undergoing a little maintenance.
+    </p>
+    <p>
+      The kitchen will reopen shortly — sharper, leaner, and more intentional.
+    </p>
+
+    <div class="brand">FIT FOOD CHEF UK</div>
+  </main>
+</body>
+</html>
