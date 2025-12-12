@@ -5,23 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Fit Food</title>
   <meta name="description" content="Delivering hands on operation support to food businesses." />
-
   <style>
     :root{
       --bg:#0b0c0f;
       --bg2:#07080b;
       --panel:rgba(255,255,255,.035);
       --hair:rgba(255,255,255,.10);
-
       --text:#eaeaea;
       --muted:rgba(234,234,234,.70);
-
       --gold:#c9a44a;
       --stroke:2px;
-
       --max:1100px;
     }
-
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
@@ -29,17 +24,13 @@
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
       color:var(--text);
       line-height:1.5;
-
-      /* More consistent palette: subtle gold glow + deep black base */
       background:
         radial-gradient(900px 520px at 18% 0%, rgba(201,164,74,.12), transparent 62%),
         radial-gradient(700px 460px at 82% 12%, rgba(201,164,74,.06), transparent 60%),
         linear-gradient(180deg, var(--bg2) 0%, var(--bg) 55%, var(--bg2) 100%);
     }
-
     a{color:inherit;text-decoration:none}
     a:hover{opacity:.94}
-
     /* ===== Thin top bar ===== */
     header{
       position:sticky; top:0; z-index:10;
@@ -56,7 +47,6 @@
       justify-content:space-between;
       gap:10px;
     }
-
     .brand{
       display:flex;
       align-items:center;
@@ -101,7 +91,17 @@
       text-overflow:ellipsis;
     }
 
-    /* Force nav links to stay on ONE ROW even on mobile */
+    /* ADDED: Make tagline wrap on smaller screens */
+    @media (max-width: 640px) {
+      .brandTag {
+        white-space: normal;
+        overflow: visible;
+        text-overflow: unset;
+        line-height: 1.3;
+      }
+    }
+
+    /* ===== Rest of the styles remain unchanged ===== */
     nav{
       display:flex;
       align-items:center;
@@ -122,14 +122,11 @@
       border-color:rgba(255,255,255,.12);
       background:rgba(255,255,255,.03);
     }
-
-    /* ===== Page layout ===== */
     .wrap{
       max-width:var(--max);
       margin:0 auto;
       padding:26px 14px 44px;
     }
-
     .doors{
       display:grid;
       grid-template-columns:repeat(3, 1fr);
@@ -163,7 +160,6 @@
       box-shadow: 0 0 0 4px rgba(201,164,74,.18);
       border-color: rgba(201,164,74,.55);
     }
-
     .icon{
       width:190px;
       height:130px;
@@ -184,7 +180,6 @@
       letter-spacing:.06em;
       text-transform:uppercase;
     }
-
     /* ===== ICON 1: PAN + STEAM ===== */
     .pan{
       position:absolute;
@@ -225,7 +220,6 @@
       30%{ opacity:.85; }
       100%{ transform: translateY(-26px); opacity:0; }
     }
-
     /* ===== ICON 2: CLOCHE (rise only, slower) ===== */
     .clocheWrap{
       position:absolute;
@@ -279,15 +273,13 @@
       border-radius:50%;
       background: rgba(255,255,255,.01);
     }
-
     @keyframes clocheRise{
-      0%   { transform: translateX(-50%) translateY(0); }
-      62%  { transform: translateX(-50%) translateY(0); }      /* dwell */
-      78%  { transform: translateX(-50%) translateY(-26px); }  /* lift */
-      88%  { transform: translateX(-50%) translateY(-22px); }  /* gentle settle */
+      0% { transform: translateX(-50%) translateY(0); }
+      62% { transform: translateX(-50%) translateY(0); }
+      78% { transform: translateX(-50%) translateY(-26px); }
+      88% { transform: translateX(-50%) translateY(-22px); }
       100% { transform: translateX(-50%) translateY(0); }
     }
-
     /* ===== ICON 3: PADLOCK (slower, no black mark) ===== */
     .lockWrap{
       position:absolute;
@@ -324,7 +316,6 @@
       border-radius:0 0 10px 10px;
       background: rgba(255,255,255,.01);
     }
-
     .shackle{
       position:absolute;
       left:50%; bottom:62px;
@@ -335,18 +326,15 @@
       border-radius:999px 999px 0 0;
       background: transparent;
       transform-origin: 18% 85%;
-      animation: unlock 5.2s ease-in-out infinite; /* slower */
+      animation: unlock 5.2s ease-in-out infinite;
     }
-    /* IMPORTANT: removed the gap-cover pseudo-element entirely (no black mark). */
-
     @keyframes unlock{
-      0%   { transform: translateX(-50%) translateY(0) rotate(0deg); }
-      70%  { transform: translateX(-50%) translateY(0) rotate(0deg); }   /* longer dwell */
-      82%  { transform: translateX(-50%) translateY(-10px) rotate(-32deg); }
-      90%  { transform: translateX(-50%) translateY(-10px) rotate(-32deg); } /* hold open */
+      0% { transform: translateX(-50%) translateY(0) rotate(0deg); }
+      70% { transform: translateX(-50%) translateY(0) rotate(0deg); }
+      82% { transform: translateX(-50%) translateY(-10px) rotate(-32deg); }
+      90% { transform: translateX(-50%) translateY(-10px) rotate(-32deg); }
       100% { transform: translateX(-50%) translateY(0) rotate(0deg); }
     }
-
     footer{
       margin-top:24px;
       padding-top:18px;
@@ -358,7 +346,6 @@
       gap:12px;
       flex-wrap:wrap;
     }
-
     @media (max-width: 920px){
       .doors{grid-template-columns:1fr;}
       .door{min-height:300px;}
@@ -366,14 +353,12 @@
       nav{gap:4px;}
       nav a{padding:7px 7px;}
     }
-
     @media (prefers-reduced-motion: reduce){
       .steam span{ animation:none; opacity:.6; }
       .domeGroup, .shackle{ animation:none; }
     }
   </style>
 </head>
-
 <body>
   <header>
     <div class="nav">
@@ -384,7 +369,6 @@
           <div class="brandTag">Delivering hands on operation support to food businesses</div>
         </div>
       </div>
-
       <nav aria-label="Primary navigation">
         <a href="index.html">Home</a>
         <a href="bio.html">Bio</a>
@@ -393,7 +377,6 @@
       </nav>
     </div>
   </header>
-
   <main class="wrap">
     <div class="doors" aria-label="Choose your path">
       <!-- 1) Food business startups -->
@@ -405,7 +388,6 @@
         <div class="doorTitle">Food Business Startups</div>
         <div class="doorHint">Explore →</div>
       </a>
-
       <!-- 2) Adding a food offering -->
       <a class="door" href="adding-food.html" aria-label="Adding a food offering">
         <div class="icon" aria-hidden="true">
@@ -420,7 +402,6 @@
         <div class="doorTitle">Adding a Food Offering</div>
         <div class="doorHint">Explore →</div>
       </a>
-
       <!-- 3) New management -->
       <a class="door" href="new-management.html" aria-label="New management">
         <div class="icon" aria-hidden="true">
@@ -435,13 +416,11 @@
         <div class="doorHint">Explore →</div>
       </a>
     </div>
-
     <footer>
       <div>© <span id="year"></span> Fit Food</div>
       <div>Fit-for-purpose food operations</div>
     </footer>
   </main>
-
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
